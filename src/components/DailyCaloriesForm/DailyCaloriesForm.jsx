@@ -7,6 +7,7 @@ import {
   TextField,
 } from '@mui/material';
 import { useState } from 'react';
+import { getPublicData } from 'services/backApi';
 
 const DailyCaloriesForm = () => {
   const [height, setHeight] = useState('');
@@ -38,6 +39,7 @@ const DailyCaloriesForm = () => {
       bloodType,
     };
     console.log(calculateUserInfo);
+    getPublicData(calculateUserInfo);
   };
 
   return (
