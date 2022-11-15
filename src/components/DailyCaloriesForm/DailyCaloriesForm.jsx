@@ -7,8 +7,10 @@ import {
   TextField,
 } from '@mui/material';
 import { useState } from 'react';
+import { getPublicData } from 'services/backApi';
 import { useDispatch, useSelector } from 'react-redux';
 import { dailyRateOperation } from 'redux/dailyRate/dailyRate-operations';
+
 
 const DailyCaloriesForm = () => {
   const [height, setHeight] = useState('');
@@ -41,6 +43,10 @@ const DailyCaloriesForm = () => {
       desiredWeight,
       bloodType,
     };
+
+    console.log(calculateUserInfo);
+    getPublicData(calculateUserInfo);
+
     localStorage.setItem(
       'calculateUserInfo',
       JSON.stringify(calculateUserInfo)
@@ -59,6 +65,7 @@ const DailyCaloriesForm = () => {
     setAge('');
     setBloodType('');
     setCurrentWeight('');
+
   };
 
   return (
