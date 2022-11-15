@@ -1,7 +1,9 @@
 import RegisterPage from 'pages/RegisterPage';
 import MainPage from 'pages/MainPage';
 import { Route, Routes } from 'react-router-dom';
+import DiaryPage from 'pages/DiaryPage';
 import LoginPage from 'pages/LoginPage';
+
 
 export const App = () => {
   return (
@@ -13,7 +15,7 @@ export const App = () => {
         <Route path="/login" element={<LoginPage />} />
 
         <Route path="calculator" element={<div>CALCULATOR</div>} />
-        <Route path="diary" element={<div>DIARY</div>} />
+        <Route path="diary" element={<DiaryPage />} />
       </Route>
     </Routes>
   );
