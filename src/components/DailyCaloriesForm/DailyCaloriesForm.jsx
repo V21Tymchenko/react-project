@@ -7,6 +7,8 @@ import {
   TextField,
 } from '@mui/material';
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { dailyRateOperation } from 'redux/dailyRate/dailyRate-operations';
 
 const DailyCaloriesForm = () => {
   const [height, setHeight] = useState('');
@@ -14,6 +16,8 @@ const DailyCaloriesForm = () => {
   const [age, setAge] = useState('');
   const [bloodType, setBloodType] = useState('');
   const [currentWeight, setCurrentWeight] = useState('');
+  const dispatch = useDispatch();
+  const isLogined = useSelector(state => state.auth.isLoggedIn);
 
   const fields = {
     height: setHeight,
@@ -37,7 +41,24 @@ const DailyCaloriesForm = () => {
       desiredWeight,
       bloodType,
     };
-    console.log(calculateUserInfo);
+    localStorage.setItem(
+      'calculateUserInfo',
+      JSON.stringify(calculateUserInfo)
+    );
+    if (!isLogined) {
+      dispatch(dailyRateOperation(calculateUserInfo));
+    } else {
+      console.log(111111111111);
+    }
+    resetForm();
+  };
+
+  const resetForm = () => {
+    setHeight('');
+    setDesiredWeight('');
+    setAge('');
+    setBloodType('');
+    setCurrentWeight('');
   };
 
   return (
@@ -48,6 +69,7 @@ const DailyCaloriesForm = () => {
         label="Height"
         variant="standard"
         name="height"
+        type="number"
         value={height}
         required
       />
@@ -57,6 +79,7 @@ const DailyCaloriesForm = () => {
         label="Desired weight"
         variant="standard"
         name="desiredWeight"
+        type="number"
         value={desiredWeight}
         required
       />
@@ -66,6 +89,7 @@ const DailyCaloriesForm = () => {
         label="Age"
         variant="standard"
         name="age"
+        type="number"
         value={age}
         required
       />
@@ -76,6 +100,7 @@ const DailyCaloriesForm = () => {
         label="Current weight"
         variant="standard"
         name="currentWeight"
+        type="number"
         value={currentWeight}
         required
       />
