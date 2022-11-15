@@ -1,5 +1,6 @@
 import MainPage from 'pages/MainPage';
 import { Route, Routes } from 'react-router-dom';
+import DiaryPage from 'pages/DiaryPage';
 
 export const App = () => {
   return (
@@ -9,7 +10,7 @@ export const App = () => {
         <Route path="register" element={<div>REGISTER</div>} />
         <Route path="login" element={<div>LOGIN</div>} />
         <Route path="calculator" element={<div>CALCULATOR</div>} />
-        <Route path="diary" element={<div>DIARY</div>} />
+        <Route path="diary" element={<DiaryPage />} />
       </Route>
     </Routes>
   );
