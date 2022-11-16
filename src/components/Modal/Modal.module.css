@@ -1,0 +1,72 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1200;
+}
+
+.modal {
+  max-width: 672px;
+  max-height: 573px;
+  background: #ffffff;
+  box-shadow: 0px 22px 40px rgba(0, 0, 0, 0.1);
+  position: relative;
+  padding: 64px 92px 81px;
+}
+
+.btnCloseModal {
+  position: absolute;
+  right: 0;
+  top: 0;
+  border: 0;
+  background-color: #ffffff;
+}
+
+.titleModal {
+  text-align: center;
+
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1.23;
+  text-align: center;
+  color: #212121;
+}
+
+.textKcalModal {
+  text-align: center;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 58px;
+  text-align: 1.21;
+  letter-spacing: 0.04em;
+
+  color: #264061;
+}
+
+.modalSpanKcal {
+  font-size: 48px;
+  line-height: 58px;
+}
+
+.listModal {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.22;
+  letter-spacing: 0.04em;
+
+  color: #212121;
+}
+
+.itemModal {
+  font-size: 14px;
+  line-height: 1.22;
+  letter-spacing: 0.04em;
+
+  color: #9b9faa;
+}

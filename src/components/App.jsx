@@ -6,6 +6,7 @@ import DiaryPage from 'pages/DiaryPage';
 import LoginPage from 'pages/LoginPage';
 
 
+
 export const App = () => {
   return (
     <Routes>
@@ -17,7 +18,6 @@ export const App = () => {
 
         <Route path="calculator" element={<div>CALCULATOR</div>} />
         <Route path="diary" element={<DiaryPage />} />
-
       </Route>
     </Routes>
   );

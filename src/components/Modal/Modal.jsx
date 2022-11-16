@@ -1,20 +1,48 @@
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
+import s from "./Modal.module.css"
 
-const Modal = () => {
+const Modal = ({setIsModalOpen}) => {
 
   const dailyKcal = useSelector(state => state?.dailyRate?.dailyRate);
+  const arr = useSelector(state => state?.dailyRate?.notAllowedProducts)
+  const newArr = [...arr].slice(0,10)
   console.log(dailyKcal)
+  console.log(arr)
+
+  useEffect(()=>{add()
+    return remove()
+  })
+  
+  function add() {
+    window.addEventListener('keydown', onEscape)
+  }
+  function remove(){
+    window.addEventListener('keydown', onEscape)
+  }
+
+  const onEscape = event => {
+    if (event.code === 'Escape')
+      setIsModalOpen(false);
+  };
+
+  const hendleClick = event => {
+    if (event.target === event.currentTarget) {
+      setIsModalOpen(false);
+    }
+  };
 
   return (
-    <div className="modal">
-      <svg
+    <div onClick={hendleClick} className={s.overlay}>
+    <div className={s.modal}>
+      <button onClick={()=>{setIsModalOpen(false)}} type="button" className={s.btnCloseModal}><svg
         width="20"
         height="20"
         viewBox="0 0 20 20"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <g clip-path="url(#clip0_13001_75)">
+        <g clipPath="url(#clip0_13001_75)">
           <path
             d="M15.8333 5.3415L14.6583 4.1665L9.99996 8.82484L5.34163 4.1665L4.16663 5.3415L8.82496 9.99984L4.16663 14.6582L5.34163 15.8332L9.99996 11.1748L14.6583 15.8332L15.8333 14.6582L11.175 9.99984L15.8333 5.3415Z"
             fill="black"
@@ -25,18 +53,19 @@ const Modal = () => {
             <rect width="20" height="20" fill="white" />
           </clipPath>
         </defs>
-      </svg>
-      <h2> Your recommended daily calorie intake is</h2>
-      <p>
-        <span className="modalKcal">{dailyKcal}</span> kcal
+      </svg></button>
+      <h2 className={s.titleModal}> Your recommended daily calorie intake is</h2>
+      <p className={s.textKcalModal}>
+        <span className={s.modalSpanKcal}>{Math.round(dailyKcal)}</span> kcal
       </p>
-      <p>Foods you should not eat</p>
+      <p className={s.listModal}>Foods you should not eat</p>
       <ul>
-        {/* {DailyRateResponse.notAllowedProducts.map(item => {
-          <li className="modal.item">{item}</li>;
-        })} */}
+        {newArr.map((item, index) => {
+          return (<li key={item} className={s.itemModal}>{index+1}. {item}</li>);
+        })}
       </ul>
-      <button>Start losing weight</button>
+      <button onClick={()=>{setIsModalOpen(false)}}>Start losing weight</button>
+    </div>
     </div>
   );
 };
