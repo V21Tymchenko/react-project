@@ -11,6 +11,7 @@ import { getPublicData } from 'services/backApi';
 import { useDispatch, useSelector } from 'react-redux';
 import { dailyRateOperation } from 'redux/dailyRate/dailyRate-operations';
 import s from './DailyCaloriesForm.module.css';
+import { orange } from '@mui/material/colors';
 
 const DailyCaloriesForm = () => {
   const [height, setHeight] = useState('');
@@ -70,6 +71,7 @@ const DailyCaloriesForm = () => {
   return (
     <form className={s.form} onSubmit={formSubmit}>
       <TextField
+        color="warning"
         className={s.input}
         onChange={handleInputChange}
         id="standard-basic"
@@ -81,6 +83,7 @@ const DailyCaloriesForm = () => {
         required
       />
       <TextField
+        color="warning"
         className={s.input}
         onChange={handleInputChange}
         id="standard-basic"
@@ -92,6 +95,7 @@ const DailyCaloriesForm = () => {
         required
       />
       <TextField
+        color="warning"
         className={s.input}
         onChange={handleInputChange}
         id="standard-basic"
@@ -103,8 +107,17 @@ const DailyCaloriesForm = () => {
         required
       />
 
-      <FormControl>
-        <FormLabel id="demo-radio-buttons-group-label">Blood type</FormLabel>
+      <FormControl required>
+        <FormLabel
+          sx={{
+            '&.Mui-focused': {
+              color: orange[700],
+            },
+          }}
+          id="demo-radio-buttons-group-label"
+        >
+          Blood type
+        </FormLabel>
         <RadioGroup
           aria-labelledby="demo-radio-buttons-group-label"
           defaultValue="female"
@@ -115,14 +128,63 @@ const DailyCaloriesForm = () => {
           row
           required
         >
-          <FormControlLabel value="1" control={<Radio />} label="1" />
-          <FormControlLabel value="2" control={<Radio />} label="2" />
-          <FormControlLabel value="3" control={<Radio />} label="3" />
-          <FormControlLabel value="4" control={<Radio />} label="4" />
+          <FormControlLabel
+            value="1"
+            control={
+              <Radio
+                sx={{
+                  '&.Mui-checked': {
+                    color: orange[700],
+                  },
+                }}
+              />
+            }
+            label="1"
+          />
+          <FormControlLabel
+            value="2"
+            control={
+              <Radio
+                sx={{
+                  '&.Mui-checked': {
+                    color: orange[700],
+                  },
+                }}
+              />
+            }
+            label="2"
+          />
+          <FormControlLabel
+            value="3"
+            control={
+              <Radio
+                sx={{
+                  '&.Mui-checked': {
+                    color: orange[700],
+                  },
+                }}
+              />
+            }
+            label="3"
+          />
+          <FormControlLabel
+            value="4"
+            control={
+              <Radio
+                sx={{
+                  '&.Mui-checked': {
+                    color: orange[700],
+                  },
+                }}
+              />
+            }
+            label="4"
+          />
         </RadioGroup>
       </FormControl>
 
       <TextField
+        color="warning"
         className={s.input}
         onChange={handleInputChange}
         id="standard-basic"
