@@ -1,5 +1,5 @@
 import Container from 'components/Container';
-import DailyCaloriesForm from 'components/DailyCaloriesForm';
+import DailyCaloriesForm from 'components/DailyCaloriesForm/DailyCaloriesForm';
 import Header from 'components/Header';
 import { Outlet } from 'react-router-dom';
 
@@ -11,7 +11,6 @@ const MainPage = () => {
 
         <h1>Calculate your daily calorie intake right now</h1>
         <DailyCaloriesForm />
-
       </Container>
       <Outlet />
     </>

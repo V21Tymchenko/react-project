@@ -3,11 +3,23 @@ import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import s from 'components/DiaryAddProductForm/DiaryAddProductForm.module.css';
+import axios from 'axios';
 
 export default function DiaryAddProductForm() {
   const [name, setName] = useState('');
+
+  async function getProduct(name) {
+    const data = await axios.get(
+      `https://slimmom-backend.goit.global/product/?search=${name}`
+    );
+    console.log('data :', data);
+    return data;
+  }
+
   const handelChange = e => {
+    console.log('e  :', e.target.value);
     setName(e.target.value);
+    getProduct(e.target.value);
   };
   return (
     <>
