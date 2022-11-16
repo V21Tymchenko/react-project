@@ -18,6 +18,7 @@ const DailyCaloriesForm = () => {
   const [age, setAge] = useState('');
   const [bloodType, setBloodType] = useState('');
   const [currentWeight, setCurrentWeight] = useState('');
+  const [kcal, setKcal] = useState(null)
   const dispatch = useDispatch();
   const isLogined = useSelector(state => state.auth.isLoggedIn);
 
@@ -34,6 +35,11 @@ const DailyCaloriesForm = () => {
     fields[name](prev => (prev = evt.target.value));
   };
 
+  async function pfkcal (value){
+    await getPublicData(value).then(setKcal).then(console.log(kcal));
+    
+};
+
   const formSubmit = evt => {
     evt.preventDefault();
     const calculateUserInfo = {
@@ -45,7 +51,7 @@ const DailyCaloriesForm = () => {
     };
 
     console.log(calculateUserInfo);
-    getPublicData(calculateUserInfo);
+    pfkcal(calculateUserInfo);
 
     localStorage.setItem(
       'calculateUserInfo',
