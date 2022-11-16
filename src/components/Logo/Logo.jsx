@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom';
 import logotype from '../../assets/images/logo.png';
+import s from './Logo.module.css';
 
 const Logo = () => {
   return (
     <Link to="/">
-      <img src={logotype} alt="logotype Slim Mom" />
+      <img className={s.logoImage} src={logotype} alt="logotype Slim Mom" />
     </Link>
   );
 };
