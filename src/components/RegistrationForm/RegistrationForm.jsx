@@ -34,7 +34,7 @@ export default function RegistrationForm() {
       .then(() => {
         dispatch(login({ email, password }));
       })
-      .catch();
+      .catch(error => console.error(error));
     setEmail('');
     setPassword('');
     setUserName('');
