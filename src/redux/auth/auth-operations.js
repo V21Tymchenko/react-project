@@ -46,16 +46,3 @@ export const login = createAsyncThunk('auth/login', async (data, thunkAPI) => {
     return thunkAPI.rejectWithValue(e.message);
   }
 });
-
-// export const axiosInstance = axios.create({
-//   baseURL: 'https://goit-slim-mom-backend.herokuapp.com/api/',
-// });
-
-// export const getPublicData = async values => {
-//   try {
-//     const response = await axiosInstance.post('products', values);
-//     return response.data.data;
-//   } catch (error) {
-//     console.error(error);
-//   }
-// };

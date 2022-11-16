@@ -15,6 +15,7 @@ const DailyCaloriesForm = () => {
   const [age, setAge] = useState('');
   const [bloodType, setBloodType] = useState('');
   const [currentWeight, setCurrentWeight] = useState('');
+  // const [userInfo, setUserInfo] = useState('');
 
   const fields = {
     height: setHeight,
@@ -26,8 +27,11 @@ const DailyCaloriesForm = () => {
 
   const handleInputChange = evt => {
     const { name } = evt.target;
-    fields[name](prev => (prev = evt.target.value));
+    fields[name](prev => (prev = Number(evt.target.value)));
   };
+  // const takeUserData = async value => {
+  //   await getPublicData(value).then(setUserInfo);
+  // };
 
   const formSubmit = evt => {
     evt.preventDefault();
@@ -39,68 +43,73 @@ const DailyCaloriesForm = () => {
       bloodType,
     };
     console.log(calculateUserInfo);
-    getPublicData(calculateUserInfo);
+    const result = getPublicData(calculateUserInfo);
+    console.log(result);
+    // takeUserData(calculateUserInfo);
   };
 
   return (
-    <form onSubmit={formSubmit}>
-      <TextField
-        onChange={handleInputChange}
-        id="standard-basic"
-        label="Height"
-        variant="standard"
-        name="height"
-        value={height}
-        required
-      />
-      <TextField
-        onChange={handleInputChange}
-        id="standard-basic"
-        label="Desired weight"
-        variant="standard"
-        name="desiredWeight"
-        value={desiredWeight}
-        required
-      />
-      <TextField
-        onChange={handleInputChange}
-        id="standard-basic"
-        label="Age"
-        variant="standard"
-        name="age"
-        value={age}
-        required
-      />
-
-      <TextField
-        onChange={handleInputChange}
-        id="standard-basic"
-        label="Current weight"
-        variant="standard"
-        name="currentWeight"
-        value={currentWeight}
-        required
-      />
-      <FormControl>
-        <FormLabel id="demo-radio-buttons-group-label">Blood type</FormLabel>
-        <RadioGroup
-          aria-labelledby="demo-radio-buttons-group-label"
-          defaultValue="female"
-          name="bloodType"
-          value={bloodType}
+    <>
+      <form onSubmit={formSubmit}>
+        <TextField
           onChange={handleInputChange}
-          label="Current weight"
-          row
+          id="standard-basic"
+          label="Height"
+          variant="standard"
+          name="height"
+          value={height}
           required
-        >
-          <FormControlLabel value="1" control={<Radio />} label="1" />
-          <FormControlLabel value="2" control={<Radio />} label="2" />
-          <FormControlLabel value="3" control={<Radio />} label="3" />
-          <FormControlLabel value="4" control={<Radio />} label="4" />
-        </RadioGroup>
-      </FormControl>
-      <button type="submit">Start losing weight</button>
-    </form>
+        />
+        <TextField
+          onChange={handleInputChange}
+          id="standard-basic"
+          label="Desired weight"
+          variant="standard"
+          name="desiredWeight"
+          value={desiredWeight}
+          required
+        />
+        <TextField
+          onChange={handleInputChange}
+          id="standard-basic"
+          label="Age"
+          variant="standard"
+          name="age"
+          value={age}
+          required
+        />
+
+        <TextField
+          onChange={handleInputChange}
+          id="standard-basic"
+          label="Current weight"
+          variant="standard"
+          name="currentWeight"
+          value={currentWeight}
+          required
+        />
+        <FormControl>
+          <FormLabel id="demo-radio-buttons-group-label">Blood type</FormLabel>
+          <RadioGroup
+            aria-labelledby="demo-radio-buttons-group-label"
+            defaultValue="female"
+            name="bloodType"
+            value={bloodType}
+            onChange={handleInputChange}
+            label="Current weight"
+            row
+            required
+          >
+            <FormControlLabel value="1" control={<Radio />} label="1" />
+            <FormControlLabel value="2" control={<Radio />} label="2" />
+            <FormControlLabel value="3" control={<Radio />} label="3" />
+            <FormControlLabel value="4" control={<Radio />} label="4" />
+          </RadioGroup>
+        </FormControl>
+        <button type="submit">Start losing weight</button>
+      </form>
+      {/* {userInfo && <p>{userInfo.dailyRate}</p>} */}
+    </>
   );
 };
 export default DailyCaloriesForm;
