@@ -11,9 +11,11 @@ const MainPage = () => {
 
         <h1>Calculate your daily calorie intake right now</h1>
         <DailyCaloriesForm />
+
       </Container>
       <Outlet />
     </>
   );
 };
 export default MainPage;
+
