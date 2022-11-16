@@ -9,8 +9,10 @@ const Header = () => {
   // const isLogined = useSelector(stateAuthIsLoggedIn);
   return (
     <header className={s.header}>
-      <Logo />
-      <Navigation />
+      <div className={s.wrapper}>
+        <Logo />
+        <Navigation />
+      </div>
       {/* {isLogined && <UserInfo />} */}
       <UserInfo />
     </header>

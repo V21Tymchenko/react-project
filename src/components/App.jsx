@@ -9,7 +9,6 @@ import { useEffect } from 'react';
 import { current } from 'redux/auth/auth-operations';
 import { stateAuthToken } from 'redux/auth/auth-selectors';
 
-
 export const App = () => {
   const dispatch = useDispatch();
   const token = useSelector(stateAuthToken);
@@ -22,15 +21,14 @@ export const App = () => {
 
   return (
     <Routes>
-      <Route path="/" element={<MainPage />}>
-        <Route index element={<div>Home</div>} />
+      <Route path="/">
+        <Route index element={<MainPage />} />
         <Route path="calculator" element={<CalculatorPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
 
         <Route path="calculator" element={<div>CALCULATOR</div>} />
         <Route path="diary" element={<DiaryPage />} />
-
       </Route>
     </Routes>
   );

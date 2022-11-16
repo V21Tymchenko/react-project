@@ -10,7 +10,7 @@ import { useState } from 'react';
 import { getPublicData } from 'services/backApi';
 import { useDispatch, useSelector } from 'react-redux';
 import { dailyRateOperation } from 'redux/dailyRate/dailyRate-operations';
-
+import s from './DailyCaloriesForm.module.css';
 
 const DailyCaloriesForm = () => {
   const [height, setHeight] = useState('');
@@ -65,12 +65,12 @@ const DailyCaloriesForm = () => {
     setAge('');
     setBloodType('');
     setCurrentWeight('');
-
   };
 
   return (
-    <form onSubmit={formSubmit}>
+    <form className={s.form} onSubmit={formSubmit}>
       <TextField
+        className={s.input}
         onChange={handleInputChange}
         id="standard-basic"
         label="Height"
@@ -81,6 +81,7 @@ const DailyCaloriesForm = () => {
         required
       />
       <TextField
+        className={s.input}
         onChange={handleInputChange}
         id="standard-basic"
         label="Desired weight"
@@ -91,6 +92,7 @@ const DailyCaloriesForm = () => {
         required
       />
       <TextField
+        className={s.input}
         onChange={handleInputChange}
         id="standard-basic"
         label="Age"
@@ -101,16 +103,6 @@ const DailyCaloriesForm = () => {
         required
       />
 
-      <TextField
-        onChange={handleInputChange}
-        id="standard-basic"
-        label="Current weight"
-        variant="standard"
-        name="currentWeight"
-        type="number"
-        value={currentWeight}
-        required
-      />
       <FormControl>
         <FormLabel id="demo-radio-buttons-group-label">Blood type</FormLabel>
         <RadioGroup
@@ -129,7 +121,22 @@ const DailyCaloriesForm = () => {
           <FormControlLabel value="4" control={<Radio />} label="4" />
         </RadioGroup>
       </FormControl>
-      <button type="submit">Start losing weight</button>
+
+      <TextField
+        className={s.input}
+        onChange={handleInputChange}
+        id="standard-basic"
+        label="Current weight"
+        variant="standard"
+        name="currentWeight"
+        type="number"
+        value={currentWeight}
+        required
+      />
+
+      <button className={s.btn} type="submit">
+        Start losing weight
+      </button>
     </form>
   );
 };
