@@ -1,11 +1,21 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from 'redux/auth/auth-operations';
+import { stateAuthToken, stateAuthUserName } from 'redux/auth/auth-selectors';
 
 const UserInfo = () => {
-  const userName = useSelector(state => state.auth.user.username);
+  const dispatch = useDispatch();
+  const userName = useSelector(stateAuthUserName);
+  const token = useSelector(stateAuthToken);
+
+  const onLogout = () => {
+    dispatch(logout());
+  };
   return (
     <div>
-      <span>{userName}</span>
-      <button type="button">Exit</button>
+      {token && <span>{userName}</span>}
+      <button type="button" onClick={onLogout}>
+        Exit
+      </button>
     </div>
   );
 };
