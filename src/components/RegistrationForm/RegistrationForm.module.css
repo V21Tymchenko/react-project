@@ -1,5 +1,80 @@
-.form{
+.title {
+  margin: 0;
+  font-family: 'Gotham Pro';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 13px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+
+  color: #fc842d;
+}
+
+.form {
   display: flex;
   flex-direction: column;
-  align-items: flex-start
+  align-items: flex-start;
+  margin-top: 30px;
+  gap: 20px;
+}
+
+.label {
+  font-family: 'Verdana';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.04em;
+
+  color: #9b9faa;
+}
+
+.buttons{
+  display: flex;
+  gap: 32px;
+}
+
+.button {
+  margin-top: 60px;
+  padding: 13px 50px;
+  background-color: #fc842d;
+  color: #ffffff;
+  width: 181px;
+  height: 44px;
+
+  font-family: 'Verdana';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.04em;
+
+  border: none;
+  border-radius: 25px;
+
+  text-decoration: none;
+  display: inline-block;
+}
+
+.link {
+  margin-top: 60px;
+  padding: 13px 50px;
+  color: #fc842d;
+  width: 78px;
+  height: 16px;
+  text-align: center;
+
+  font-family: 'Verdana';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.04em;
+
+  border: 2px solid #fc842d;
+  border-radius: 25px;
+
+  text-decoration: none;
+  display: inline-block;
 }
