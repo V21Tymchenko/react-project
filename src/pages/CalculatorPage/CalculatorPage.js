@@ -1,9 +1,18 @@
+import Container from 'components/Container';
 import DailyCaloriesForm from 'components/DailyCaloriesForm';
+// import RightSideBar from 'components/RightSideBar';
 
 const CalculatorPage = () => {
   return (
     <>
-      <DailyCaloriesForm />
+      <Container>
+        <DailyCaloriesForm />
+      </Container>
+      {/* <RightSideBar
+        // date={date}
+        // userParams={userParams}
+        // userProducts={userProducts}
+      /> */}
     </>
   );
 };
