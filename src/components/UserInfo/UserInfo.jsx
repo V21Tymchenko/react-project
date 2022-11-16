@@ -1,3 +1,4 @@
+import s from './UserInfo.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from 'redux/auth/auth-operations';
 import { stateAuthToken, stateAuthUserName } from 'redux/auth/auth-selectors';
@@ -11,10 +12,10 @@ const UserInfo = () => {
     dispatch(logout());
   };
   return (
-    <div>
-      {token && <span>{userName}</span>}
+    <div className={s.wrapper}>
+      {token && <span className={s.user}>{userName}</span>}
       {token && (
-        <button type="button" onClick={onLogout}>
+        <button className={s.exitBtn} type="button" onClick={onLogout}>
           Exit
         </button>
       )}
