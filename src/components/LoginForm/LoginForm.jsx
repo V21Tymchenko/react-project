@@ -20,6 +20,8 @@ const LoginForm = () => {
   const onSubmit = evt => {
     evt.preventDefault();
     dispatch(login({ email, password }));
+    setEmail('');
+    setPassword('');
   };
 
   return (
