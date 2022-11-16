@@ -7,7 +7,7 @@ import { Outlet } from 'react-router-dom';
 import s from './MainPage.module.css';
 
 const MainPage = () => {
-  const [isModalOpen, setIsModalOpen] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <>
