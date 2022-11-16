@@ -9,6 +9,7 @@ import { current } from 'redux/auth/auth-operations';
 import { stateAuthToken } from 'redux/auth/auth-selectors';
 import LoginPage from 'pages/LoginPage/LoginPage';
 
+
 export const App = () => {
   const dispatch = useDispatch();
   const token = useSelector(stateAuthToken);

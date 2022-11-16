@@ -1,4 +1,7 @@
 .header {
+  position: absolute;
+  width: 1280px;
+  /* transform: translateX(10%); */
   padding-top: 80px;
   display: flex;
   justify-content: space-between;
