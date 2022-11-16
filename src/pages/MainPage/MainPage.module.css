@@ -1,0 +1,22 @@
+.title {
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 34px;
+  line-height: 41px;
+  width: 540px;
+  color: #212121;
+}
+.backGround {
+  padding-top: 293px;
+  margin-right: -32px;
+  padding-bottom: 111px;
+  background-image: url('../../assets/images/green-home.png'),
+    url('../../assets/images/strawberry.png'),
+    url('../../assets/images/banana.png'),
+    url('../../assets/images/grey-bg.svg');
+  background-size: 746px, 286px, 498px, 602px;
+  background-position: top right 195px, right 36px bottom, top right,
+    top 34px right;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+}

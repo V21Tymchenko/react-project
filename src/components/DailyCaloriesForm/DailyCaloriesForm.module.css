@@ -1,0 +1,35 @@
+.form {
+  width: 608px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+.input {
+  width: 240px;
+}
+.btn {
+  background: #fc842d;
+  box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
+  border-radius: 30px;
+  border: 2px solid #fc842d;
+  cursor: pointer;
+  padding: 13px 25px;
+  min-width: 181px;
+  font-family: 'Arimo';
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.04em;
+  margin-left: 53px;
+  margin-top: 84px;
+  color: #ffffff;
+  transition: background-color 300ms linear, color 300ms linear;
+}
+.btn:hover,
+.btn:focus {
+  background-color: #fff;
+  color: #fc842d;
+}

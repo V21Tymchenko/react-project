@@ -1,6 +1,13 @@
 .header {
+  position: absolute;
+  width: 1280px;
+  /* transform: translateX(10%); */
   padding-top: 80px;
   display: flex;
-
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.wrapper {
+  display: flex;
   align-items: flex-end;
 }

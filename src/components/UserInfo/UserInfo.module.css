@@ -1,0 +1,39 @@
+.exitBtn {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0.04em;
+  display: flex;
+  gap: 16px;
+  color: #9b9faa;
+  background-color: transparent;
+  border: none;
+  transition: color 300ms linear;
+}
+.wrapper {
+  display: flex;
+}
+.exitBtn::before {
+  content: '';
+  display: block;
+  width: 2px;
+  height: 32px;
+  margin: -13px 1px 1px 1px;
+  background-color: #9b9faa;
+}
+.exitBtn:hover,
+.exitBtn:focus {
+  color: #212121;
+}
+.user {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 16px;
+  text-align: right;
+  letter-spacing: 0.04em;
+  color: #212121;
+}
