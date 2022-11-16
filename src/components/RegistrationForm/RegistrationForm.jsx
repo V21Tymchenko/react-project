@@ -41,7 +41,7 @@ export default function RegistrationForm() {
   };
 
   return (
-    <section>
+    <section className={s.section}>
       <div>
         <h2 className={s.title}>Register</h2>
         <form onSubmit={handleFormSubmit} className={s.form}>

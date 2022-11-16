@@ -3,11 +3,11 @@ import RegisterPage from 'pages/RegisterPage';
 import MainPage from 'pages/MainPage';
 import { Route, Routes } from 'react-router-dom';
 import DiaryPage from 'pages/DiaryPage';
-import LoginPage from 'pages/LoginPage';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { current } from 'redux/auth/auth-operations';
 import { stateAuthToken } from 'redux/auth/auth-selectors';
+import LoginPage from 'pages/LoginPage/LoginPage';
 
 export const App = () => {
   const dispatch = useDispatch();
