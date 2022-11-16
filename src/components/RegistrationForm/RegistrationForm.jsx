@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { login } from 'redux/auth/auth-operations';
 import { register } from 'redux/auth/auth-operations';
 import s from './RegistrationForm.module.css';
 
@@ -26,7 +27,15 @@ export default function RegistrationForm() {
       email,
       password,
     };
-    dispatch(register(userInfo));
+    dispatch(register(userInfo))
+      .unwrap()
+      .then(() => {
+        dispatch(login({ email, password }));
+      })
+      .catch();
+    setEmail('');
+    setPassword('');
+    setUserName('');
   };
 
   return (

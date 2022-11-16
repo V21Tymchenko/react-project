@@ -1,15 +1,18 @@
 import Logo from 'components/Logo';
 import Navigation from 'components/Navigation';
 import UserInfo from 'components/UserInfo';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
+// import { stateAuthIsLoggedIn } from 'redux/auth/auth-selectors';
 import s from './Header.module.css';
 
 const Header = () => {
-  const isLogined = useSelector(state => state.auth.isLoggedIn);
+  // const isLogined = useSelector(stateAuthIsLoggedIn);
   return (
     <header className={s.header}>
-      <Logo />
-      <Navigation />
+      <div className={s.wrapper}>
+        <Logo />
+        <Navigation />
+      </div>
       {/* {isLogined && <UserInfo />} */}
       <UserInfo />
     </header>

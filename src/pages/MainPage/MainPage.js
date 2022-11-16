@@ -4,6 +4,7 @@ import Header from 'components/Header';
 import Modal from 'components/Modal';
 import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
+import s from './MainPage.module.css';
 
 const MainPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(true);
@@ -13,7 +14,7 @@ const MainPage = () => {
       <Container>
         <Header />
 
-        <h1>Calculate your daily calorie intake right now</h1>
+        <h1 className={s.title}>Calculate your daily calorie intake right now</h1>
         <DailyCaloriesForm setIsModalOpen={setIsModalOpen}/>
         {isModalOpen && <Modal setIsModalOpen={setIsModalOpen}/>}
       </Container>

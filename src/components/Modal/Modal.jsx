@@ -1,12 +1,14 @@
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
 import s from "./Modal.module.css"
+
 
 const Modal = ({setIsModalOpen}) => {
 
   const dailyKcal = useSelector(state => state?.dailyRate?.dailyRate);
   const arr = useSelector(state => state?.dailyRate?.notAllowedProducts)
-  const newArr = [...arr].slice(0,10)
+  const newArr = [...arr].slice(0,5)
   console.log(dailyKcal)
   console.log(arr)
 
@@ -32,6 +34,7 @@ const Modal = ({setIsModalOpen}) => {
     }
   };
 
+
   return (
     <div onClick={hendleClick} className={s.overlay}>
     <div className={s.modal}>
@@ -54,20 +57,24 @@ const Modal = ({setIsModalOpen}) => {
           </clipPath>
         </defs>
       </svg></button>
-      <h2 className={s.titleModal}> Your recommended daily calorie intake is</h2>
+      <div className={s.containerTitleModal}><h2 className={s.titleModal}> Your recommended daily calorie intake is</h2></div>
+      
       <p className={s.textKcalModal}>
         <span className={s.modalSpanKcal}>{Math.round(dailyKcal)}</span> kcal
       </p>
+      <div className={s.border}>
       <p className={s.listModal}>Foods you should not eat</p>
       <ul>
         {newArr.map((item, index) => {
           return (<li key={item} className={s.itemModal}>{index+1}. {item}</li>);
         })}
       </ul>
-      <button onClick={()=>{setIsModalOpen(false)}}>Start losing weight</button>
+      </div>
+     <NavLink to="/register" className={s.btnStartLosingWeight} onClick={() => {setIsModalOpen(false)}}>Start losing weight</NavLink>
+  
     </div>
     </div>
   );
 };
 
-export default Modal
+export default Modal;
