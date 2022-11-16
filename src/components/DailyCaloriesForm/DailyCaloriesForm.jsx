@@ -13,12 +13,14 @@ import { dailyRateOperation } from 'redux/dailyRate/dailyRate-operations';
 import s from './DailyCaloriesForm.module.css';
 import { orange } from '@mui/material/colors';
 
-const DailyCaloriesForm = () => {
+const DailyCaloriesForm = ({setIsModalOpen}) => {
   const [height, setHeight] = useState('');
   const [desiredWeight, setDesiredWeight] = useState('');
   const [age, setAge] = useState('');
   const [bloodType, setBloodType] = useState('');
   const [currentWeight, setCurrentWeight] = useState('');
+  const [kcal, setKcal] = useState(null)
+  
   const dispatch = useDispatch();
   const isLogined = useSelector(state => state.auth.isLoggedIn);
 
@@ -32,8 +34,13 @@ const DailyCaloriesForm = () => {
 
   const handleInputChange = evt => {
     const { name } = evt.target;
-    fields[name](prev => (prev = evt.target.value));
+    fields[name](prev => (prev = Number(evt.target.value)));
   };
+
+  async function pfkcal (value){
+    await getPublicData(value).then(setKcal).then(console.log(kcal));
+    
+};
 
   const formSubmit = evt => {
     evt.preventDefault();
@@ -46,7 +53,7 @@ const DailyCaloriesForm = () => {
     };
 
     console.log(calculateUserInfo);
-    getPublicData(calculateUserInfo);
+    pfkcal(calculateUserInfo);
 
     localStorage.setItem(
       'calculateUserInfo',
@@ -58,7 +65,11 @@ const DailyCaloriesForm = () => {
       console.log(111111111111);
     }
     resetForm();
+    setIsModalOpen(true);
+    window.addEventListener('keydown', onEscape)
   };
+  
+  const onEscape = () => {}
 
   const resetForm = () => {
     setHeight('');

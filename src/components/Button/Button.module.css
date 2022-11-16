@@ -1,0 +1,28 @@
+.btnStartLosingWeight {
+  min-width: 210px;
+  height: 43px;
+  background: #ffffff;
+  color: #FC842D;
+  border: 2px solid #fc842d;
+  box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
+  border-radius: 30px;
+}
+
+.btnStartLosingWeight :focus, .btnStartLosingWeight :hover{
+  color: #FFFFFF;
+  background: #FC842D;
+}
+
+.btnPrimare {
+  min-width: 181px;
+  height: 44px;
+  background: #ffffff;
+  border: 2px solid #fc842d;
+  border-radius: 30px;
+  color: #FC842D;
+}
+
+.btnLPrimare :focus, .btnLPrimare:hover{
+color: #FFFFFF;
+background: #FC842D;
+}

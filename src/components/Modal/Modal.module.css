@@ -1,0 +1,107 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1200;
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 672px;
+  max-height: 573px;
+  background: #ffffff;
+  box-shadow: 0px 22px 40px rgba(0, 0, 0, 0.1);
+  position: relative;
+  padding: 64px 92px 81px;
+  font-family: 'Arimo', sans-serif;
+}
+
+.btnCloseModal {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  border: 0;
+  background-color: #ffffff;
+}
+
+.btnCloseModal:hover,
+.btnCloseModal:focus {
+  transform: scale(1.1);
+}
+
+.containerTitleModal {
+  width: 350px;
+}
+
+.titleModal {
+  margin: 0 auto;
+  text-align: center;
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1.23;
+  text-align: center;
+  color: #212121;
+}
+
+.textKcalModal {
+    margin: 0 auto;
+  text-align: center;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 3.63;
+  text-align: 1.21;
+  letter-spacing: 0.04em;
+
+  color: #264061;
+}
+
+.modalSpanKcal {
+  font-size: 48px;
+  line-height: 58px;
+}
+
+.listModal {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.22;
+  letter-spacing: 0.04em;
+
+  color: #212121;
+}
+
+.itemModal {
+  font-size: 14px;
+  line-height: 1.22;
+  letter-spacing: 0.04em;
+  padding-bottom: 6px;
+
+  color: #9b9faa;
+}
+
+.btnStartLosingWeight {
+  margin: 40px auto 0;
+  display: inline-block;
+  background: #fc842d;
+  color: #ffffff;
+  box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
+  border-radius: 30px;
+  border: #fc842d;
+  padding: 13px 25px;
+}
+
+.btnStartLosingWeight:focus,
+.btnStartLosingWeight:hover {
+  color: #fc842d;
+  background: #ffffff;
+}
+.border {
+  border-top: 1px solid #e0e0e0;
+}
