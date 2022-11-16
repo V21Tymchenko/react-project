@@ -14,12 +14,15 @@ const MainPage = () => {
       <Container>
         <Header />
 
+
         <h1 className={s.title}>Calculate your daily calorie intake right now</h1>
         <DailyCaloriesForm setIsModalOpen={setIsModalOpen}/>
         {isModalOpen && <Modal setIsModalOpen={setIsModalOpen}/>}
+
       </Container>
       <Outlet />
     </>
   );
 };
 export default MainPage;
+

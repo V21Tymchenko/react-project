@@ -1,5 +1,7 @@
+import { TextField } from '@mui/material';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import { login } from 'redux/auth/auth-operations';
 import { register } from 'redux/auth/auth-operations';
 import s from './RegistrationForm.module.css';
@@ -41,39 +43,49 @@ export default function RegistrationForm() {
   return (
     <section>
       <div>
-        <h2>Register</h2>
+        <h2 className={s.title}>Register</h2>
         <form onSubmit={handleFormSubmit} className={s.form}>
-          <label htmlFor="">
-            Name *
-            <input
-              type="text"
-              required
-              onChange={handleInput}
-              name="username"
-              value={username}
-            />
-          </label>
-          <label htmlFor="">
-            Email *
-            <input
-              type="email"
-              required
-              onChange={handleInput}
-              name="email"
-              value={email}
-            />
-          </label>
-          <label htmlFor="">
-            Password *
-            <input
-              type="password"
-              required
-              onChange={handleInput}
-              name="password"
-              value={password}
-            />
-          </label>
-          <button type="submit">Register</button>
+          <TextField
+            label="Name"
+            color="warning"
+            type="text"
+            variant="standard"
+            required
+            onChange={handleInput}
+            name="username"
+            value={username}
+            className={s.label}
+          />
+          <TextField
+            label="Email"
+            color="warning"
+            type="email"
+            variant="standard"
+            required
+            onChange={handleInput}
+            name="email"
+            value={email}
+            className={s.label}
+          />
+          <TextField
+            label="Password"
+            color="warning"
+            type="password"
+            variant="standard"
+            required
+            onChange={handleInput}
+            name="password"
+            value={password}
+            className={s.label}
+          />
+          <div className={s.buttons}>
+            <button type="submit" className={s.button}>
+              Register
+            </button>
+            <NavLink className={s.link} to="/login">
+              Login
+            </NavLink>
+          </div>
         </form>
       </div>
     </section>
