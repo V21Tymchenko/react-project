@@ -9,6 +9,7 @@ export default function DiaryAddProductForm() {
   const handelChange = e => {
     setName(e.target.value);
   };
+
   return (
     <>
       <Box
