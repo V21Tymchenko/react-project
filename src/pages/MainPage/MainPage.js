@@ -9,16 +9,18 @@ const MainPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(true);
 
   return (
-    <Container>
+    <>
       <Header />
-      <main className={s.backGround}>
-        <h1 className={s.title}>
-          Calculate your daily calorie intake right now
-        </h1>
-        <DailyCaloriesForm setIsModalOpen={setIsModalOpen} />
-        {isModalOpen && <Modal setIsModalOpen={setIsModalOpen} />}
-      </main>
-    </Container>
+      <Container>
+        <main className={s.backGround}>
+          <h1 className={s.title}>
+            Calculate your daily calorie intake right now
+          </h1>
+          <DailyCaloriesForm setIsModalOpen={setIsModalOpen} />
+          {isModalOpen && <Modal setIsModalOpen={setIsModalOpen} />}
+        </main>
+      </Container>
+    </>
   );
 };
 export default MainPage;
