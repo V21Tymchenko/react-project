@@ -14,9 +14,11 @@ const UserInfo = () => {
   return (
     <div className={s.wrapper}>
       {token && <span className={s.user}>{userName}</span>}
-      <button className={s.exitBtn} type="button" onClick={onLogout}>
-        Exit
-      </button>
+      {token && (
+        <button className={s.exitBtn} type="button" onClick={onLogout}>
+          Exit
+        </button>
+      )}
     </div>
   );
 };

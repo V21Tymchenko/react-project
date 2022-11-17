@@ -9,6 +9,7 @@ import { useEffect } from 'react';
 import { current } from 'redux/auth/auth-operations';
 import { stateAuthToken } from 'redux/auth/auth-selectors';
 
+
 export const App = () => {
   const dispatch = useDispatch();
   const token = useSelector(stateAuthToken);

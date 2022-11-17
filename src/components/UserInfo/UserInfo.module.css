@@ -10,6 +10,7 @@
   color: #9b9faa;
   background-color: transparent;
   border: none;
+  transition: color 300ms linear;
 }
 .wrapper {
   display: flex;
@@ -21,6 +22,10 @@
   height: 32px;
   margin: -13px 1px 1px 1px;
   background-color: #9b9faa;
+}
+.exitBtn:hover,
+.exitBtn:focus {
+  color: #212121;
 }
 .user {
   font-family: 'Raleway';

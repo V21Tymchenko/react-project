@@ -11,13 +11,16 @@ import { getPublicData } from 'services/backApi';
 import { useDispatch, useSelector } from 'react-redux';
 import { dailyRateOperation } from 'redux/dailyRate/dailyRate-operations';
 import s from './DailyCaloriesForm.module.css';
+import { orange } from '@mui/material/colors';
 
-const DailyCaloriesForm = () => {
+const DailyCaloriesForm = ({setIsModalOpen}) => {
   const [height, setHeight] = useState('');
   const [desiredWeight, setDesiredWeight] = useState('');
   const [age, setAge] = useState('');
   const [bloodType, setBloodType] = useState('');
   const [currentWeight, setCurrentWeight] = useState('');
+  const [kcal, setKcal] = useState(null)
+  
   const dispatch = useDispatch();
   const isLogined = useSelector(state => state.auth.isLoggedIn);
 
@@ -31,8 +34,13 @@ const DailyCaloriesForm = () => {
 
   const handleInputChange = evt => {
     const { name } = evt.target;
-    fields[name](prev => (prev = evt.target.value));
+    fields[name](prev => (prev = Number(evt.target.value)));
   };
+
+  async function pfkcal (value){
+    await getPublicData(value).then(setKcal).then(console.log(kcal));
+    
+};
 
   const formSubmit = evt => {
     evt.preventDefault();
@@ -45,7 +53,7 @@ const DailyCaloriesForm = () => {
     };
 
     console.log(calculateUserInfo);
-    getPublicData(calculateUserInfo);
+    pfkcal(calculateUserInfo);
 
     localStorage.setItem(
       'calculateUserInfo',
@@ -57,7 +65,11 @@ const DailyCaloriesForm = () => {
       console.log(111111111111);
     }
     resetForm();
+    setIsModalOpen(true);
+    window.addEventListener('keydown', onEscape)
   };
+  
+  const onEscape = () => {}
 
   const resetForm = () => {
     setHeight('');
@@ -70,6 +82,7 @@ const DailyCaloriesForm = () => {
   return (
     <form className={s.form} onSubmit={formSubmit}>
       <TextField
+        color="warning"
         className={s.input}
         onChange={handleInputChange}
         id="standard-basic"
@@ -81,6 +94,7 @@ const DailyCaloriesForm = () => {
         required
       />
       <TextField
+        color="warning"
         className={s.input}
         onChange={handleInputChange}
         id="standard-basic"
@@ -92,6 +106,7 @@ const DailyCaloriesForm = () => {
         required
       />
       <TextField
+        color="warning"
         className={s.input}
         onChange={handleInputChange}
         id="standard-basic"
@@ -103,8 +118,17 @@ const DailyCaloriesForm = () => {
         required
       />
 
-      <FormControl>
-        <FormLabel id="demo-radio-buttons-group-label">Blood type</FormLabel>
+      <FormControl required>
+        <FormLabel
+          sx={{
+            '&.Mui-focused': {
+              color: orange[700],
+            },
+          }}
+          id="demo-radio-buttons-group-label"
+        >
+          Blood type
+        </FormLabel>
         <RadioGroup
           aria-labelledby="demo-radio-buttons-group-label"
           defaultValue="female"
@@ -115,14 +139,63 @@ const DailyCaloriesForm = () => {
           row
           required
         >
-          <FormControlLabel value="1" control={<Radio />} label="1" />
-          <FormControlLabel value="2" control={<Radio />} label="2" />
-          <FormControlLabel value="3" control={<Radio />} label="3" />
-          <FormControlLabel value="4" control={<Radio />} label="4" />
+          <FormControlLabel
+            value="1"
+            control={
+              <Radio
+                sx={{
+                  '&.Mui-checked': {
+                    color: orange[700],
+                  },
+                }}
+              />
+            }
+            label="1"
+          />
+          <FormControlLabel
+            value="2"
+            control={
+              <Radio
+                sx={{
+                  '&.Mui-checked': {
+                    color: orange[700],
+                  },
+                }}
+              />
+            }
+            label="2"
+          />
+          <FormControlLabel
+            value="3"
+            control={
+              <Radio
+                sx={{
+                  '&.Mui-checked': {
+                    color: orange[700],
+                  },
+                }}
+              />
+            }
+            label="3"
+          />
+          <FormControlLabel
+            value="4"
+            control={
+              <Radio
+                sx={{
+                  '&.Mui-checked': {
+                    color: orange[700],
+                  },
+                }}
+              />
+            }
+            label="4"
+          />
         </RadioGroup>
       </FormControl>
 
       <TextField
+        color="warning"
         className={s.input}
         onChange={handleInputChange}
         id="standard-basic"

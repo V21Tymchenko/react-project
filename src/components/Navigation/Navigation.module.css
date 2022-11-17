@@ -8,6 +8,7 @@
   text-transform: uppercase;
   text-decoration: none;
   color: #9b9faa;
+  transition: color 300ms linear;
 }
 .navLink:hover,
 .navLink:focus {
