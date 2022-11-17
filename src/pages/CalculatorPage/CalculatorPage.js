@@ -1,4 +1,4 @@
-import DailyCaloriesForm from 'components/DailyCaloriesForm';
+import DailyCaloriesForm from 'components/DailyCaloriesForm/DailyCaloriesForm';
 
 const CalculatorPage = () => {
   return (
