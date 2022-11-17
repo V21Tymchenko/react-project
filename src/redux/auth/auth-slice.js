@@ -8,6 +8,8 @@ const initialState = {
   isLoggedIn: false,
   status: fetchStatus.init,
   isFetchCurrentUser: false,
+  sid: '',
+  refreshToken: '',
 };
 
 const authSlice = createSlice({
@@ -39,6 +41,8 @@ const authSlice = createSlice({
       state.user = action.payload.user;
       state.token = action.payload.accessToken;
       state.isLoggedIn = true;
+      state.sid = action.payload.sid;
+      state.refreshToken = action.payload.refreshToken;
     },
     [login.rejected](state) {
       state.status = fetchStatus.error;
@@ -46,6 +50,8 @@ const authSlice = createSlice({
       state.user.email = null;
       state.isLoggedIn = false;
       state.token = null;
+      state.sid = '';
+      state.refreshToken = '';
     },
 
     [logout.pending](state) {
