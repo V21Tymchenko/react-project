@@ -7,24 +7,23 @@ import {
   TextField,
 } from '@mui/material';
 import { useState } from 'react';
-import { getPublicData } from 'services/backApi';
-import { useDispatch, useSelector } from 'react-redux';
-import { dailyRateOperation } from 'redux/dailyRate/dailyRate-operations';
+// import { getPublicData } from 'services/backApi';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { dailyRateOperation } from 'redux/dailyRate/dailyRate-operations';
 import s from './DailyCaloriesForm.module.css';
 import { orange } from '@mui/material/colors';
 
-const DailyCaloriesForm = ({ setIsModalOpen }) => {
+const DailyCaloriesForm = ({ onSubmit }) => {
   const [height, setHeight] = useState('');
   const [desiredWeight, setDesiredWeight] = useState('');
   const [age, setAge] = useState('');
   const [bloodType, setBloodType] = useState('');
   const [currentWeight, setCurrentWeight] = useState('');
 
-  const [kcal, setKcal] = useState(null);
+  // const [kcal, setKcal] = useState(null);
 
-  const dispatch = useDispatch();
-  const isLogined = useSelector(state => state.auth.isLoggedIn);
-
+  // const dispatch = useDispatch();
+  // const isLogined = useSelector(state => state.auth.isLoggedIn);
   const fields = {
     height: setHeight,
     desiredWeight: setDesiredWeight,
@@ -32,18 +31,22 @@ const DailyCaloriesForm = ({ setIsModalOpen }) => {
     bloodType: setBloodType,
     currentWeight: setCurrentWeight,
   };
-
   const handleInputChange = evt => {
     const { name } = evt.target;
     fields[name](prev => (prev = Number(evt.target.value)));
   };
-  // const takeUserData = async value => {
-  //   await getPublicData(value).then(setUserInfo);
-  // };
 
-  async function pfkcal(value) {
-    await getPublicData(value).then(setKcal).then(console.log(kcal));
-  }
+  // async function pfkcal(value) {
+  //   await getPublicData(value).then(setKcal).then(console.log(kcal));
+  // }
+
+  const resetForm = () => {
+    setHeight('');
+    setDesiredWeight('');
+    setAge('');
+    setBloodType('');
+    setCurrentWeight('');
+  };
 
   const formSubmit = evt => {
     evt.preventDefault();
@@ -55,32 +58,26 @@ const DailyCaloriesForm = ({ setIsModalOpen }) => {
       bloodType,
     };
 
-    console.log(calculateUserInfo);
-    pfkcal(calculateUserInfo);
-
-    localStorage.setItem(
-      'calculateUserInfo',
-      JSON.stringify(calculateUserInfo)
-    );
-    if (!isLogined) {
-      dispatch(dailyRateOperation(calculateUserInfo));
-    } else {
-      console.log(111111111111);
-    }
+    onSubmit(calculateUserInfo);
     resetForm();
-    setIsModalOpen(true);
-    window.addEventListener('keydown', onEscape);
+    // console.log(calculateUserInfo);
+    // pfkcal(calculateUserInfo);
+
+    // localStorage.setItem(
+    //   'calculateUserInfo',
+    //   JSON.stringify(calculateUserInfo)
+    // );
+    // if (!isLogined) {
+    //   dispatch(dailyRateOperation(calculateUserInfo));
+    // } else {
+    //   console.log(111111111111);
+    // }
+    // resetForm();
+    // setIsModalOpen(true);
+    // window.addEventListener('keydown', onEscape);
   };
 
-  const onEscape = () => {};
-
-  const resetForm = () => {
-    setHeight('');
-    setDesiredWeight('');
-    setAge('');
-    setBloodType('');
-    setCurrentWeight('');
-  };
+  // const onEscape = () => {};
 
   return (
     <form className={s.form} onSubmit={formSubmit}>
