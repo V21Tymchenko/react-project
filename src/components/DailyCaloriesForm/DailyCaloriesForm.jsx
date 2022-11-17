@@ -7,74 +7,43 @@ import {
   TextField,
 } from '@mui/material';
 import { useState } from 'react';
-import { getPublicData } from 'services/backApi';
-import { useDispatch, useSelector } from 'react-redux';
-import { dailyRateOperation } from 'redux/dailyRate/dailyRate-operations';
 import s from './DailyCaloriesForm.module.css';
 import { orange } from '@mui/material/colors';
 
-const DailyCaloriesForm = ({setIsModalOpen}) => {
-  const [height, setHeight] = useState('');
-  const [desiredWeight, setDesiredWeight] = useState('');
-  const [age, setAge] = useState('');
-  const [bloodType, setBloodType] = useState('');
-  const [currentWeight, setCurrentWeight] = useState('');
-  const [kcal, setKcal] = useState(null)
-  
-  const dispatch = useDispatch();
-  const isLogined = useSelector(state => state.auth.isLoggedIn);
+const DailyCaloriesForm = ({
+  handlesetDataToApi,
+  setIsModalOpen,
+  handleSetStorage,
+}) => {
+  const [values, setValues] = useState({
+    weight: '',
+    height: '',
+    age: '',
+    desiredWeight: '',
+    bloodType: '',
+  });
 
-  const fields = {
-    height: setHeight,
-    desiredWeight: setDesiredWeight,
-    age: setAge,
-    bloodType: setBloodType,
-    currentWeight: setCurrentWeight,
+  const handleChange = event => {
+    const { name, value } = event.target;
+    setValues(prev => ({ ...prev, [name]: value }));
   };
-
-  const handleInputChange = evt => {
-    const { name } = evt.target;
-    fields[name](prev => (prev = Number(evt.target.value)));
-  };
-
-  async function pfkcal (value){
-    await getPublicData(value).then(setKcal).then(console.log(kcal));
-    
-};
 
   const formSubmit = evt => {
     evt.preventDefault();
-    const calculateUserInfo = {
-      weight: currentWeight,
-      height,
-      age,
-      desiredWeight,
-      bloodType,
-    };
-
-    console.log(calculateUserInfo);
-    pfkcal(calculateUserInfo);
-
-    localStorage.setItem(
-      'calculateUserInfo',
-      JSON.stringify(calculateUserInfo)
-    );
-    if (!isLogined) {
-      dispatch(dailyRateOperation(calculateUserInfo));
-    } else {
-      console.log(111111111111);
-    }
+    handleSetStorage(values);
+    handlesetDataToApi(values);
     resetForm();
     setIsModalOpen(true);
   };
-  
 
   const resetForm = () => {
-    setHeight('');
-    setDesiredWeight('');
-    setAge('');
-    setBloodType('');
-    setCurrentWeight('');
+    setValues({
+      weight: '',
+      height: '',
+      age: '',
+      desiredWeight: '',
+      bloodType: '',
+    });
   };
 
   return (
@@ -82,37 +51,37 @@ const DailyCaloriesForm = ({setIsModalOpen}) => {
       <TextField
         color="warning"
         className={s.input}
-        onChange={handleInputChange}
+        onChange={handleChange}
         id="standard-basic"
         label="Height"
         variant="standard"
         name="height"
         type="number"
-        value={height}
+        value={values.height}
         required
       />
       <TextField
         color="warning"
         className={s.input}
-        onChange={handleInputChange}
+        onChange={handleChange}
         id="standard-basic"
         label="Desired weight"
         variant="standard"
         name="desiredWeight"
         type="number"
-        value={desiredWeight}
+        value={values.desiredWeight}
         required
       />
       <TextField
         color="warning"
         className={s.input}
-        onChange={handleInputChange}
+        onChange={handleChange}
         id="standard-basic"
         label="Age"
         variant="standard"
         name="age"
         type="number"
-        value={age}
+        value={values.age}
         required
       />
 
@@ -131,8 +100,8 @@ const DailyCaloriesForm = ({setIsModalOpen}) => {
           aria-labelledby="demo-radio-buttons-group-label"
           defaultValue="female"
           name="bloodType"
-          value={bloodType}
-          onChange={handleInputChange}
+          value={values.bloodType}
+          onChange={handleChange}
           label="Current weight"
           row
           required
@@ -195,13 +164,13 @@ const DailyCaloriesForm = ({setIsModalOpen}) => {
       <TextField
         color="warning"
         className={s.input}
-        onChange={handleInputChange}
+        onChange={handleChange}
         id="standard-basic"
         label="Current weight"
         variant="standard"
-        name="currentWeight"
+        name="weight"
         type="number"
-        value={currentWeight}
+        value={values.weight}
         required
       />
 
