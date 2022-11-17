@@ -3,7 +3,6 @@ import { fetchStatus } from './fetchStatus';
 import { eatenProduct, seargeProducts } from './diary-operations';
 
 const initialState = {
-  token: null,
   status: null,
   timeDay: null,
   eatenProducts: null,
@@ -35,7 +34,7 @@ const products = createSlice({
       //   state.eatenProducts = fetchStatus.loading;
     },
     [eatenProduct.rejected](state) {
-      state.product = fetchStatus.error;
+      state.status = fetchStatus.error;
     },
   },
 });
