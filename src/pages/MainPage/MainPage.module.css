@@ -20,6 +20,7 @@
     top 34px right;
   background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
 }
+
 @media screen and (min-width: 768px) {
   .backGround {
     padding-top: 100px;

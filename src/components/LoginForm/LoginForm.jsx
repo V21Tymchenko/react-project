@@ -27,7 +27,7 @@ const LoginForm = () => {
   };
 
   return (
-    <section>
+    <section className={s.section}>
       <div className={s.block}>
         <h2 className={s.title}>Sign in</h2>
         <form onSubmit={onSubmit} className={s.form}>
