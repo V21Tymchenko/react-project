@@ -5,7 +5,7 @@ const CalculatorPage = () => {
   return (
     <>
       <DailyCaloriesForm />
-      <RightSideBar/>
+      <RightSideBar />
     </>
   );
 };
