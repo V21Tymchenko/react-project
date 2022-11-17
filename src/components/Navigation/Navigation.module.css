@@ -19,10 +19,17 @@
   gap: 16px;
 }
 .siteNav::before {
-  content: '';
-  display: block;
-  width: 2px;
-  height: 32px;
-  margin: -13px 1px 1px 1px;
-  background-color: #9b9faa;
+  display: none;
+}
+@media screen and (min-width: 768px) {
+}
+@media screen and (min-width: 1280px) {
+  .siteNav::before {
+    content: '';
+    display: block;
+    width: 2px;
+    height: 32px;
+    margin: -13px 1px 1px 1px;
+    background-color: #9b9faa;
+  }
 }
