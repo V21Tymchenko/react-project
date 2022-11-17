@@ -1,6 +1,4 @@
-
 const RightSideBar =() => {
-
 
     return(
         <div className="sideBar">
@@ -16,6 +14,5 @@ const RightSideBar =() => {
         </div>
     )
 }
-
 
 export default RightSideBar

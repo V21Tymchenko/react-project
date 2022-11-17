@@ -1,3 +1,37 @@
+.section {
+  padding-top: 120px;
+  padding-bottom: 175px;
+  margin-right: 0;
+}
+
+@media screen and (min-width: 768px) {
+  .section {
+    padding-top: 240px;
+    padding-bottom: 495px;
+    margin-right: 0;
+    background-image: url('../../assets/images/green-home.png'),
+      url('../../assets/images/strawberry.png'),
+      url('../../assets/images/banana.png'),
+      url('../../assets/images/grey-bg.svg');
+    background-size: 746px, 286px, 498px, 602px;
+    background-position: top -69px right 26px, right -48px bottom 212px,
+      top 680px right, top 448px right -37px;
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .section {
+    padding-top: 306px;
+    padding-bottom: 255px;
+    margin-right: -35px;
+    background-size: 746px, 286px, 498px, 602px;
+    background-position: top right 195px, right 36px bottom, top right,
+      top 34px right;
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+  }
+}
+
 .title {
   margin: 0;
   font-family: 'Gotham Pro';
@@ -7,8 +41,14 @@
   line-height: 13px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
+  color: #fc842d;
+  text-align: center;
+}
 
-  color: #FC842D;
+@media screen and (min-width: 768px) {
+  .title {
+    text-align: left;
+  }
 }
 
 .form {
@@ -19,24 +59,36 @@
   gap: 20px;
 }
 
-.label{
+.label {
   font-family: 'Verdana';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 17px;
-    letter-spacing: 0.04em;
-  
-    color: #9B9FAA;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.04em;
+
+  color: #9b9faa;
 }
 
 .buttons {
   display: flex;
-  gap: 32px;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding-top: 60px;
+  text-align: center;
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .buttons {
+    flex-direction: row;
+    gap: 32px;
+    padding-left: 0;
+  }
 }
 
 .button {
-  margin-top: 60px;
   padding: 13px 50px;
   background-color: #fc842d;
   color: #ffffff;
@@ -58,11 +110,8 @@
 }
 
 .link {
-  margin-top: 60px;
   padding: 13px 50px;
   color: #fc842d;
-  width: 78px;
-  height: 16px;
   text-align: center;
 
   font-family: 'Verdana';

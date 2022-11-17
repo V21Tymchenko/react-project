@@ -34,14 +34,14 @@ export default function RegistrationForm() {
       .then(() => {
         dispatch(login({ email, password }));
       })
-      .catch();
+      .catch(error => console.error(error));
     setEmail('');
     setPassword('');
     setUserName('');
   };
 
   return (
-    <section>
+    <section className={s.section}>
       <div>
         <h2 className={s.title}>Register</h2>
         <form onSubmit={handleFormSubmit} className={s.form}>
