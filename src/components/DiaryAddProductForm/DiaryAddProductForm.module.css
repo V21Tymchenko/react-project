@@ -14,7 +14,10 @@
   background-color: #fff;
   color: #fc842d;
 }
-
+.bt.mybt:hover path {
+  /* background-color: #fff; */
+  fill: #fc842d;
+}
 .inGrams {
   width: 107px;
   margin-left: 48px;
