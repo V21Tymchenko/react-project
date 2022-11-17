@@ -4,17 +4,23 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import s from 'components/DiaryAddProductForm/DiaryAddProductForm.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { eatenProduct, searcheProducts } from 'redux/diary/diary-operations';
+import {
+  // dayInfo,
+  eatenProduct,
+  searcheProducts,
+} from 'redux/diary/diary-operations';
 
 export default function DiaryAddProductForm() {
   const [name, setName] = useState('');
-  const [weight, setWeight] = useState(0);
+  const [weight, setWeight] = useState('');
   const [productId, setProductId] = useState('');
-  const dispatch = useDispatch();
-  const { timeDay, products } = useSelector(state => state.diary);
   const [isOpen, setIsOpen] = useState(true);
+  const { timeDay, products } = useSelector(state => state.diary);
+  const dispatch = useDispatch();
+  // const day = useSelector(state => state.diary.timeDay);
   const handelChangeName = e => {
     setName(e.target.value);
+    setIsOpen(true);
     dispatch(searcheProducts(e.target.value.trim()));
   };
   const handelChangeWeight = e => {
@@ -29,6 +35,9 @@ export default function DiaryAddProductForm() {
     e.preventDefault();
     const data = { date: timeDay, productId, weight };
     dispatch(eatenProduct(data));
+    // dispatch(dayInfo({ date: day }));
+    setName('');
+    setWeight('');
   };
   return (
     <>
@@ -69,6 +78,7 @@ export default function DiaryAddProductForm() {
         )}
         <TextField
           className={s.inGrams}
+          type="number"
           onChange={handelChangeWeight}
           value={weight}
           id="standard-basic"
@@ -97,21 +107,3 @@ export default function DiaryAddProductForm() {
     </>
   );
 }
-
-//   <form className={s.addForm}>
-//     <label>
-//       <input
-//         className={s.inName}
-//         type="text"
-//         value={name}
-//         name="name"
-//         onChange={handelChange}
-//       />
-//     </label>
-//     <label>
-//       <input type="number" className={s.inGrams} />
-//     </label>
-//     <button type="submit" className={s.bt}>
-//       +
-//     </button>
-//   </form>;

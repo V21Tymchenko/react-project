@@ -8,6 +8,7 @@ import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import s from 'components/DiaryDateСalendar/DiaryDateСalendar.module.css';
 import { useDispatch } from 'react-redux';
 import { timeSet } from 'redux/diary/diary-slice';
+import { dayInfo } from 'redux/diary/diary-operations';
 
 export default function DiaryDateСalendar() {
   const [value, setValue] = React.useState(dayjs(new Date()));
@@ -15,9 +16,9 @@ export default function DiaryDateСalendar() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(timeSet(value.format('YYYY-MM-DD')));
+    dispatch(dayInfo({ date: value.format('YYYY-MM-DD') }));
   }, [dispatch, value]);
 
-  console.log(value.format('YYYY-MM-DD'));
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <Stack spacing={1}>

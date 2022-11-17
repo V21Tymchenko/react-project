@@ -1,6 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchStatus } from './fetchStatus';
-import { eatenProduct, searcheProducts } from './diary-operations';
+import {
+  dayInfo,
+  eatenProduct,
+  removeProduct,
+  searcheProducts,
+} from './diary-operations';
 
 const initialState = {
   status: null,
@@ -8,6 +13,7 @@ const initialState = {
   eatenProducts: null,
   products: null,
   daySummary: null,
+  dayInform: [],
 };
 
 const products = createSlice({
@@ -36,11 +42,20 @@ const products = createSlice({
     [eatenProduct.fulfilled](state, action) {
       state.eatenProducts = action.payload.day.eatenProducts;
       state.daySummary = action.payload.daySummary;
-      console.log('state.daySummary  :', state.daySummary);
-      console.log('state.eateProducts', state.eatenProducts);
+      console.log('dcsmdm', action.payload.day.id);
+      state.products = null;
     },
     [eatenProduct.rejected](state) {
       state.status = fetchStatus.error;
+    },
+    [dayInfo.fulfilled](state, action) {
+      state.dayInform = action.payload;
+    },
+    [removeProduct.fulfilled](_, action) {
+      // state.eatenProducts = action.payload.day.eatenProducts;
+      // state.daySummary = action.payload.daySummary;
+      console.log('dcsmdm', action.payload);
+      // state.products = null;
     },
   },
 });

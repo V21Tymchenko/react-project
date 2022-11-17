@@ -7,22 +7,28 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import s from 'components/DiaryProductItem/DiaryProductItem.module.css';
-// import IconButton from '@mui/material/IconButton';
-// import DeleteIcon from '@mui/icons-material/Delete';
-
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
-}
-
-const rows = [
-  createData('Frozen yoghurt', 159, 6.0),
-  createData('Ice cream sandwich', 237, 9.0),
-  createData('Eclair', 262, 16.0),
-  createData('Cupcake', 305, 3.7),
-  createData('Gingerbread', 356, 16.0),
-];
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useState } from 'react';
+import { removeProduct } from 'redux/diary/diary-operations';
+import IconButton from '@mui/material/IconButton';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 export default function DiaryProductItem() {
+  const { eatenProducts, id } = useSelector(state => state.diary.dayInform);
+  const [dayId, setDayId] = useState('');
+  const [eatenProductId, setEatenProductId] = useState('');
+  const dispatch = useDispatch();
+  useEffect(() => {}, [eatenProducts]);
+
+  const handlClick = e => {
+    setDayId(e.target.name);
+    setEatenProductId(e.target.id);
+    const removeData = { dayId, eatenProductId };
+    console.log('removeData :', removeData);
+    dispatch(removeProduct(removeData));
+  };
+
   return (
     <TableContainer className={s.tabl + ' ' + s.mytabl} component={Paper}>
       <Table sx={{ maxWidth: 623 }} aria-label="simple table">
@@ -35,31 +41,45 @@ export default function DiaryProductItem() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map(row => (
+          {eatenProducts?.map(row => (
             <TableRow
-              key={row.name}
+              key={row.id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
               <TableCell component="th" scope="row">
-                {row.name}
+                {row.title}
               </TableCell>
               <TableCell align="right">
-                {row.calories} <span>g</span>{' '}
+                {row.weight} <span>g</span>
               </TableCell>
               <TableCell align="right">
-                {row.fat} <span>kcal</span>{' '}
+                {Math.round(row.kcal)} <span>kcal</span>
               </TableCell>
               <TableCell align="right">
                 {' '}
-                <button>x</button>{' '}
+                <IconButton
+                  type="button"
+                  name={id}
+                  id={row.id}
+                  onClick={handlClick}
+                  aria-label="delete"
+                  // color="primary"
+                >
+                  <DeleteIcon />
+                </IconButton>
+                {/* <button
+                  type="button"
+                  name={id}
+                  id={row.id}
+                  onClick={handlClick}
+                >
+                  x
+                </button> */}
               </TableCell>
             </TableRow>
           ))}
         </TableBody>
       </Table>
     </TableContainer>
-    //   <IconButton aria-label="delete" disabled color="primary">
-    //     <DeleteIcon />
-    //   </IconButton>
   );
 }
