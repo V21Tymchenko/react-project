@@ -17,16 +17,3 @@ export const dailyRateOperation = createAsyncThunk(
     } catch (err) {}
   }
 );
-// export const userDailyRateOperation = createAsyncThunk(
-//   'user/daily-rate',
-//   async (body, { getState, rejectWithValue }) => {
-//     const userId = getState().user.data?.sid;
-
-//     if (!userId) {
-//       return rejectWithValue();
-//     }
-
-//     const { data } = await axios.post('/daily-rate/' + userId, body);
-//     return data;
-//   }
-// );
