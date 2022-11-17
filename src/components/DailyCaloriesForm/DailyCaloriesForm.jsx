@@ -66,10 +66,8 @@ const DailyCaloriesForm = ({setIsModalOpen}) => {
     }
     resetForm();
     setIsModalOpen(true);
-    window.addEventListener('keydown', onEscape)
   };
   
-  const onEscape = () => {}
 
   const resetForm = () => {
     setHeight('');

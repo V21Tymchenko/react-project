@@ -3,17 +3,15 @@ import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import s from "./Modal.module.css"
 
-
 const Modal = ({setIsModalOpen}) => {
 
   const dailyKcal = useSelector(state => state?.dailyRate?.dailyRate);
-  const arr = useSelector(state => state?.dailyRate?.notAllowedProducts)
-  const newArr = [...arr].slice(0,5)
-  console.log(dailyKcal)
-  console.log(arr)
+  const arrNotAllowedProducts = useSelector(state => state?.dailyRate?.notAllowedProducts)
+  const newArrNotAllowedProducts = [...arrNotAllowedProducts].slice(0,5)
 
-  useEffect(()=>{add()
-    return remove()
+  useEffect(()=>{
+    add();
+    return remove();
   })
   
   function add() {
@@ -65,7 +63,7 @@ const Modal = ({setIsModalOpen}) => {
       <div className={s.border}>
       <p className={s.listModal}>Foods you should not eat</p>
       <ul>
-        {newArr.map((item, index) => {
+        {newArrNotAllowedProducts.map((item, index) => {
           return (<li key={item} className={s.itemModal}>{index+1}. {item}</li>);
         })}
       </ul>
