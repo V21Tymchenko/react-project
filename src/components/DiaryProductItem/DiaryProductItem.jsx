@@ -31,6 +31,7 @@ export default function DiaryProductItem() {
             <TableCell>Products</TableCell>
             <TableCell align="right">Gramm</TableCell>
             <TableCell align="right">Calories</TableCell>
+            <TableCell align="right" />
           </TableRow>
         </TableHead>
         <TableBody>
@@ -48,7 +49,10 @@ export default function DiaryProductItem() {
               <TableCell align="right">
                 {row.fat} <span>kcal</span>{' '}
               </TableCell>
-              {/* <button>x</button> */}
+              <TableCell align="right">
+                {' '}
+                <button>x</button>{' '}
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
