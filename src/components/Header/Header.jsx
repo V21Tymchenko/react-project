@@ -14,7 +14,7 @@ const Header = () => {
         <Navigation />
       </div>
       {/* {isLogined && <UserInfo />} */}
-      <UserInfo />
+      {/* <UserInfo /> */}
     </header>
   );
 };
