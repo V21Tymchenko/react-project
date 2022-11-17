@@ -1,5 +1,5 @@
 import Container from 'components/Container';
-import DailyCaloriesForm from 'components/DailyCaloriesForm';
+import DailyCaloriesForm from 'components/DailyCaloriesForm/DailyCaloriesForm';
 import Header from 'components/Header';
 import Modal from 'components/Modal';
 import { useState } from 'react';
