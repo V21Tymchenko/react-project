@@ -19,7 +19,7 @@ const Header = () => {
       <header className={s.header}>
         <div className={s.wrapper}>
           <Logo />
-          {isDesctop && <Navigation />}
+          <Navigation />
         </div>
         {token && isTablet && <UserInfo />}
         {token && !isDesctop && (
