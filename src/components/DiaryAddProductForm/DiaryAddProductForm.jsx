@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import debounce from 'lodash/debounce';
+
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -7,21 +9,52 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   // dayInfo,
   eatenProduct,
-  searcheProducts,
+  // searcheProducts,
 } from 'redux/diary/diary-operations';
+import { useMemo } from 'react';
+import axios from 'axios';
 
 export default function DiaryAddProductForm() {
   const [name, setName] = useState('');
   const [weight, setWeight] = useState('');
   const [productId, setProductId] = useState('');
   const [isOpen, setIsOpen] = useState(true);
-  const { timeDay, products } = useSelector(state => state.diary);
+  const { timeDay } = useSelector(state => state.diary);
   const dispatch = useDispatch();
   // const day = useSelector(state => state.diary.timeDay);
+
+  const [products, setProducts] = useState([]);
+
+  const fetchProducts = useMemo(
+    () =>
+      debounce(search => {
+        if (!search) return;
+        axios
+          .get(`https://slimmom-backend.goit.global/product?search=${search}`)
+          .then(({ data }) => setProducts(data))
+          .catch(err => {
+            console.log(err);
+          })
+          .finally(() => {});
+      }, 300),
+    []
+  );
+
+  //   axios.get(
+  //     `https://slimmom-backend.goit.global/product?search=${product}`
+  //   ).then((result) => {console.log('result :>> ', result);
+
+  //   }).catch((err) => {
+
+  //   }); ;
+  //   return data;
+  // }
+
   const handelChangeName = e => {
     setName(e.target.value);
     setIsOpen(true);
-    dispatch(searcheProducts(e.target.value.trim()));
+    fetchProducts(e.target.value.trim());
+    // dispatch(searcheProducts(e.target.value.trim()));
   };
   const handelChangeWeight = e => {
     setWeight(e.target.value);
@@ -61,8 +94,8 @@ export default function DiaryAddProductForm() {
           label="Enter product name"
           variant="standard"
         />
-        {products && isOpen && (
-          <div>
+        {products && name && isOpen && (
+          <div className={s.menu}>
             {products.map(e => (
               <button
                 type="button"
@@ -85,24 +118,27 @@ export default function DiaryAddProductForm() {
           label="Grams"
           variant="standard"
         />
-        <Button
-          type="submit"
-          className={s.bt + ' ' + s.mybt}
-          variant="contained"
-        >
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
+        {weight && name && (
+          <Button
+            type="submit"
+            className={s.bt + ' ' + s.mybt}
+            variant="contained"
+            // disabled
           >
-            <path
-              d="M18.72 12.96H12.96V18.72H11.04V12.96H5.28003V11.04H11.04V5.28003H12.96V11.04H18.72V12.96Z"
-              fill="white"
-            />
-          </svg>
-        </Button>
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M18.72 12.96H12.96V18.72H11.04V12.96H5.28003V11.04H11.04V5.28003H12.96V11.04H18.72V12.96Z"
+                fill="white"
+              />
+            </svg>
+          </Button>
+        )}
       </Box>
     </>
   );

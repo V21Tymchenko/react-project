@@ -1,49 +1,51 @@
 import axios from 'axios';
+import { token } from 'redux/auth/auth-operations';
 
 const { createAsyncThunk } = require('@reduxjs/toolkit');
 
-export async function search(product) {
-  const { data } = await axios.get(
-    `https://slimmom-backend.goit.global/product?search=${product}`
-  );
-  return data;
-}
-export async function postDay(dat) {
+// export async function search(product) {
+//   const { data } = await axios.get(
+//     `https://slimmom-backend.goit.global/product?search=${product}`
+//   );
+//   return data;
+// }
+
+export async function postDay(body) {
   const { data } = await axios.post(
     `https://slimmom-backend.goit.global/day`,
-    dat
+    body
   );
-  console.log('data :', data);
-  return data;
-}
-export async function postDayInfo(dat) {
-  const { data } = await axios.post(
-    `https://slimmom-backend.goit.global/day/info`,
-    dat
-  );
-  console.log('data :', data);
-  return data;
-}
-async function remove(d) {
-  const { data } = await axios.delete(
-    'https://slimmom-backend.goit.global/day',
-    { d }
-  );
-  console.log('data3131 :>> ', data);
   return data;
 }
 
-export const searcheProducts = createAsyncThunk(
-  'search/product',
-  async (data, thunkAPI) => {
-    try {
-      const response = await search(data);
-      return response;
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
-    }
-  }
-);
+export async function postDayInfo(body) {
+  const { data } = await axios.post(
+    `https://slimmom-backend.goit.global/day/info`,
+    body
+  );
+  return data;
+}
+
+async function remove(body) {
+  console.log('operation data2  :', body);
+  const { data } = await axios.delete(
+    'https://slimmom-backend.goit.global/day',
+    { data: body }
+  );
+  return data;
+}
+
+// export const searcheProducts = createAsyncThunk(
+//   'search/product',
+//   async (data, thunkAPI) => {
+//     try {
+//       const response = await search(data);
+//       return response;
+//     } catch (e) {
+//       return thunkAPI.rejectWithValue(e.message);
+//     }
+//   }
+// );
 
 export const eatenProduct = createAsyncThunk(
   'search/day',
@@ -62,9 +64,14 @@ export const dayInfo = createAsyncThunk(
   'search/dayInfo',
   async (data, thunkAPI) => {
     // const state = thunkAPI.getState();
+    const state = thunkAPI.getState();
+    const persistToken = state.auth.token;
+    token.set(persistToken);
+    if (persistToken === null) {
+      return thunkAPI.rejectWithValue();
+    }
     try {
       const response = await postDayInfo(data);
-      console.log('response98878675 :', response);
       return response;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -72,7 +79,7 @@ export const dayInfo = createAsyncThunk(
   }
 );
 export const removeProduct = createAsyncThunk(
-  'search/removeProduct',
+  'delete/removeProduct',
   async (data, thunkAPI) => {
     try {
       const response = await remove(data);
