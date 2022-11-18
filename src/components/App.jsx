@@ -5,16 +5,16 @@ import { Route, Routes } from 'react-router-dom';
 import DiaryPage from 'pages/DiaryPage';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { current } from 'redux/auth/auth-operations';
+
 import { stateAuthToken } from 'redux/auth/auth-selectors';
 import LoginPage from 'pages/LoginPage/LoginPage';
 import PublicRoute from './PublicRoute/PublicRoute';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
+import { current } from 'redux/user/user-operation';
 
 export const App = () => {
   const dispatch = useDispatch();
   const token = useSelector(stateAuthToken);
-
   useEffect(() => {
     if (token) {
       dispatch(current());

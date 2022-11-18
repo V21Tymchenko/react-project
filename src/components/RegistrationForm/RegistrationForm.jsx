@@ -2,15 +2,20 @@ import { TextField } from '@mui/material';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { login } from 'redux/auth/auth-operations';
 import { register } from 'redux/auth/auth-operations';
-import s from './RegistrationForm.module.css';
+import s from 'components/RegistrationForm/RegistrationForm.module.css';
 
 export default function RegistrationForm() {
   const [username, setUserName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
+
+  const notifySuccess = () => toast('Are you registered!');
+  // const notifyRejected = () => toast('Registration failed!');
 
   const inputs = {
     email: setEmail,
@@ -33,6 +38,7 @@ export default function RegistrationForm() {
       .unwrap()
       .then(() => {
         dispatch(login({ email, password }));
+        notifySuccess();
       })
       .catch(error => console.error(error));
     setEmail('');
@@ -82,6 +88,7 @@ export default function RegistrationForm() {
             <button type="submit" className={s.button}>
               Register
             </button>
+            <ToastContainer autoClose={2000} />
             <NavLink className={s.link} to="/login">
               Login
             </NavLink>

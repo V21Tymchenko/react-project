@@ -9,10 +9,8 @@ import s from 'components/DiaryDateСalendar/DiaryDateСalendar.module.css';
 import { useDispatch } from 'react-redux';
 import { timeSet } from 'redux/diary/diary-slice';
 
-
 export default function DiaryDateСalendar() {
-  const [value, setValue] = React.useState(dayjs('2022-11-15'));
-  // const timeData = value.format('YYYY-MM-DD');
+  const [value, setValue] = React.useState(dayjs(new Date()));
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -25,7 +23,6 @@ export default function DiaryDateСalendar() {
       <Stack spacing={1}>
         <DesktopDatePicker
           className={s.calendar + ' ' + s.mycalendar}
-          label="Data"
           value={value}
           minDate={dayjs('2017-01-01')}
           onChange={newValue => {

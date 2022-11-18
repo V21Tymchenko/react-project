@@ -1,38 +1,37 @@
 .header {
-  width: 1280px;
-  padding-top: 80px;
+  border-bottom: 2px solid #e0e0e0;
+  margin: 0 auto;
+  width: 480px;
+  padding: 20px 20px;
+
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
 }
 .wrapper {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.header {
-  align-items: center;
-  width: 480px;
-  margin: 0 auto;
-  padding: 20px 20px;
-}
+
 @media screen and (min-width: 768px) {
   .header {
     width: 736px;
     margin: 0 auto;
-    padding: 20px 0px;
-  }
-  .wrapper {
-    display: flex;
-    align-items: center;
+    padding: 20px 32px;
   }
 }
 @media screen and (min-width: 1280px) {
   .header {
+    border: none;
     position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
     width: 1280px;
-    padding: 0;
-    padding-top: 80px;
+    padding: 80px 16px 0;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
