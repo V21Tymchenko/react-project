@@ -1,0 +1,24 @@
+.title {
+  font-family: 'Arimo';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 34px;
+  line-height: 41px;
+  width: 540px;
+  color: #212121;
+  margin-bottom: 68px;
+}
+.containerFlex {
+  padding-top: 293px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 111px;
+}
+.containerSideBar {
+  padding: 0 123px 260px 106px;
+  background-color: #f0f1f3;
+  background-image: url('../../assets/images/sidebar-desctop.png');
+  background-size: 446px;
+  background-position: right bottom 3px;
+  background-repeat: no-repeat;
+}

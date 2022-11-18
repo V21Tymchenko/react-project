@@ -72,6 +72,11 @@ export default function DiaryAddProductForm() {
     setName('');
     setWeight('');
   };
+
+  const isTabletAndDesktop = useMediaQuery({
+    query: '(min-width: 768px)',
+  });
+
   return (
     <>
       <Box

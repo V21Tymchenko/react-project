@@ -7,8 +7,8 @@ import { Outlet } from 'react-router-dom';
 export default function RegisterPage() {
   return (
     <>
+      <Header />
       <Container>
-        <Header />
         <RegistrationForm />
       </Container>
       <Outlet />

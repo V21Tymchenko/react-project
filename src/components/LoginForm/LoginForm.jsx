@@ -2,6 +2,8 @@ import { TextField } from '@mui/material';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { login } from 'redux/auth/auth-operations';
 import s from './LoginForm.module.css';
 
@@ -9,6 +11,7 @@ const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
+  const notifySuccess = () => toast('Are you logined!');
 
   const input = {
     email: setEmail,
@@ -22,6 +25,7 @@ const LoginForm = () => {
   const onSubmit = evt => {
     evt.preventDefault();
     dispatch(login({ email, password }));
+    notifySuccess();
     setEmail('');
     setPassword('');
   };
@@ -64,6 +68,7 @@ const LoginForm = () => {
             <NavLink className={s.link} to="/register">
               Register
             </NavLink>
+            <ToastContainer autoClose={2000} />
           </div>
         </form>
       </div>

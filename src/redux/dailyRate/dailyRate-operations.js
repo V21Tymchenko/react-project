@@ -4,6 +4,8 @@ import axios from 'axios';
 export const dailyRateState = {
   dailyRate: null,
   notAllowedProducts: [],
+  error: null,
+  isLoading: false,
 };
 
 axios.defaults.baseURL = 'https://slimmom-backend.goit.global';
