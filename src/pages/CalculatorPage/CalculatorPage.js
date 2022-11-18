@@ -11,11 +11,10 @@ import DailyCaloriesForm from 'components/DailyCaloriesForm/DailyCaloriesForm';
 
 const CalculatorPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const kcal = useSelector(state => state.dailyRate.dailyRate);
-  const arrNotAllowedProducts = useSelector(
-    state => state?.dailyRate?.notAllowedProducts
+  const kcal = useSelector(state => state.user?.userData?.dailyRate);
+  const arrNotAllowedProducts = useSelector(state =>
+    state?.user?.userData?.notAllowedProducts?.slice(0, 5)
   );
-  const newArrNotAllowedProducts = [...arrNotAllowedProducts].slice(0, 5);
 
   // const newArrNotAllowedProducts = [...arrNotAllowedProducts].slice(0, 5);
 
@@ -48,7 +47,7 @@ const CalculatorPage = () => {
               <Modal
                 setIsModalOpen={setIsModalOpen}
                 kcal={kcal}
-                arrNotAllowedProducts={newArrNotAllowedProducts}
+                arrNotAllowedProducts={arrNotAllowedProducts}
               />
             )}
           </div>

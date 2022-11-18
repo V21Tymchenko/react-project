@@ -3,17 +3,18 @@ import {
   dailyRateSel,
   dateSel,
   kcalConsumedSel,
-  kcalLeftSel,
   percentsOfDailyRateSel,
 } from 'redux/diary/diary-selectors';
 import s from './RightSideBar.module.css';
 
 const RightSideBar = () => {
   const date = useSelector(dateSel);
-  const kcalLeft = useSelector(kcalLeftSel);
+  // const kcalLeft = useSelector(kcalLeftSel);
   const kcalConsumed = useSelector(kcalConsumedSel);
   const dailyRate = useSelector(dailyRateSel);
   const percentsOfDailyRate = useSelector(percentsOfDailyRateSel);
+
+  const kcal = useSelector(state => state.user.userData.dailyRate);
 
   // const kcal = useSelector(state => state.dailyRate.dailyRate);
   // const arrNotAllowedProducts = useSelector(
@@ -32,7 +33,7 @@ const RightSideBar = () => {
         <h2 className={s.titleBar}>Summary for {date}</h2>
         <div className={s.containerKcal}>
           <p className={s.textPosition}>
-            Left<span>{kcalLeft} kcal</span>
+            Left<span>{kcal} kcal</span>
           </p>
           <p className={s.textPosition}>
             Consumed<span>{kcalConsumed} kcal</span>
