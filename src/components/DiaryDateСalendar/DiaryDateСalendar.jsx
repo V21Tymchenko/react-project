@@ -9,10 +9,8 @@ import s from 'components/DiaryDateСalendar/DiaryDateСalendar.module.css';
 import { useDispatch } from 'react-redux';
 import { timeSet } from 'redux/diary/diary-slice';
 
-
 export default function DiaryDateСalendar() {
-  const [value, setValue] = React.useState(dayjs('2022-11-15'));
-  // const timeData = value.format('YYYY-MM-DD');
+  const [value, setValue] = React.useState(dayjs(new Date()));
 
   const dispatch = useDispatch();
   useEffect(() => {

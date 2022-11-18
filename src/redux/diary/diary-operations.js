@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const { createAsyncThunk } = require('@reduxjs/toolkit');
 
-// export async function seargeProducts(product) {
+// export async function searcheProducts(product) {
 //   const { data } = await axios.get(
 //     `https://slimmom-backend.goit.global/product/?searg=${product}`
 //   );
@@ -24,8 +24,8 @@ export async function postDay(dat) {
 
   return data;
 }
-export const seargeProducts = createAsyncThunk(
-  'searg/product',
+export const searcheProducts = createAsyncThunk(
+  'search/product',
   async (data, thunkAPI) => {
     try {
       const response = await search(data);
@@ -36,10 +36,10 @@ export const seargeProducts = createAsyncThunk(
   }
 );
 export const eatenProduct = createAsyncThunk(
-  'searg/day',
+  'search/day',
   async (data, thunkAPI) => {
-    const state = thunkAPI.getState();
-    console.log('state22222 :', state);
+    // const state = thunkAPI.getState();
+    // console.log('state22222 :', state);
     try {
       const response = await postDay(data);
       return response;

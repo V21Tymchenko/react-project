@@ -1,5 +1,5 @@
+
 import Container from 'components/Container';
-import DailyCaloriesForm from 'components/DailyCaloriesForm';
 import Header from 'components/Header';
 import Modal from 'components/Modal';
 import RightSideBar from 'components/RightSideBar';
@@ -7,8 +7,10 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { handlesetDataToApiWithId } from 'redux/user/user-operation';
 import { selectUserId } from 'redux/user/user-selectors';
-
 import s from './CalculatePage.module.css';
+mport DailyCaloriesForm from 'components/DailyCaloriesForm/DailyCaloriesForm';
+import RightSideBar from 'components/RightSideBar/RightSideBar';
+
 
 const CalculatorPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -33,6 +35,7 @@ const CalculatorPage = () => {
 
   return (
     <>
+
       <Header />
       <Container>
         <div className={s.containerFlex}>
@@ -58,7 +61,7 @@ const CalculatorPage = () => {
           </div>
         </div>
       </Container>
-    </>
+ </>
   );
 };
 export default CalculatorPage;

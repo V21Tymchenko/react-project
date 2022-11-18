@@ -1,12 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchStatus } from './fetchStatus';
-import { eatenProduct, seargeProducts } from './diary-operations';
+import { eatenProduct, searcheProducts } from './diary-operations';
 
 const initialState = {
-  token: null,
   status: null,
   timeDay: null,
   eatenProducts: null,
+  products: null,
+  daySummary: null,
 };
 
 const products = createSlice({
@@ -18,21 +19,30 @@ const products = createSlice({
     },
   },
   extraReducers: {
-    [seargeProducts.pending](state) {
+    [searcheProducts.pending](state) {
       state.status = fetchStatus.loading;
     },
+
     [seargeProducts.fulfilled](state, action) {
+
       state.status = fetchStatus.loading;
+      state.products = action.payload;
+      // console.log('products', state.products);
     },
-    [seargeProducts.rejected](state) {
+    [searcheProducts.rejected](state) {
       state.status = fetchStatus.error;
     },
 
     [eatenProduct.fulfilled](state, action) {
-      //   state.eatenProducts = fetchStatus.loading;
+
+      state.eatenProducts = action.payload.day.eatenProducts;
+      state.daySummary = action.payload.daySummary;
+      console.log('state.daySummary  :', state.daySummary);
+      console.log('state.eateProducts', state.eatenProducts);
+
     },
     [eatenProduct.rejected](state) {
-      state.product = fetchStatus.error;
+      state.status = fetchStatus.error;
     },
   },
 });
