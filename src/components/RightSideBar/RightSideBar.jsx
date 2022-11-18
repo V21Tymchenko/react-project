@@ -22,7 +22,7 @@ const RightSideBar = () => {
   // const newArrNotAllowedProducts = [...arrNotAllowedProducts].slice(0, 5);
 
   const notAllowedProd = useSelector(
-    state => state?.dailyRate?.notAllowedProducts
+    state => state?.user?.userData?.notAllowedProducts
   );
   const newNotAllowedProd = [...notAllowedProd].slice(0, 5);
   console.log(newNotAllowedProd);

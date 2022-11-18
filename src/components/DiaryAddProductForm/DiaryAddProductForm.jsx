@@ -1,22 +1,57 @@
 import React, { useState } from 'react';
+import debounce from 'lodash/debounce';
+
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import s from 'components/DiaryAddProductForm/DiaryAddProductForm.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { eatenProduct, searcheProducts } from 'redux/diary/diary-operations';
-import { useMediaQuery } from 'react-responsive';
+// import { useMediaQuery } from 'react-responsive';
+import { useMemo } from 'react';
+import axios from 'axios';
 
 export default function DiaryAddProductForm() {
   const [name, setName] = useState('');
-  const [weight, setWeight] = useState(0);
+  const [weight, setWeight] = useState('');
   const [productId, setProductId] = useState('');
-  const dispatch = useDispatch();
-  const { timeDay, products } = useSelector(state => state.diary);
   const [isOpen, setIsOpen] = useState(true);
+  const { timeDay } = useSelector(state => state.diary);
+  const dispatch = useDispatch();
+  // const day = useSelector(state => state.diary.timeDay);
+
+  const [products, setProducts] = useState([]);
+
+  const fetchProducts = useMemo(
+    () =>
+      debounce(search => {
+        if (!search) return;
+        axios
+          .get(`https://slimmom-backend.goit.global/product?search=${search}`)
+          .then(({ data }) => setProducts(data))
+          .catch(err => {
+            console.log(err);
+          })
+          .finally(() => {});
+      }, 300),
+    []
+  );
+
+  //   axios.get(
+  //     `https://slimmom-backend.goit.global/product?search=${product}`
+  //   ).then((result) => {console.log('result :>> ', result);
+
+  //   }).catch((err) => {
+
+  //   }); ;
+  //   return data;
+  // }
+
   const handelChangeName = e => {
     setName(e.target.value);
-    dispatch(searcheProducts(e.target.value.trim()));
+    setIsOpen(true);
+    fetchProducts(e.target.value.trim());
+    // dispatch(searcheProducts(e.target.value.trim()));
   };
   const handelChangeWeight = e => {
     setWeight(e.target.value);
@@ -30,62 +65,68 @@ export default function DiaryAddProductForm() {
     e.preventDefault();
     const data = { date: timeDay, productId, weight };
     dispatch(eatenProduct(data));
+    // dispatch(dayInfo({ date: day }));
+    setName('');
+    setWeight('');
   };
 
-  const isTabletAndDesktop = useMediaQuery({
-    query: '(min-width: 768px)',
-  });
+  // const isTabletAndDesktop = useMediaQuery({
+  //   query: '(min-width: 768px)',
+  // });
 
   return (
-    <>
-      {isTabletAndDesktop && (
-        <Box
-          onSubmit={handelSubmit}
-          className={s.form}
-          component="form"
-          sx={{
-            '& > :not(style)': { m: 1, width: '240px' },
-          }}
-          noValidate
-          autoComplete="off"
-        >
-          <TextField
-            className={s.inName}
-            type="text"
-            value={name}
-            name="name"
-            onChange={handelChangeName}
-            id="standard-basic"
-            label="Enter product name"
-            variant="standard"
-          />
-          {products && isOpen && (
-            <div>
-              {products.map(e => (
-                <button
-                  type="button"
-                  name={e.title.ru}
-                  key={e._id}
-                  id={e._id}
-                  onClick={handlClik}
-                >
-                  {e.title.ru}
-                </button>
-              ))}
-            </div>
-          )}
-          <TextField
-            className={s.inGrams}
-            onChange={handelChangeWeight}
-            value={weight}
-            id="standard-basic"
-            label="Grams"
-            variant="standard"
-          />
+    <div className={s.maxBox}>
+      <Box
+        onSubmit={handelSubmit}
+        className={s.form}
+        component="form"
+        sx={{
+          '& > :not(style)': { m: 1, width: '240px' },
+        }}
+        noValidate
+        autoComplete="off"
+      >
+        <TextField
+          className={s.inName}
+          type="text"
+          value={name}
+          name="name"
+          onChange={handelChangeName}
+          id="standard-basic"
+          label="Enter product name"
+          variant="standard"
+        />
+        {products && name && isOpen && (
+          <div className={s.menu}>
+            {products.map(e => (
+              <button
+                type="button"
+                name={e.title.ru}
+                key={e._id}
+                id={e._id}
+                onClick={handlClik}
+              >
+                {e.title.ru}
+              </button>
+            ))}
+          </div>
+        )}
+        <TextField
+          className={s.inGrams}
+          type="number"
+          onChange={handelChangeWeight}
+          value={weight}
+          id="standard-basic"
+          label="Grams"
+          variant="standard"
+        />
+
+        {weight && name && (
           <Button
             type="submit"
             className={s.bt + ' ' + s.mybt}
             variant="contained"
+            // disabled
           >
             <svg
               width="24"
@@ -100,26 +141,8 @@ export default function DiaryAddProductForm() {
               />
             </svg>
           </Button>
-        </Box>
-      )}
-    </>
+        )}
+      </Box>
+    </div>
   );
 }
-
-//   <form className={s.addForm}>
-//     <label>
-//       <input
-//         className={s.inName}
-//         type="text"
-//         value={name}
-//         name="name"
-//         onChange={handelChange}
-//       />
-//     </label>
-//     <label>
-//       <input type="number" className={s.inGrams} />
-//     </label>
-//     <button type="submit" className={s.bt}>
-//       +
-//     </button>
-//   </form>;
