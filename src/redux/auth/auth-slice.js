@@ -1,9 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchStatus } from './fetchStatus';
-import { current, login, logout, register } from './auth-operations';
+import { login, logout, register } from './auth-operations';
 
 const initialState = {
-  user: { name: null, email: null },
   token: null,
   isLoggedIn: false,
   status: fetchStatus.init,
@@ -38,7 +37,6 @@ const authSlice = createSlice({
     },
     [login.fulfilled](state, action) {
       state.status = fetchStatus.success;
-      state.user = action.payload.user;
       state.token = action.payload.accessToken;
       state.isLoggedIn = true;
       state.sid = action.payload.sid;
@@ -59,32 +57,11 @@ const authSlice = createSlice({
     },
     [logout.fulfilled](state) {
       state.status = fetchStatus.success;
-      state.user = null;
       state.token = null;
-      state.isLoggedIn = false;
     },
     [logout.rejected](state) {
       state.status = fetchStatus.error;
-      state.user.name = null;
-      state.user.email = null;
-      state.isLoggedIn = false;
       state.token = null;
-    },
-
-    [current.pending](state) {
-      state.status = fetchStatus.loading;
-      state.isFetchCurrentUser = true;
-    },
-    [current.fulfilled](state, action) {
-      state.status = fetchStatus.success;
-      state.user.name = action.payload.username;
-      state.user.email = action.payload.email;
-      state.isFetchCurrentUser = false;
-      state.isLoggedIn = true;
-    },
-    [current.rejected](state) {
-      state.status = fetchStatus.error;
-      state.isFetchCurrentUser = false;
     },
   },
 });
