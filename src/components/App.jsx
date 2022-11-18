@@ -12,10 +12,14 @@ import PublicRoute from './PublicRoute/PublicRoute';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import { current } from 'redux/user/user-operation';
 import MobilNavPage from 'pages/MobilNavPage/MobilNavPage';
+import { useMediaQuery } from 'react-responsive';
+import NotFound from 'pages/NotFound/NotFound';
 
 export const App = () => {
   const dispatch = useDispatch();
   const token = useSelector(stateAuthToken);
+  const isDesctop = useMediaQuery({ query: '(min-width: 1280px)' });
+
   useEffect(() => {
     if (token) {
       dispatch(current());
@@ -33,8 +37,9 @@ export const App = () => {
         <Route path="/" element={<PrivateRoute />}>
           <Route path="/calculator" element={<CalculatorPage />} />
           <Route path="/diary" element={<DiaryPage />} />
-          <Route path="/mobilnav" element={<MobilNavPage />} />
+          {!isDesctop && <Route path="/mobilnav" element={<MobilNavPage />} />}
         </Route>
+        <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
   );

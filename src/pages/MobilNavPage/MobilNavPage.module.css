@@ -23,3 +23,8 @@
 .mobLink:focus {
   color: #fff;
 }
+@media screen and (min-width: 768px) {
+  .mobilNav {
+    max-width: 768px;
+  }
+}
