@@ -12,6 +12,7 @@ const RightSideBar =() => {
                 {/* map(item => {<li>item</li>}) */}
             </ul>
         </div>
+        
     )
 }
 
