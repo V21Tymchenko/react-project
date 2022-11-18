@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { login } from 'redux/auth/auth-operations';
 import { register } from 'redux/auth/auth-operations';
-import s from './RegistrationForm.module.css';
+import s from 'components/RegistrationForm/RegistrationForm.module.css';
 
 export default function RegistrationForm() {
   const [username, setUserName] = useState('');

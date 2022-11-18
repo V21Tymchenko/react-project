@@ -30,6 +30,7 @@ export default function DiaryAddProductForm() {
     const data = { date: timeDay, productId, weight };
     dispatch(eatenProduct(data));
   };
+
   return (
     <>
       <Box
