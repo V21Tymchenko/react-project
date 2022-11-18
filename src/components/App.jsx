@@ -11,6 +11,7 @@ import LoginPage from 'pages/LoginPage/LoginPage';
 import PublicRoute from './PublicRoute/PublicRoute';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import { current } from 'redux/user/user-operation';
+import MobilNavPage from 'pages/MobilNavPage/MobilNavPage';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -30,8 +31,9 @@ export const App = () => {
           <Route path="/login" element={<LoginPage />} />
         </Route>
         <Route path="/" element={<PrivateRoute />}>
-          <Route path="calculator" element={<CalculatorPage />} />
-          <Route path="diary" element={<DiaryPage />} />
+          <Route path="/calculator" element={<CalculatorPage />} />
+          <Route path="/diary" element={<DiaryPage />} />
+          <Route path="/mobilnav" element={<MobilNavPage />} />
         </Route>
       </Route>
     </Routes>

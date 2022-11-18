@@ -9,16 +9,15 @@ const Navigation = () => {
     <nav className={s.siteNav}>
       {!token ? (
         <>
-          <NavLink className={s.navLink} to="/register">
-            Registration
-          </NavLink>
           <NavLink className={s.navLink} to="/login">
             Sign in
+          </NavLink>
+          <NavLink className={s.navLink} to="/register">
+            Registration
           </NavLink>
         </>
       ) : (
         <>
-          {' '}
           <NavLink className={s.navLink} to="/calculator">
             Calculator
           </NavLink>

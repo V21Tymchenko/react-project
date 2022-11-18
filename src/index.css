@@ -56,3 +56,6 @@ img {
 a {
   text-decoration: none;
 }
+.active {
+  color: #212121;
+}
