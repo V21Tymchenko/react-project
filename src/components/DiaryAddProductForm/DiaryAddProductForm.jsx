@@ -6,11 +6,8 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import s from 'components/DiaryAddProductForm/DiaryAddProductForm.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  // dayInfo,
-  eatenProduct,
-  // searcheProducts,
-} from 'redux/diary/diary-operations';
+import { eatenProduct, searcheProducts } from 'redux/diary/diary-operations';
+// import { useMediaQuery } from 'react-responsive';
 import { useMemo } from 'react';
 import axios from 'axios';
 // import { useMediaQuery } from '@mui/material';
@@ -79,7 +76,7 @@ export default function DiaryAddProductForm() {
   // });
 
   return (
-    <>
+    <div className={s.maxBox}>
       <Box
         onSubmit={handelSubmit}
         className={s.form}
@@ -124,6 +121,7 @@ export default function DiaryAddProductForm() {
           label="Grams"
           variant="standard"
         />
+
         {weight && name && (
           <Button
             type="submit"
@@ -146,6 +144,6 @@ export default function DiaryAddProductForm() {
           </Button>
         )}
       </Box>
-    </>
+    </div>
   );
 }
