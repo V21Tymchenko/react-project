@@ -14,7 +14,6 @@ const products = createSlice({
   initialState,
   reducers: {
     timeSet(state, action) {
-      console.log('action :', action.payload);
       state.timeDay = action.payload;
     },
   },
@@ -23,7 +22,6 @@ const products = createSlice({
       state.status = fetchStatus.loading;
     },
     [seargeProducts.fulfilled](state, action) {
-      console.log('action :', action);
       state.status = fetchStatus.loading;
     },
     [seargeProducts.rejected](state) {
@@ -31,7 +29,6 @@ const products = createSlice({
     },
 
     [eatenProduct.fulfilled](state, action) {
-      console.log('action :', action);
       //   state.eatenProducts = fetchStatus.loading;
     },
     [eatenProduct.rejected](state) {

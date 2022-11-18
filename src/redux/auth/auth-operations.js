@@ -1,5 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { omit } from 'lodash';
+import { handlesetDataToApiWithId } from 'redux/user/user-operation';
 
 export const token = {
   set(token) {
@@ -36,15 +38,33 @@ export async function loginUser(user) {
   );
   return data;
 }
-export const login = createAsyncThunk('auth/login', async (data, thunkAPI) => {
-  try {
-    const response = await loginUser(data);
-    token.set(response.accessToken);
-    return response;
-  } catch (e) {
-    return thunkAPI.rejectWithValue(e.message);
+export const login = createAsyncThunk(
+  'auth/login',
+  async (data, { getState, dispatch, rejectWithValue }) => {
+    const userData = getState().user.userData;
+    try {
+      const response = await loginUser(data);
+      token.set(response.accessToken);
+      const isUserDataFilled =
+        userData.weight &&
+        userData.height &&
+        userData.age &&
+        userData.bloodType;
+      if (!response.dailyRate && isUserDataFilled) {
+        dispatch(
+          handlesetDataToApiWithId({
+            body: omit(userData, 'notAllowedProducts', 'dailyRate'),
+            userid: response.user.id,
+          })
+        );
+      }
+
+      return response;
+    } catch (e) {
+      return rejectWithValue(e.message);
+    }
   }
-});
+);
 
 export async function logoutUser() {
   const { data } = await axios.post(
@@ -61,37 +81,3 @@ export const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
     return thunkAPI.rejectWithValue(e.message);
   }
 });
-
-export async function currentUser() {
-  const { data } = await axios.get('https://slimmom-backend.goit.global/user');
-  return data;
-}
-export const current = createAsyncThunk('current/user', async (_, thunkAPI) => {
-  const state = thunkAPI.getState();
-  const persistToken = state.auth.token;
-  if (persistToken === null) {
-    return thunkAPI.rejectWithValue();
-  }
-  token.set(persistToken);
-  try {
-    const response = await currentUser();
-    return response;
-  } catch (e) {
-    return thunkAPI.rejectWithValue(e.message);
-  }
-});
-
-axios.defaults.baseURL = 'https://slimmom-backend.goit.global';
-export const userDailyRateOperation = createAsyncThunk(
-  'user/daily-rate',
-  async (body, { getState, rejectWithValue }) => {
-    const userId = getState().user.data?.sid;
-
-    if (!userId) {
-      return rejectWithValue();
-    }
-
-    const { data } = await axios.post('/daily-rate/' + userId, body);
-    return data;
-  }
-);
