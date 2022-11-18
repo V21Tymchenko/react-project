@@ -1,4 +1,5 @@
 .exitBtn {
+  position: relative;
   font-family: 'Raleway';
   font-style: normal;
   font-weight: 700;
@@ -6,7 +7,7 @@
   line-height: 16px;
   letter-spacing: 0.04em;
   display: flex;
-  gap: 16px;
+  margin-left: 32px;
   color: #9b9faa;
   background-color: transparent;
   border: none;
@@ -16,11 +17,14 @@
   display: flex;
 }
 .exitBtn::before {
+  transform: translateY(-25%);
+  position: absolute;
   content: '';
   display: block;
   width: 2px;
   height: 32px;
-  margin: -13px 1px 1px 1px;
+  left: -16px;
+
   background-color: #9b9faa;
 }
 .exitBtn:hover,

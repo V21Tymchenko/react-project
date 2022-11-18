@@ -33,3 +33,15 @@
   border: none;
   border-bottom: 1px #e0e0e0 solid;
 }
+
+.menu {
+  display: flex;
+  grid: 4px;
+  flex-direction: column;
+  position: absolute;
+  max-width: 280px;
+  max-height: 360px;
+  border: 1px gray solid;
+  border-radius: 4px;
+  background-color: azure;
+}
