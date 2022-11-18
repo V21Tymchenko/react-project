@@ -13,6 +13,7 @@ import {
 } from 'redux/diary/diary-operations';
 import { useMemo } from 'react';
 import axios from 'axios';
+// import { useMediaQuery } from '@mui/material';
 
 export default function DiaryAddProductForm() {
   const [name, setName] = useState('');
@@ -73,9 +74,9 @@ export default function DiaryAddProductForm() {
     setWeight('');
   };
 
-  const isTabletAndDesktop = useMediaQuery({
-    query: '(min-width: 768px)',
-  });
+  // const isTabletAndDesktop = useMediaQuery({
+  //   query: '(min-width: 768px)',
+  // });
 
   return (
     <>

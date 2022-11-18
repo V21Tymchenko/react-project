@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 
 const Navigation = () => {
   const token = useSelector(stateAuthToken);
+  console.log('token', token);
   return (
     <nav className={s.siteNav}>
       {!token ? (
