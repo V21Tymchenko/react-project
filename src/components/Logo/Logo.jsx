@@ -10,7 +10,7 @@ const Logo = () => {
       <picture>
         <source srcSet={logotype} media="(min-width: 1280px)" />
         <source srcSet={tabletLogotype} media="(min-width: 768px)" />
-        <source srcSet={mobilLogotype} media="(min-width: 480px)" />
+        <source srcSet={mobilLogotype} media="(min-width: 100px)" />
         <img className={s.logoImage} src={logotype} alt="logotype Slim Mom" />
       </picture>
     </Link>
