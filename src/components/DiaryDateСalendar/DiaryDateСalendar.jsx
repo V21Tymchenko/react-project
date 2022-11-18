@@ -23,7 +23,6 @@ export default function DiaryDateСalendar() {
       <Stack spacing={1}>
         <DesktopDatePicker
           className={s.calendar + ' ' + s.mycalendar}
-          label="Data"
           value={value}
           minDate={dayjs('2017-01-01')}
           onChange={newValue => {

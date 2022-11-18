@@ -7,6 +7,8 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import s from 'components/DiaryProductItem/DiaryProductItem.module.css';
+import { NavLink } from 'react-router-dom';
+import { useMediaQuery } from 'react-responsive';
 // import IconButton from '@mui/material/IconButton';
 // import DeleteIcon from '@mui/icons-material/Delete';
 
@@ -23,43 +25,53 @@ const rows = [
 ];
 
 export default function DiaryProductItem() {
+  const isTabletAndDesktop = useMediaQuery({
+    query: '(min-width: 768px)',
+  });
   return (
-    <TableContainer className={s.tabl + ' ' + s.mytabl} component={Paper}>
-      <Table sx={{ maxWidth: 623 }} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell>Products</TableCell>
-            <TableCell align="right">Gramm</TableCell>
-            <TableCell align="right">Calories</TableCell>
-            <TableCell align="right" />
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map(row => (
-            <TableRow
-              key={row.name}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
-                {row.name}
-              </TableCell>
-              <TableCell align="right">
-                {row.calories} <span>g</span>{' '}
-              </TableCell>
-              <TableCell align="right">
-                {row.fat} <span>kcal</span>{' '}
-              </TableCell>
-              <TableCell align="right">
-                {' '}
-                <button>x</button>{' '}
-              </TableCell>
+    <>
+      <TableContainer className={s.tabl + ' ' + s.mytabl} component={Paper}>
+        <Table sx={{ maxWidth: 623 }} aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell>Products</TableCell>
+              <TableCell align="right">Gramm</TableCell>
+              <TableCell align="right">Calories</TableCell>
+              <TableCell align="right" />
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
-    //   <IconButton aria-label="delete" disabled color="primary">
-    //     <DeleteIcon />
-    //   </IconButton>
+          </TableHead>
+          <TableBody>
+            {rows.map(row => (
+              <TableRow
+                key={row.name}
+                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+              >
+                <TableCell component="th" scope="row">
+                  {row.name}
+                </TableCell>
+                <TableCell align="right">
+                  {row.calories} <span>g</span>{' '}
+                </TableCell>
+                <TableCell align="right">
+                  {row.fat} <span>kcal</span>{' '}
+                </TableCell>
+                <TableCell align="right">
+                  {' '}
+                  <button>x</button>{' '}
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+      {/* <IconButton aria-label="delete" disabled color="primary">
+        <DeleteIcon />
+      </IconButton> */}
+      <div className={s.linkPlus}>
+        {!isTabletAndDesktop && (
+          <NavLink className={s.link} to="/login"></NavLink>
+        )}
+      </div>
+    </>
   );
 }

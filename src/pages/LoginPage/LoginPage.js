@@ -7,8 +7,8 @@ import { Outlet } from 'react-router-dom';
 export default function LoginPage() {
   return (
     <>
+      <Header />
       <Container>
-        <Header />
         <LoginForm />
       </Container>
       <Outlet />
