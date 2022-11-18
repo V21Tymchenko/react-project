@@ -25,17 +25,17 @@ export default function DiaryDateСalendar() {
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <Stack spacing={1}>
-        <DesktopDatePicker
-          className={s.calendar + ' ' + s.mycalendar}
-          value={value}
-          minDate={dayjs('2017-01-01')}
-          onChange={newValue => {
-            setValue(newValue);
-          }}
-          renderInput={params => <TextField {...params} />}
-        />
-      </Stack>
+      {/* <Stack spacing={1}> */}
+      <DesktopDatePicker
+        className={s.calendar + ' ' + s.mycalendar}
+        value={value}
+        minDate={dayjs('2017-01-01')}
+        onChange={newValue => {
+          setValue(newValue);
+        }}
+        renderInput={params => <TextField {...params} />}
+      />
+      {/* </Stack> */}
     </LocalizationProvider>
   );
 }
