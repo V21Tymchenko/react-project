@@ -5,7 +5,7 @@ import TextField from '@mui/material/TextField';
 import s from 'components/DiaryAddProductForm/DiaryAddProductForm.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { eatenProduct, searcheProducts } from 'redux/diary/diary-operations';
-import { useMediaQuery } from 'react-responsive';
+// import { useMediaQuery } from 'react-responsive';
 
 export default function DiaryAddProductForm() {
   const [name, setName] = useState('');
@@ -32,77 +32,76 @@ export default function DiaryAddProductForm() {
     dispatch(eatenProduct(data));
   };
 
-  const isTabletAndDesktop = useMediaQuery({
-    query: '(min-width: 768px)',
-  });
+  // const isTabletAndDesktop = useMediaQuery({
+  //   query: '(min-width: 768px)',
+  // });
 
   return (
-    <>
-      {isTabletAndDesktop && (
-        <Box
-          onSubmit={handelSubmit}
-          className={s.form}
-          component="form"
-          sx={{
-            '& > :not(style)': { m: 1, width: '240px' },
-          }}
-          noValidate
-          autoComplete="off"
+    <div className={s.maxBox}>
+      <Box
+        onSubmit={handelSubmit}
+        className={s.form}
+        component="form"
+        sx={{
+          '& > :not(style)': { m: 1, width: '240px' },
+        }}
+        noValidate
+        autoComplete="off"
+      >
+        <TextField
+          className={s.inName}
+          type="text"
+          value={name}
+          name="name"
+          onChange={handelChangeName}
+          id="standard-basic"
+          label="Enter product name"
+          variant="standard"
+        />
+        {products && isOpen && (
+          <div>
+            {products.map(e => (
+              <button
+                type="button"
+                name={e.title.ru}
+                key={e._id}
+                id={e._id}
+                onClick={handlClik}
+              >
+                {e.title.ru}
+              </button>
+            ))}
+          </div>
+        )}
+        <TextField
+          className={s.inGrams}
+          onChange={handelChangeWeight}
+          value={weight}
+          id="standard-basic"
+          label="Grams"
+          variant="standard"
+        />
+
+        <Button
+          type="submit"
+          className={s.bt + ' ' + s.mybt}
+          variant="contained"
         >
-          <TextField
-            className={s.inName}
-            type="text"
-            value={name}
-            name="name"
-            onChange={handelChangeName}
-            id="standard-basic"
-            label="Enter product name"
-            variant="standard"
-          />
-          {products && isOpen && (
-            <div>
-              {products.map(e => (
-                <button
-                  type="button"
-                  name={e.title.ru}
-                  key={e._id}
-                  id={e._id}
-                  onClick={handlClik}
-                >
-                  {e.title.ru}
-                </button>
-              ))}
-            </div>
-          )}
-          <TextField
-            className={s.inGrams}
-            onChange={handelChangeWeight}
-            value={weight}
-            id="standard-basic"
-            label="Grams"
-            variant="standard"
-          />
-          <Button
-            type="submit"
-            className={s.bt + ' ' + s.mybt}
-            variant="contained"
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M18.72 12.96H12.96V18.72H11.04V12.96H5.28003V11.04H11.04V5.28003H12.96V11.04H18.72V12.96Z"
-                fill="white"
-              />
-            </svg>
-          </Button>
-        </Box>
-      )}
-    </>
+            <path
+              d="M18.72 12.96H12.96V18.72H11.04V12.96H5.28003V11.04H11.04V5.28003H12.96V11.04H18.72V12.96Z"
+              fill="white"
+            />
+          </svg>
+        </Button>
+      </Box>
+    </div>
   );
 }
 
