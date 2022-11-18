@@ -13,6 +13,7 @@ export async function search(product) {
   const { data } = await axios.get(
     `https://slimmom-backend.goit.global/product?search=${product}`
   );
+
   return data;
 }
 export async function postDay(dat) {
@@ -20,7 +21,7 @@ export async function postDay(dat) {
     `https://slimmom-backend.goit.global/day`,
     dat
   );
-  console.log('data :', data);
+
   return data;
 }
 export const searcheProducts = createAsyncThunk(

@@ -7,7 +7,6 @@ const dailyRateSlice = createSlice({
   extraReducers: {
     [dailyRateOperation.pending](state) {},
     [dailyRateOperation.fulfilled](state, action) {
-      console.log(action.payload);
       state.dailyRate = action.payload.dailyRate;
       state.notAllowedProducts = action.payload.notAllowedProducts;
     },

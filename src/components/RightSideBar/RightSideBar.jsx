@@ -15,6 +15,12 @@ const RightSideBar = () => {
   const dailyRate = useSelector(dailyRateSel);
   const percentsOfDailyRate = useSelector(percentsOfDailyRateSel);
 
+  // const kcal = useSelector(state => state.dailyRate.dailyRate);
+  // const arrNotAllowedProducts = useSelector(
+  //   state => state?.dailyRate?.notAllowedProducts
+  // );
+  // const newArrNotAllowedProducts = [...arrNotAllowedProducts].slice(0, 5);
+
   const notAllowedProd = useSelector(
     state => state?.dailyRate?.notAllowedProducts
   );

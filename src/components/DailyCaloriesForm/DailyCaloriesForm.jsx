@@ -10,11 +10,7 @@ import { useState } from 'react';
 import s from './DailyCaloriesForm.module.css';
 import { orange } from '@mui/material/colors';
 
-const DailyCaloriesForm = ({
-  handlesetDataToApi,
-  setIsModalOpen,
-  handleSetStorage,
-}) => {
+const DailyCaloriesForm = ({ handlesetDataToApi, setIsModalOpen }) => {
   const [values, setValues] = useState({
     weight: '',
     height: '',
@@ -30,7 +26,6 @@ const DailyCaloriesForm = ({
 
   const formSubmit = evt => {
     evt.preventDefault();
-    handleSetStorage(values);
     handlesetDataToApi(values);
     resetForm();
     setIsModalOpen(true);
