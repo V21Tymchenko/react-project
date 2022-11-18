@@ -1,12 +1,28 @@
 .header {
   border-bottom: 2px solid #e0e0e0;
   margin: 0 auto;
-  width: 480px;
-  padding: 20px 20px;
+  width: 100%;
+  max-width: 480px;
+  padding: 20px 20px 16px;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.burger {
+  border: none;
+  background-color: transparent;
+  height: 100%;
+}
+.mobilUser {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 0 20px;
+  height: 40px;
+  background-color: #eff1f3;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 .wrapper {
   width: 100%;
@@ -17,6 +33,7 @@
 
 @media screen and (min-width: 768px) {
   .header {
+    max-width: 100%;
     width: 736px;
     margin: 0 auto;
     padding: 20px 32px;
