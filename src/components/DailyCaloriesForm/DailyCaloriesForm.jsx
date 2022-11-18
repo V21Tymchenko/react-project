@@ -25,7 +25,7 @@ const DailyCaloriesForm = ({
 
   const handleChange = event => {
     const { name, value } = event.target;
-    setValues(prev => ({ ...prev, [name]: value }));
+    setValues(prev => ({ ...prev, [name]: Number(value) }));
   };
 
   const formSubmit = evt => {

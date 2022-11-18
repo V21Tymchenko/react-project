@@ -1,4 +1,38 @@
+/* .tabl.mytabl {
+
+} */
+
+@media screen and (min-width: 768px) {
 .tabl.mytabl {
   width: 623px;
   height: 271px;
+}
+}
+
+.linkPlus{
+  margin-top: 60px;
+  margin-bottom: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.link {
+  width: 48px;
+  height: 48px;
+
+  background-color: #fc842d;
+  text-align: center;
+
+  font-family: 'Verdana';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.04em;
+
+  border-radius: 25px;
+
+  text-decoration: none;
+  display: inline-block;
 }

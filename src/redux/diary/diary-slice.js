@@ -25,9 +25,8 @@ const products = createSlice({
     },
     [searcheProducts.fulfilled](state, action) {
       console.log('action222 :', action);
-      state.status = fetchStatus.loading;
+      state.status = fetchStatus.success;
       state.products = action.payload;
-      // console.log('products', state.products);
     },
     [searcheProducts.rejected](state) {
       state.status = fetchStatus.error;
@@ -36,8 +35,7 @@ const products = createSlice({
     [eatenProduct.fulfilled](state, action) {
       state.eatenProducts = action.payload.day.eatenProducts;
       state.daySummary = action.payload.daySummary;
-      console.log('state.daySummary  :', state.daySummary);
-      console.log('state.eateProducts', state.eatenProducts);
+      state.status = fetchStatus.success;
     },
     [eatenProduct.rejected](state) {
       state.status = fetchStatus.error;

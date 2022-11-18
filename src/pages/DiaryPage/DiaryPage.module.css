@@ -1,0 +1,53 @@
+/* .wrapper {
+
+} */
+
+@media screen and (min-width: 1280px) {
+.wrapper{
+  display: flex;
+  justify-content: space-between;
+}
+}
+
+/* .leftSide {
+padding-bottom: 168px;
+} */
+
+@media screen and (min-width: 768px) {
+.leftSide {
+  padding-bottom: 55px;
+}
+}
+
+@media screen and (min-width: 1280px) {
+.leftSide{
+  padding-top: 147px;
+  padding-bottom: 0;
+}
+}
+
+.containerSideBar {
+  padding: 40px 20px 84px 20px;
+  background-color: #f0f1f3;
+}
+
+@media screen and (min-width: 768px) {
+.containerSideBar {
+  padding: 80px 80px 80px 32px;
+  background-color: #f0f1f3;
+  background-image: url('../../assets/images/green-tablet-sidebar.png');
+  background-size: 365px;
+  background-position: right -21px bottom;
+  background-repeat: no-repeat;
+}
+}
+
+@media screen and (min-width: 1280px) {
+.containerSideBar {
+  padding: 292px 123px 392px 106px;
+  background-color: #f0f1f3;
+  background-image: url('../../assets/images/green-desktop-sidebar.png');
+  background-size: 446px;
+  background-position: right bottom 196px;
+}
+}
