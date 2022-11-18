@@ -1,8 +1,9 @@
 .header {
   border-bottom: 2px solid #e0e0e0;
   margin: 0 auto;
-  width: 480px;
-  padding: 20px 20px;
+  width: 100%;
+  max-width: 480px;
+  padding: 20px 20px 16px;
 
   display: flex;
   justify-content: space-between;
@@ -17,6 +18,7 @@
 
 @media screen and (min-width: 768px) {
   .header {
+    max-width: 100%;
     width: 736px;
     margin: 0 auto;
     padding: 20px 32px;
