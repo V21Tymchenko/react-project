@@ -72,7 +72,8 @@ export const dayInfo = createAsyncThunk(
     }
     try {
       const response = await postDayInfo(data);
-      return response;
+      const result = { ...data, ...response };
+      return result;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }

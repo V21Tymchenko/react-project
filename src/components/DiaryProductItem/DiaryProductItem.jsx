@@ -8,7 +8,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import s from 'components/DiaryProductItem/DiaryProductItem.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 import { removeProduct } from 'redux/diary/diary-operations';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -21,7 +21,7 @@ export default function DiaryProductItem({ setAddDairyProducts }) {
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
   const dayId = useSelector(state => state.diary.dayInform);
   const dispatch = useDispatch();
-  useEffect(() => {}, [eatenProducts]);
+  // useEffect(() => {}, [eatenProducts]);
 
   const handlClick = eatenProductId => {
     dispatch(removeProduct({ dayId, eatenProductId }));
@@ -44,15 +44,15 @@ export default function DiaryProductItem({ setAddDairyProducts }) {
               key={row.id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-              <TableCell component="th" scope="row">
+              <TableCell className={s.item} component="th" scope="row">
                 {row.title}
               </TableCell>
 
-              <TableCell align="right">
+              <TableCell className={s.item} align="right">
                 {row.weight} <span>g</span>
               </TableCell>
 
-              <TableCell align="right">
+              <TableCell className={s.item} align="right">
                 {Math.round(row.kcal)} <span>kcal</span>
               </TableCell>
 

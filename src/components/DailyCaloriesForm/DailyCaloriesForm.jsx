@@ -9,6 +9,7 @@ import {
 import { useState } from 'react';
 import s from './DailyCaloriesForm.module.css';
 import { orange } from '@mui/material/colors';
+import PropTypes from 'prop-types';
 
 const DailyCaloriesForm = ({ handlesetDataToApi }) => {
   // const [isLoading, setIsLoading] = useState(false);
@@ -183,3 +184,8 @@ const DailyCaloriesForm = ({ handlesetDataToApi }) => {
   );
 };
 export default DailyCaloriesForm;
+
+DailyCaloriesForm.propTypes ={
+  setIsModalOpen: PropTypes.func,
+  handlesetDataToApi: PropTypes.func,
+}

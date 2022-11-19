@@ -7,10 +7,10 @@ import TextField from '@mui/material/TextField';
 import s from 'components/DiaryAddProductForm/DiaryAddProductForm.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { eatenProduct } from 'redux/diary/diary-operations';
-// import { useMediaQuery } from 'react-responsive';
 import { useMemo } from 'react';
 import axios from 'axios';
 import { useMediaQuery } from 'react-responsive';
+
 
 export default function DiaryAddProductForm({ setAddDairyProducts }) {
   const [name, setName] = useState('');
@@ -42,21 +42,11 @@ export default function DiaryAddProductForm({ setAddDairyProducts }) {
     []
   );
 
-  //   axios.get(
-  //     `https://slimmom-backend.goit.global/product?search=${product}`
-  //   ).then((result) => {console.log('result :>> ', result);
-
-  //   }).catch((err) => {
-
-  //   }); ;
-  //   return data;
-  // }
-
   const handelChangeName = e => {
     setName(e.target.value);
     setIsOpen(true);
     fetchProducts(e.target.value.trim());
-    // dispatch(searcheProducts(e.target.value.trim()));
+    if (!name) return setProducts([]);
   };
   const handelChangeWeight = e => {
     setWeight(e.target.value);

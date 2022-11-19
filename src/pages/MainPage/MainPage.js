@@ -36,7 +36,7 @@ const MainPage = () => {
 
   return (
     <>
-      <Header />
+      <Header setIsModalOpen={setIsModalOpen}/>
       <Container>
         {isLoading && <Loader />}
         <main className={s.backGround}>
