@@ -20,9 +20,14 @@ const CalculatorPage = () => {
 
   const dispatch = useDispatch();
 
-  const handlesetDataToApiId = data => {
-    dispatch(handlesetDataToApiWithId({ body: data, userid }));
-  };
+  async function handlesetDataToApiId(data) {
+    try {
+      await dispatch(handlesetDataToApiWithId({ body: data, userid }));
+      setIsModalOpen(true);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <>
@@ -39,9 +44,9 @@ const CalculatorPage = () => {
             />
             {arrNotAllowedProducts && isModalOpen && (
               <Modal
-                setIsModalOpen={setIsModalOpen}
                 kcal={kcal}
                 arrNotAllowedProducts={arrNotAllowedProducts}
+                setIsModalOpen={setIsModalOpen}
               />
             )}
           </div>

@@ -23,11 +23,11 @@ const RightSideBar = () => {
   // );
   // const newArrNotAllowedProducts = [...arrNotAllowedProducts].slice(0, 5);
 
-  const notAllowedProd = useSelector(
-    state => state?.user?.userData?.notAllowedProducts
+  const notAllowedProd = useSelector(state =>
+    state?.user?.userData?.notAllowedProducts?.slice(0, 5)
   );
-  const newNotAllowedProd = [...notAllowedProd].slice(0, 5);
-  console.log(newNotAllowedProd);
+  // const newNotAllowedProd = [...notAllowedProd].slice(0, 5);
+  // console.log(newNotAllowedProd);
   return (
     <div className={s.sidebar}>
       <div className={s.data}>
@@ -35,29 +35,29 @@ const RightSideBar = () => {
         <div className={s.containerKcal}>
           <p className={s.textPosition}>
             Left
-            <span>{kcalLeft ? `${kcalLeft}kcal` : `0 kcal`}</span>
+            <span>{kcalLeft ? `${kcalLeft} kcal` : `0 kcal`}</span>
           </p>
           <p className={s.textPosition}>
             Consumed
-            <span>{kcalConsumed ? `${kcalConsumed}kcal` : `0 kcal`}</span>
+            <span>{kcalConsumed ? `${kcalConsumed} kcal` : `0 kcal`}</span>
           </p>
           <p className={s.textPosition}>
             Daily rate
-            <span>{kcal ? `${kcal}kcal` : `0 kcal`}</span>
+            <span>{kcal ? `${Math.round(kcal)} kcal` : `0 kcal`}</span>
           </p>
           <p className={s.textPosition}>
             % of normal
             <span>
-              {percentsOfDailyRate ? `${percentsOfDailyRate}%` : `0 %`}
+              {percentsOfDailyRate ? `${percentsOfDailyRate} %` : `0 %`}
             </span>
           </p>
         </div>
       </div>
       <div className={s.notRecomendet}>
         <h2 className={s.titleBar}>Food not recommended</h2>
-        {newNotAllowedProd.length > 1 ? (
+        {notAllowedProd?.length > 1 ? (
           <ul>
-            {newNotAllowedProd.map(item => {
+            {notAllowedProd?.map(item => {
               return (
                 <li key={item} className={s.productItem}>
                   {item}

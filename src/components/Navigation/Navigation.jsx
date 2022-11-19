@@ -7,7 +7,7 @@ import { useMediaQuery } from 'react-responsive';
 const Navigation = () => {
   const isDesctop = useMediaQuery({ query: '(min-width: 1280px)' });
   const token = useSelector(stateAuthToken);
-  console.log('token', token);
+
   return (
     <nav className={s.siteNav}>
       {!token ? (

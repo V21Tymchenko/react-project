@@ -7,9 +7,7 @@ import { stateAuthToken } from 'redux/auth/auth-selectors';
 import s from './Modal.module.css';
 
 const Modal = ({ setIsModalOpen, kcal, arrNotAllowedProducts = null }) => {
-
   const token = useSelector(stateAuthToken);
-
 
   useEffect(() => {
     add();
@@ -65,7 +63,6 @@ const Modal = ({ setIsModalOpen, kcal, arrNotAllowedProducts = null }) => {
         </button>
         <div className={s.containerTitleModal}>
           <h2 className={s.titleModal}>
-            {' '}
             Your recommended daily calorie intake is
           </h2>
         </div>

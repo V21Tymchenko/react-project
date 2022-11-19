@@ -6,17 +6,11 @@ axios.defaults.baseURL = 'https://slimmom-backend.goit.global';
 export const handlesetDataToApiWithId = createAsyncThunk(
   'user/daily-rate-id',
   async ({ body, userid }, { getState, rejectWithValue }) => {
-    // if (!userId) {
-    //   return rejectWithValue();
-    // }
     try {
-      // const userId = getState().user.id;
-      // console.log(userId);
       const { data } = await axios.post('/daily-rate/' + userid, body);
-     
+
       return data;
     } catch (error) {
-     
       return rejectWithValue(error.message);
     }
   }
@@ -35,7 +29,6 @@ export const current = createAsyncThunk('current/user', async (_, thunkAPI) => {
   token.set(persistToken);
   try {
     const result = await currentUser();
-    console.log(result);
     return result;
   } catch (e) {
     return thunkAPI.rejectWithValue(e.message);
