@@ -18,11 +18,11 @@ const MainPage = () => {
   const handlesetDataToApi = data => {
     dispatch(dailyRateOperation(data));
   };
-  const kcal = useSelector(state => state.dailyRate.dailyRate);
-  const arrNotAllowedProducts = useSelector(
-    state => state?.dailyRate?.notAllowedProducts
+  const kcal = useSelector(state => state?.dailyRate?.dailyRate);
+  const arrNotAllowedProducts = useSelector(state =>
+    state?.dailyRate?.notAllowedProducts.slice(0, 5)
   );
-  const newArrNotAllowedProducts = [...arrNotAllowedProducts].slice(0, 5);
+
   return (
     <>
       <Header setIsModalOpen={setIsModalOpen}/>
@@ -36,11 +36,11 @@ const MainPage = () => {
             setIsModalOpen={setIsModalOpen}
             // handleSetStorage={handleSetStorage}
           />
-          {newArrNotAllowedProducts && isModalOpen && (
+          {arrNotAllowedProducts && isModalOpen && (
             <Modal
               setIsModalOpen={setIsModalOpen}
               kcal={kcal}
-              arrNotAllowedProducts={newArrNotAllowedProducts}
+              arrNotAllowedProducts={arrNotAllowedProducts}
             />
           )}
         </main>

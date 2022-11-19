@@ -20,10 +20,10 @@ const Header = ({setIsModalOpen}) => {
       <header className={s.header}>
         <div className={s.wrapper}>
           <Logo />
-          {!token && !isDesctop && <Navigation />}
+          <Navigation />
         </div>
         {token && isTablet && <UserInfo />}
-        {token && (
+        {token && !isDesctop && (
           <Link className={s.burger} to="/mobilnav">
             <BurgerBtn />
           </Link>

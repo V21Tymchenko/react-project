@@ -38,6 +38,9 @@
     margin: 0 auto;
     padding: 20px 32px;
   }
+  .burger {
+    margin-left: 50px;
+  }
 }
 @media screen and (min-width: 1280px) {
   .header {
