@@ -8,7 +8,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import s from 'components/DiaryProductItem/DiaryProductItem.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 import { removeProduct } from 'redux/diary/diary-operations';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -17,7 +17,7 @@ export default function DiaryProductItem() {
   const { eatenProducts } = useSelector(state => state.diary);
   const dayId = useSelector(state => state.diary.dayInform);
   const dispatch = useDispatch();
-  useEffect(() => {}, [eatenProducts]);
+  // useEffect(() => {}, [eatenProducts]);
 
   const handlClick = eatenProductId => {
     dispatch(removeProduct({ dayId, eatenProductId }));
