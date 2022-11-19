@@ -42,21 +42,11 @@ export default function DiaryAddProductForm({ setAddDairyProducts }) {
     []
   );
 
-  //   axios.get(
-  //     `https://slimmom-backend.goit.global/product?search=${product}`
-  //   ).then((result) => {console.log('result :>> ', result);
-
-  //   }).catch((err) => {
-
-  //   }); ;
-  //   return data;
-  // }
-
   const handelChangeName = e => {
     setName(e.target.value);
     setIsOpen(true);
     fetchProducts(e.target.value.trim());
-    // dispatch(searcheProducts(e.target.value.trim()));
+    if (!name) return setProducts([]);
   };
   const handelChangeWeight = e => {
     setWeight(e.target.value);
