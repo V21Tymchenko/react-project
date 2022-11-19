@@ -25,7 +25,7 @@ const MainPage = () => {
 
   return (
     <>
-      <Header />
+      <Header setIsModalOpen={setIsModalOpen}/>
       <Container>
         <main className={s.backGround}>
           <h1 className={s.title}>

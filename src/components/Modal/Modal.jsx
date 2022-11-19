@@ -1,7 +1,10 @@
+import Header from 'components/Header';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { useMediaQuery } from 'react-responsive';
 import { NavLink } from 'react-router-dom';
 import { stateAuthToken } from 'redux/auth/auth-selectors';
+import PropTypes from 'prop-types';
 // import { stateAuthToken } from 'redux/auth/auth-selectors';
 // import { dailyRate, notAllowedProducts } from 'redux/user/user-selectors';
 import s from './Modal.module.css';
@@ -33,9 +36,13 @@ const Modal = ({ setIsModalOpen, kcal, arrNotAllowedProducts = null }) => {
     }
   };
 
+  const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
+
+
   return (
     <div onClick={hendleClick} className={s.overlay}>
       <div className={s.modal}>
+      {isMobile && <Header/>}
         <button
           onClick={() => {
             setIsModalOpen(false);
@@ -114,3 +121,9 @@ const Modal = ({ setIsModalOpen, kcal, arrNotAllowedProducts = null }) => {
 };
 
 export default Modal;
+
+Modal.propTypes ={
+  setIsModalOpen: PropTypes.func,
+  kcal: PropTypes.number,
+  arrNotAllowedProducts: PropTypes.arrayOf(PropTypes.string),
+}
