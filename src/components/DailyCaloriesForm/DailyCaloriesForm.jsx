@@ -9,8 +9,10 @@ import {
 import { useState } from 'react';
 import s from './DailyCaloriesForm.module.css';
 import { orange } from '@mui/material/colors';
+import PropTypes from 'prop-types';
 
 const DailyCaloriesForm = ({ handlesetDataToApi, setIsModalOpen }) => {
+  // const [isLoading, setIsLoading] = useState(false);
   const [values, setValues] = useState({
     weight: '',
     height: '',
@@ -21,12 +23,19 @@ const DailyCaloriesForm = ({ handlesetDataToApi, setIsModalOpen }) => {
 
   const handleChange = event => {
     const { name, value } = event.target;
-    setValues(prev => ({ ...prev, [name]: Number(value) }));
+    setValues(prev => ({ ...prev, [name]: value }));
   };
 
   const formSubmit = evt => {
     evt.preventDefault();
-    handlesetDataToApi(values);
+    const userData = {
+      weight: Number(values.weight),
+      height: Number(values.height),
+      age: Number(values.age),
+      desiredWeight: Number(values.desiredWeight),
+      bloodType: Number(values.bloodType),
+    };
+    handlesetDataToApi(userData);
     resetForm();
     setIsModalOpen(true);
   };
@@ -176,3 +185,8 @@ const DailyCaloriesForm = ({ handlesetDataToApi, setIsModalOpen }) => {
   );
 };
 export default DailyCaloriesForm;
+
+DailyCaloriesForm.propTypes ={
+  setIsModalOpen: PropTypes.func,
+  handlesetDataToApi: PropTypes.func,
+}

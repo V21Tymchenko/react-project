@@ -9,15 +9,21 @@ import { useDispatch, useSelector } from 'react-redux';
 import { eatenProduct } from 'redux/diary/diary-operations';
 import { useMemo } from 'react';
 import axios from 'axios';
+import { useMediaQuery } from 'react-responsive';
 
-export default function DiaryAddProductForm() {
+
+export default function DiaryAddProductForm({ setAddDairyProducts }) {
   const [name, setName] = useState('');
   const [weight, setWeight] = useState('');
   const [productId, setProductId] = useState('');
   const [isOpen, setIsOpen] = useState(true);
   const { timeDay } = useSelector(state => state.diary);
   const dispatch = useDispatch();
+
   // const day = useSelector(state => state.diary.timeDay);
+
+  const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
+  const isTablet = useMediaQuery({ query: '(min-width: 768px)' });
 
   const [products, setProducts] = useState([]);
 
@@ -75,6 +81,27 @@ export default function DiaryAddProductForm() {
 
   return (
     <div className={s.maxBox}>
+      {isMobile && (
+        <button className={s.exit} onClick={() => setAddDairyProducts(false)}>
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g clip-path="url(#clip0_6_1348)">
+              <path d="M6 6L18 18" stroke="#212121" stroke-width="2" />
+              <path d="M6 18L18 6" stroke="#212121" stroke-width="2" />
+            </g>
+            <defs>
+              <clipPath id="clip0_6_1348">
+                <rect width="24" height="24" fill="white" />
+              </clipPath>
+            </defs>
+          </svg>
+        </button>
+      )}
       <Box
         onSubmit={handelSubmit}
         className={s.form}
@@ -119,13 +146,13 @@ export default function DiaryAddProductForm() {
           label="Grams"
           variant="standard"
         />
-
-        {weight && name && (
+        {/* {weight && name && ( */}
+        {isTablet && (
           <Button
             type="submit"
             className={s.bt + ' ' + s.mybt}
             variant="contained"
-            // disabled
+            disabled={!weight && !name}
           >
             <svg
               width="24"
@@ -140,6 +167,18 @@ export default function DiaryAddProductForm() {
               />
             </svg>
           </Button>
+        )}
+        {isMobile && (
+          <div className={s.btnContainer + ' ' + s.container}>
+            <Button
+              type="submit"
+              className={s.btn + ' ' + s.buttonAdd}
+              variant="contained"
+              disabled={!weight && !name}
+            >
+              Add
+            </Button>
+          </div>
         )}
       </Box>
     </div>

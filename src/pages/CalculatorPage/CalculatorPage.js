@@ -11,17 +11,11 @@ import DailyCaloriesForm from 'components/DailyCaloriesForm/DailyCaloriesForm';
 
 const CalculatorPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const kcal = useSelector(state => state.dailyRate.dailyRate);
-  const arrNotAllowedProducts = useSelector(
-    state => state?.dailyRate?.notAllowedProducts
+  const kcal = useSelector(state => state.user?.userData?.dailyRate);
+  const arrNotAllowedProducts = useSelector(state =>
+    state?.user?.userData?.notAllowedProducts?.slice(0, 5)
   );
-  const newArrNotAllowedProducts = [...arrNotAllowedProducts].slice(0, 5);
 
-  // const newArrNotAllowedProducts = [...arrNotAllowedProducts].slice(0, 5);
-
-  // const handleSetStorage = dataFromForm => {
-  //   localStorage.setItem('calculateUserInfo', JSON.stringify(dataFromForm));
-  // };
   const userid = useSelector(selectUserId);
 
   const dispatch = useDispatch();
@@ -35,12 +29,11 @@ const CalculatorPage = () => {
       <Header />
       <Container>
         <div className={s.containerFlex}>
-          <div>
+          <div className={s.leftSide}>
             <h1 className={s.title}>
               Calculate your daily calorie intake right now
             </h1>
             <DailyCaloriesForm
-              // handleSetStorage={handleSetStorage}
               handlesetDataToApi={handlesetDataToApiId}
               setIsModalOpen={setIsModalOpen}
             />
@@ -48,7 +41,7 @@ const CalculatorPage = () => {
               <Modal
                 setIsModalOpen={setIsModalOpen}
                 kcal={kcal}
-                arrNotAllowedProducts={newArrNotAllowedProducts}
+                arrNotAllowedProducts={arrNotAllowedProducts}
               />
             )}
           </div>

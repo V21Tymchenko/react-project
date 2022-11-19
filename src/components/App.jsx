@@ -1,21 +1,37 @@
-import CalculatorPage from 'pages/CalculatorPage';
-import RegisterPage from 'pages/RegisterPage';
-import MainPage from 'pages/MainPage';
+// import CalculatorPage from 'pages/CalculatorPage';
+// import RegisterPage from 'pages/RegisterPage';
+// import MainPage from 'pages/MainPage';
 import { Route, Routes } from 'react-router-dom';
-import DiaryPage from 'pages/DiaryPage';
+// import DiaryPage from 'pages/DiaryPage';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 
 import { stateAuthToken } from 'redux/auth/auth-selectors';
-import LoginPage from 'pages/LoginPage/LoginPage';
+// import LoginPage from 'pages/LoginPage/LoginPage';
 import PublicRoute from './PublicRoute/PublicRoute';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import { current } from 'redux/user/user-operation';
-import MobilNavPage from 'pages/MobilNavPage/MobilNavPage';
+
+import { useMediaQuery } from 'react-responsive';
+import NotFound from 'pages/NotFound/NotFound';
+
+import { lazy } from 'react';
+
+const MainPage = lazy(() => import('pages/MainPage'));
+const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
+const RegisterPage = lazy(() =>
+  import('pages/RegisterPage' /* webpackChunkName: "RegisterPage" */)
+);
+const CalculatorPage = lazy(() => import('pages/CalculatorPage'));
+const DiaryPage = lazy(() => import('pages/DiaryPage'));
+const MobilNavPage = lazy(() => import('pages/MobilNavPage/MobilNavPage'));
+
 
 export const App = () => {
   const dispatch = useDispatch();
   const token = useSelector(stateAuthToken);
+  const isDesctop = useMediaQuery({ query: '(min-width: 1280px)' });
+
   useEffect(() => {
     if (token) {
       dispatch(current());
@@ -33,8 +49,9 @@ export const App = () => {
         <Route path="/" element={<PrivateRoute />}>
           <Route path="/calculator" element={<CalculatorPage />} />
           <Route path="/diary" element={<DiaryPage />} />
-          <Route path="/mobilnav" element={<MobilNavPage />} />
+          {!isDesctop && <Route path="/mobilnav" element={<MobilNavPage />} />}
         </Route>
+        <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
   );
