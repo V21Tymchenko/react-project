@@ -16,11 +16,6 @@ const CalculatorPage = () => {
     state?.user?.userData?.notAllowedProducts?.slice(0, 5)
   );
 
-  // const newArrNotAllowedProducts = [...arrNotAllowedProducts].slice(0, 5);
-
-  // const handleSetStorage = dataFromForm => {
-  //   localStorage.setItem('calculateUserInfo', JSON.stringify(dataFromForm));
-  // };
   const userid = useSelector(selectUserId);
 
   const dispatch = useDispatch();
@@ -34,12 +29,11 @@ const CalculatorPage = () => {
       <Header />
       <Container>
         <div className={s.containerFlex}>
-          <div>
+          <div className={s.leftSide}>
             <h1 className={s.title}>
               Calculate your daily calorie intake right now
             </h1>
             <DailyCaloriesForm
-              // handleSetStorage={handleSetStorage}
               handlesetDataToApi={handlesetDataToApiId}
               setIsModalOpen={setIsModalOpen}
             />

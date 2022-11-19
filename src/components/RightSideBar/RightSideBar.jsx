@@ -30,30 +30,44 @@ const RightSideBar = () => {
   console.log(newNotAllowedProd);
   return (
     <div className={s.sidebar}>
-      <div>
+      <div className={s.data}>
         <h2 className={s.titleBar}>Summary for {date}</h2>
         <div className={s.containerKcal}>
           <p className={s.textPosition}>
-            Left<span>{kcalLeft} kcal</span>
+            Left
+            <span>{kcalLeft ? `${kcalLeft}kcal` : `0 kcal`}</span>
           </p>
           <p className={s.textPosition}>
-            Consumed<span>{kcalConsumed} kcal</span>
+            Consumed
+            <span>{kcalConsumed ? `${kcalConsumed}kcal` : `0 kcal`}</span>
           </p>
           <p className={s.textPosition}>
-            Daily rate<span>{kcal} kcal</span>
+            Daily rate
+            <span>{kcal ? `${kcal}kcal` : `0 kcal`}</span>
           </p>
           <p className={s.textPosition}>
-            % of normal<span>{percentsOfDailyRate} %</span>
+            % of normal
+            <span>
+              {percentsOfDailyRate ? `${percentsOfDailyRate}%` : `0 %`}
+            </span>
           </p>
         </div>
       </div>
-      <div>
+      <div className={s.notRecomendet}>
         <h2 className={s.titleBar}>Food not recommended</h2>
-        <ul>
-          {newNotAllowedProd.map(item => {
-            return <li key={item}>{item}</li>;
-          })}
-        </ul>
+        {newNotAllowedProd.length > 1 ? (
+          <ul>
+            {newNotAllowedProd.map(item => {
+              return (
+                <li key={item} className={s.productItem}>
+                  {item}
+                </li>
+              );
+            })}
+          </ul>
+        ) : (
+          <p className={s.yourDiet}>Your diet will be displayed here</p>
+        )}
       </div>
     </div>
   );

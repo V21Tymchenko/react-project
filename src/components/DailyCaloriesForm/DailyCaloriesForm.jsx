@@ -11,6 +11,7 @@ import s from './DailyCaloriesForm.module.css';
 import { orange } from '@mui/material/colors';
 
 const DailyCaloriesForm = ({ handlesetDataToApi, setIsModalOpen }) => {
+  // const [isLoading, setIsLoading] = useState(false);
   const [values, setValues] = useState({
     weight: '',
     height: '',
