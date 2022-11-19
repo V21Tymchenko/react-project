@@ -84,7 +84,7 @@ export default function DiaryProductItem({ setAddDairyProducts }) {
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <g clip-path="url(#clip0_6_1193)">
+            <g clipPath="url(#clip0_6_1193)">
               <path
                 d="M18.72 12.96H12.96V18.72H11.04V12.96H5.27997V11.04H11.04V5.28003H12.96V11.04H18.72V12.96Z"
                 fill="white"

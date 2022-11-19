@@ -11,7 +11,6 @@ import { useMemo } from 'react';
 import axios from 'axios';
 import { useMediaQuery } from 'react-responsive';
 
-
 export default function DiaryAddProductForm({ setAddDairyProducts }) {
   const [name, setName] = useState('');
   const [weight, setWeight] = useState('');
@@ -42,6 +41,8 @@ export default function DiaryAddProductForm({ setAddDairyProducts }) {
     []
   );
 
+  let data;
+
   const handelChangeName = e => {
     setName(e.target.value);
     setIsOpen(true);
@@ -58,7 +59,7 @@ export default function DiaryAddProductForm({ setAddDairyProducts }) {
   };
   const handelSubmit = e => {
     e.preventDefault();
-    const data = { date: timeDay, productId, weight };
+    data = { date: timeDay, productId, weight };
     dispatch(eatenProduct(data));
     // dispatch(dayInfo({ date: day }));
     setName('');
@@ -80,7 +81,7 @@ export default function DiaryAddProductForm({ setAddDairyProducts }) {
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <g clip-path="url(#clip0_6_1348)">
+            <g clipPath="url(#clip0_6_1348)">
               <path d="M6 6L18 18" stroke="#212121" stroke-width="2" />
               <path d="M6 18L18 6" stroke="#212121" stroke-width="2" />
             </g>
@@ -164,7 +165,7 @@ export default function DiaryAddProductForm({ setAddDairyProducts }) {
               type="submit"
               className={s.btn + ' ' + s.buttonAdd}
               variant="contained"
-              disabled={!weight && !name}
+              disabled={!data}
             >
               Add
             </Button>

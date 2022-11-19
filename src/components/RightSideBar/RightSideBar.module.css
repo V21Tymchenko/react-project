@@ -46,10 +46,9 @@
   color: #9b9faa;
 }
 
-
 .textPosition.item {
   margin-bottom: 15px;
-
+}
 .productItem {
   display: inline;
   font-family: 'Arimo', sans-serif;
@@ -81,5 +80,4 @@
   color: #9b9faa;
   font-weight: 400;
   font-size: 14px;
-
 }

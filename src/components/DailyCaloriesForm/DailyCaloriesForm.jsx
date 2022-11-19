@@ -11,7 +11,7 @@ import s from './DailyCaloriesForm.module.css';
 import { orange } from '@mui/material/colors';
 import PropTypes from 'prop-types';
 
-const DailyCaloriesForm = ({ handlesetDataToApi, setIsModalOpen }) => {
+const DailyCaloriesForm = ({ handlesetDataToApi }) => {
   // const [isLoading, setIsLoading] = useState(false);
   const [values, setValues] = useState({
     weight: '',
@@ -26,7 +26,7 @@ const DailyCaloriesForm = ({ handlesetDataToApi, setIsModalOpen }) => {
     setValues(prev => ({ ...prev, [name]: value }));
   };
 
-  const formSubmit = evt => {
+  async function formSubmit(evt) {
     evt.preventDefault();
     const userData = {
       weight: Number(values.weight),
@@ -35,10 +35,9 @@ const DailyCaloriesForm = ({ handlesetDataToApi, setIsModalOpen }) => {
       desiredWeight: Number(values.desiredWeight),
       bloodType: Number(values.bloodType),
     };
-    handlesetDataToApi(userData);
+    await handlesetDataToApi(userData);
     resetForm();
-    setIsModalOpen(true);
-  };
+  }
 
   const resetForm = () => {
     setValues({

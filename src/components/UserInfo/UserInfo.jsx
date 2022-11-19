@@ -1,8 +1,8 @@
 import s from './UserInfo.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { logout } from 'redux/auth/auth-operations';
+import { stateAuthUserName } from 'redux/auth/user/user-selectors';
 import { stateAuthToken } from 'redux/auth/auth-selectors';
-import { stateAuthUserName } from 'redux/user/user-selectors';
+import { logout } from 'redux/auth/auth-operations';
 
 const UserInfo = () => {
   const dispatch = useDispatch();

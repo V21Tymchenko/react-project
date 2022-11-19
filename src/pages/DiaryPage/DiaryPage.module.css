@@ -44,14 +44,13 @@ padding-bottom: 168px;
 }
 
 @media screen and (min-width: 1280px) {
-
-.containerSideBar {
-  padding: 292px 123px 392px 106px;
-  background-color: #f0f1f3;
-  background-image: url('../../assets/images/green-desktop-sidebar.png');
-  background-size: 546px;
-  background-position: right bottom 235px;
-
+  .containerSideBar {
+    padding: 292px 123px 392px 106px;
+    background-color: #f0f1f3;
+    background-image: url('../../assets/images/green-desktop-sidebar.png');
+    background-size: 546px;
+    background-position: right bottom 235px;
+  }
   .containerSideBar {
     padding: 292px 123px 392px 106px;
     background-color: #f0f1f3;
@@ -59,5 +58,4 @@ padding-bottom: 168px;
     background-size: 446px;
     background-position: right bottom 196px;
   }
-
 }

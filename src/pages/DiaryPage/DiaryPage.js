@@ -10,7 +10,8 @@ import RightSideBar from 'components/RightSideBar/RightSideBar';
 import s from './DiaryPage.module.css';
 
 const DiaryPage = () => {
-  const [addDairyProducts, setAddDairyProducts] = useState(false);
+  const [addDairyProducts, setAddDairyProducts] = useState(true);
+
   return (
     <div>
       <Header />
