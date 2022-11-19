@@ -13,6 +13,8 @@ import {
 } from 'redux/diary/diary-operations';
 import { useMemo } from 'react';
 import axios from 'axios';
+import { useMediaQuery } from 'react-responsive';
+
 
 export default function DiaryAddProductForm() {
   const [name, setName] = useState('');

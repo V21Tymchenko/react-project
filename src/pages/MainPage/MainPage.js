@@ -25,7 +25,7 @@ const MainPage = () => {
   const newArrNotAllowedProducts = [...arrNotAllowedProducts].slice(0, 5);
   return (
     <>
-      <Header />
+      <Header setIsModalOpen={setIsModalOpen}/>
       <Container>
         <main className={s.backGround}>
           <h1 className={s.title}>
