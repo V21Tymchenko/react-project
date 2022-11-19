@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { omit } from 'lodash';
 import { toast } from 'react-toastify';
-import { handlesetDataToApiWithId } from './user/user-operation';
+import { handlesetDataToApiWithId } from '../user/user-operation';
 
 export const token = {
   set(token) {

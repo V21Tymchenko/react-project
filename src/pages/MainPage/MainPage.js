@@ -30,13 +30,25 @@ const MainPage = () => {
   }
 
   const kcal = useSelector(state => state?.dailyRate?.dailyRate);
-  const arrNotAllowedProducts = useSelector(state =>
-    state?.dailyRate?.notAllowedProducts.slice(0, 5)
+
+  const arrNotAllowedProducts = useSelector(
+    state => state?.dailyRate?.notAllowedProducts
   );
+  const newArrey = [...arrNotAllowedProducts];
+
+  function arrayRandElement(arr) {
+    let newRand = [];
+    for (let i = 0; i < 5; i += 1) {
+      var rand = Math.floor(Math.random() * arr?.length);
+      newRand.push(arr[rand]);
+    }
+    return newRand;
+  }
+  const randomNotAllowed = arrayRandElement(newArrey);
 
   return (
     <>
-      <Header setIsModalOpen={setIsModalOpen}/>
+      <Header setIsModalOpen={setIsModalOpen} />
       <Container>
         {isLoading && <Loader />}
         <main className={s.backGround}>
@@ -44,10 +56,10 @@ const MainPage = () => {
             Calculate your daily calorie intake right now
           </h1>
           <DailyCaloriesForm handlesetDataToApi={handlesetDataToApi} />
-          {arrNotAllowedProducts && isModalOpen && (
+          {randomNotAllowed && isModalOpen && (
             <Modal
               kcal={kcal}
-              arrNotAllowedProducts={arrNotAllowedProducts}
+              arrNotAllowedProducts={randomNotAllowed}
               setIsModalOpen={setIsModalOpen}
             />
           )}

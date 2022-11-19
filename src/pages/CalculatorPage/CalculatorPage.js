@@ -7,8 +7,9 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import s from './CalculatePage.module.css';
 import DailyCaloriesForm from 'components/DailyCaloriesForm/DailyCaloriesForm';
-import { selectUserId } from 'redux/auth/user/user-selectors';
-import { handlesetDataToApiWithId } from 'redux/auth/user/user-operation';
+
+import { handlesetDataToApiWithId } from 'redux/user/user-operation';
+import { selectUserId } from 'redux/user/user-selectors';
 
 const CalculatorPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -21,14 +22,10 @@ const CalculatorPage = () => {
 
   const dispatch = useDispatch();
 
-  async function handlesetDataToApiId(data) {
-    try {
-      await dispatch(handlesetDataToApiWithId({ body: data, userid }));
-      setIsModalOpen(true);
-    } catch (error) {
-      console.log(error);
-    }
-  }
+  const handlesetDataToApiId = data => {
+    dispatch(handlesetDataToApiWithId({ body: data, userid }));
+    setIsModalOpen(true);
+  };
 
   return (
     <>
