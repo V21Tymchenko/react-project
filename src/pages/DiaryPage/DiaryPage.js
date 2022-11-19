@@ -8,9 +8,13 @@ import Header from 'components/Header';
 
 import RightSideBar from 'components/RightSideBar/RightSideBar';
 import s from './DiaryPage.module.css';
+import { useMediaQuery } from 'react-responsive';
 
 const DiaryPage = () => {
-  const [addDairyProducts, setAddDairyProducts] = useState(true);
+  const [addDairyProducts, setAddDairyProducts] = useState(false);
+
+  const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
+  const moreMobile = useMediaQuery({ query: '(min-width: 768px)' });
 
   return (
     <div>
@@ -19,7 +23,10 @@ const DiaryPage = () => {
         <div className={s.wrapper}>
           <div className={s.leftSide}>
             <DiaryDateСalendar />
-            {addDairyProducts && (
+            {addDairyProducts && isMobile && (
+              <DiaryAddProductForm setAddDairyProducts={setAddDairyProducts} />
+            )}
+            {moreMobile && (
               <DiaryAddProductForm setAddDairyProducts={setAddDairyProducts} />
             )}
             <DiaryProductItem setAddDairyProducts={setAddDairyProducts} />
