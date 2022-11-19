@@ -47,9 +47,13 @@ const RightSideBar = () => {
       </div>
       <div>
         <h2 className={s.titleBar}>Food not recommended</h2>
-        <ul>
+        <ul className={s.items}>
           {newNotAllowedProd.map(item => {
-            return <li key={item}>{item}</li>;
+            return (
+              <li className={s.textPosition + ' ' + s.item} key={item}>
+                {item}
+              </li>
+            );
           })}
         </ul>
       </div>

@@ -6,8 +6,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import s from 'components/DiaryAddProductForm/DiaryAddProductForm.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { eatenProduct, searcheProducts } from 'redux/diary/diary-operations';
-// import { useMediaQuery } from 'react-responsive';
+import { eatenProduct } from 'redux/diary/diary-operations';
 import { useMemo } from 'react';
 import axios from 'axios';
 

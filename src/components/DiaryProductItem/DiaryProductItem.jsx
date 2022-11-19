@@ -40,15 +40,15 @@ export default function DiaryProductItem() {
               key={row.id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-              <TableCell component="th" scope="row">
+              <TableCell className={s.item} component="th" scope="row">
                 {row.title}
               </TableCell>
 
-              <TableCell align="right">
+              <TableCell className={s.item} align="right">
                 {row.weight} <span>g</span>
               </TableCell>
 
-              <TableCell align="right">
+              <TableCell className={s.item} align="right">
                 {Math.round(row.kcal)} <span>kcal</span>
               </TableCell>
 

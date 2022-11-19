@@ -109,6 +109,13 @@
   display: inline-block;
 }
 
+.button:hover,
+.button:focus {
+  background-color: #fff;
+  color: #fc842d;
+  border: 2px solid #fc842d;
+}
+
 .link {
   padding: 11px 65px;
   color: #fc842d;
@@ -126,4 +133,10 @@
 
   text-decoration: none;
   display: inline-block;
+}
+
+.link:hover,
+.link:focus {
+  color: #fff;
+  background-color: #fc842d;
 }

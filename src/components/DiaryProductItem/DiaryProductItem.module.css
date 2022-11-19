@@ -36,3 +36,14 @@
   text-decoration: none;
   display: inline-block;
 }
+
+.item{
+font-family: 'Verdana';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 17px;
+letter-spacing: 0.04em;
+
+color: #212121;
+}
