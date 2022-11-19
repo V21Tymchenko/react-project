@@ -11,7 +11,10 @@ import { stateAuthToken } from 'redux/auth/auth-selectors';
 import PublicRoute from './PublicRoute/PublicRoute';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import { current } from 'redux/user/user-operation';
-// import MobilNavPage from 'pages/MobilNavPage/MobilNavPage';
+
+import { useMediaQuery } from 'react-responsive';
+import NotFound from 'pages/NotFound/NotFound';
+
 import { lazy } from 'react';
 
 const MainPage = lazy(() => import('pages/MainPage'));
@@ -23,9 +26,12 @@ const CalculatorPage = lazy(() => import('pages/CalculatorPage'));
 const DiaryPage = lazy(() => import('pages/DiaryPage'));
 const MobilNavPage = lazy(() => import('pages/MobilNavPage/MobilNavPage'));
 
+
 export const App = () => {
   const dispatch = useDispatch();
   const token = useSelector(stateAuthToken);
+  const isDesctop = useMediaQuery({ query: '(min-width: 1280px)' });
+
   useEffect(() => {
     if (token) {
       dispatch(current());
@@ -43,8 +49,9 @@ export const App = () => {
         <Route path="/" element={<PrivateRoute />}>
           <Route path="/calculator" element={<CalculatorPage />} />
           <Route path="/diary" element={<DiaryPage />} />
-          <Route path="/mobilnav" element={<MobilNavPage />} />
+          {!isDesctop && <Route path="/mobilnav" element={<MobilNavPage />} />}
         </Route>
+        <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
   );
