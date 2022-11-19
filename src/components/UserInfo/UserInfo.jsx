@@ -8,7 +8,6 @@ const UserInfo = () => {
   const dispatch = useDispatch();
   const userName = useSelector(stateAuthUserName);
   const token = useSelector(stateAuthToken);
-  console.log(token);
   const onLogout = () => {
     dispatch(logout());
   };
