@@ -7,17 +7,9 @@ import { stateAuthToken } from 'redux/auth/auth-selectors';
 import s from './Modal.module.css';
 
 const Modal = ({ setIsModalOpen, kcal, arrNotAllowedProducts = null }) => {
-  // const kcal = useSelector(state => state?.user?.userData?.dailyRate);
-  // const arrNotAllowedProducts = useSelector(
-  //   state => state?.user?.userData?.notAllowedProducts
-  // );
 
   const token = useSelector(stateAuthToken);
-  // const dailyKcal = useSelector(state => state?.dailyRate?.dailyRate);
 
-  // const newArrNotAllowedProducts = useSelector(
-  //   state => state?.dailyRate?.notAllowedProducts
-  // );
 
   useEffect(() => {
     add();
