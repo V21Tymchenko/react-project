@@ -55,6 +55,17 @@ const RightSideBar = () => {
       </div>
       <div className={s.notRecomendet}>
         <h2 className={s.titleBar}>Food not recommended</h2>
+
+        <ul className={s.items}>
+          {newNotAllowedProd.map(item => {
+            return (
+              <li className={s.textPosition + ' ' + s.item} key={item}>
+                {item}
+              </li>
+            );
+          })}
+        </ul>
+
         {newNotAllowedProd.length > 1 ? (
           <ul>
             {newNotAllowedProd.map(item => {
@@ -68,6 +79,7 @@ const RightSideBar = () => {
         ) : (
           <p className={s.yourDiet}>Your diet will be displayed here</p>
         )}
+
       </div>
     </div>
   );
