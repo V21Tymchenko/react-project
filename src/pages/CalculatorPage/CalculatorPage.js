@@ -4,10 +4,11 @@ import Modal from 'components/Modal';
 import RightSideBar from 'components/RightSideBar';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { handlesetDataToApiWithId } from 'redux/user/user-operation';
-import { selectUserId } from 'redux/user/user-selectors';
+
 import s from './CalculatePage.module.css';
 import DailyCaloriesForm from 'components/DailyCaloriesForm/DailyCaloriesForm';
+import { selectUserId } from 'redux/auth/user/user-selectors';
+import { handlesetDataToApiWithId } from 'redux/auth/user/user-operation';
 
 const CalculatorPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);

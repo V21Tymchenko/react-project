@@ -34,7 +34,9 @@ const products = createSlice({
       state.status = fetchStatus.loading;
     },
     [eatenProduct.fulfilled](state, action) {
-      state.eatenProducts = action.payload.newDay.eatenProducts;
+      state.eatenProducts =
+        action.payload.day?.eatenProducts ||
+        action.payload.newDay?.eatenProducts;
       state.daySummary = action.payload.daySummary || action.payload.newSummary;
       state.products = null;
     },

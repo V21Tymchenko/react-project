@@ -11,6 +11,7 @@
     align-items: center;
     padding: 0 15px 0 20px;
     position: fixed;
+    z-index: 999;
     /* left: 0;
     right: 0;
     top: 0;
@@ -18,11 +19,6 @@
     /* background: blue; */
 
     /* margin-bottom: -100px; */
-  }
-}
-@media screen and (max-width: 767px) {
-  .maxBox body {
-    overflow: hidden;
   }
 }
 
@@ -120,4 +116,9 @@
   display: flex;
   padding: 4px;
   background: #ffffff;
+}
+@media screen and (max-width: 767px) {
+  body .maxBox {
+    overflow-y: hidden;
+  }
 }

@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { token } from '../auth/auth-operations';
+import { token } from '../auth-operations';
 
 axios.defaults.baseURL = 'https://slimmom-backend.goit.global';
 export const handlesetDataToApiWithId = createAsyncThunk(

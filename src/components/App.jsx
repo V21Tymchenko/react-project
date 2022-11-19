@@ -10,12 +10,12 @@ import { stateAuthToken } from 'redux/auth/auth-selectors';
 // import LoginPage from 'pages/LoginPage/LoginPage';
 import PublicRoute from './PublicRoute/PublicRoute';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
-import { current } from 'redux/user/user-operation';
 
 import { useMediaQuery } from 'react-responsive';
 import NotFound from 'pages/NotFound/NotFound';
 
 import { lazy } from 'react';
+import { current } from 'redux/auth/user/user-operation';
 
 const MainPage = lazy(() => import('pages/MainPage'));
 const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
