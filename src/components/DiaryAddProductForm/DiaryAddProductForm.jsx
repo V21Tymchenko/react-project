@@ -41,8 +41,6 @@ export default function DiaryAddProductForm({ setAddDairyProducts }) {
     []
   );
 
-  let data;
-
   const handelChangeName = e => {
     setName(e.target.value);
     setIsOpen(true);
@@ -59,7 +57,7 @@ export default function DiaryAddProductForm({ setAddDairyProducts }) {
   };
   const handelSubmit = e => {
     e.preventDefault();
-    data = { date: timeDay, productId, weight };
+    const data = { date: timeDay, productId, weight };
     dispatch(eatenProduct(data));
     // dispatch(dayInfo({ date: day }));
     setName('');
@@ -143,7 +141,7 @@ export default function DiaryAddProductForm({ setAddDairyProducts }) {
             type="submit"
             className={s.bt + ' ' + s.mybt}
             variant="contained"
-            disabled={!weight && !name}
+            disabled={!weight}
           >
             <svg
               width="24"
@@ -165,7 +163,7 @@ export default function DiaryAddProductForm({ setAddDairyProducts }) {
               type="submit"
               className={s.btn + ' ' + s.buttonAdd}
               variant="contained"
-              disabled={!data}
+              disabled={!weight}
             >
               Add
             </Button>
