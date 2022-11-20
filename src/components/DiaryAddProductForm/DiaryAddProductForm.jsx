@@ -69,80 +69,10 @@ export default function DiaryAddProductForm({ setAddDairyProducts }) {
   // });
 
   return (
-    <div className={s.maxBox}>
-      {isMobile && (
-        <button className={s.exit} onClick={() => setAddDairyProducts(false)}>
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <g clipPath="url(#clip0_6_1348)">
-              <path d="M6 6L18 18" stroke="#212121" stroke-width="2" />
-              <path d="M6 18L18 6" stroke="#212121" stroke-width="2" />
-            </g>
-            <defs>
-              <clipPath id="clip0_6_1348">
-                <rect width="24" height="24" fill="white" />
-              </clipPath>
-            </defs>
-          </svg>
-        </button>
-      )}
-      <Box
-        onSubmit={handelSubmit}
-        className={s.form}
-        component="form"
-        sx={{
-          '& > :not(style)': { m: 1, width: '240px' },
-        }}
-        noValidate
-        autoComplete="off"
-      >
-        <TextField
-          className={s.inName}
-          type="text"
-          value={name}
-          name="name"
-          onChange={handelChangeName}
-          id="standard-basic"
-          label="Enter product name"
-          variant="standard"
-        />
-        {products && name && isOpen && (
-          <div className={s.menu}>
-            {products.map(e => (
-              <button
-                type="button"
-                name={e.title.ru}
-                key={e._id}
-                id={e._id}
-                onClick={handlClik}
-              >
-                {e.title.ru}
-              </button>
-            ))}
-          </div>
-        )}
-        <TextField
-          className={s.inGrams}
-          type="number"
-          onChange={handelChangeWeight}
-          value={weight}
-          id="standard-basic"
-          label="Grams"
-          variant="standard"
-        />
-        {/* {weight && name && ( */}
-        {isTablet && (
-          <Button
-            type="submit"
-            className={s.bt + ' ' + s.mybt}
-            variant="contained"
-            disabled={!weight}
-          >
+    <div className={s.fixesBox}>
+      <div className={s.maxBox}>
+        {isMobile && (
+          <button className={s.exit} onClick={() => setAddDairyProducts(false)}>
             <svg
               width="24"
               height="24"
@@ -150,26 +80,98 @@ export default function DiaryAddProductForm({ setAddDairyProducts }) {
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <path
-                d="M18.72 12.96H12.96V18.72H11.04V12.96H5.28003V11.04H11.04V5.28003H12.96V11.04H18.72V12.96Z"
-                fill="white"
-              />
+              <g clipPath="url(#clip0_6_1348)">
+                <path d="M6 6L18 18" stroke="#212121" strokeWidth="2" />
+                <path d="M6 18L18 6" stroke="#212121" strokeWidth="2" />
+              </g>
+              <defs>
+                <clipPath id="clip0_6_1348">
+                  <rect width="24" height="24" fill="white" />
+                </clipPath>
+              </defs>
             </svg>
-          </Button>
+          </button>
         )}
-        {isMobile && (
-          <div className={s.btnContainer + ' ' + s.container}>
+        <Box
+          onSubmit={handelSubmit}
+          className={s.form}
+          component="form"
+          sx={{
+            '& > :not(style)': { m: 1, width: '240px' },
+          }}
+          noValidate
+          autoComplete="off"
+        >
+          <TextField
+            className={s.inName}
+            type="text"
+            value={name}
+            name="name"
+            onChange={handelChangeName}
+            id="standard-basic"
+            label="Enter product name"
+            variant="standard"
+          />
+          {products && name && isOpen && (
+            <div className={s.menu}>
+              {products.map(e => (
+                <button
+                  type="button"
+                  name={e.title.ru}
+                  key={e._id}
+                  id={e._id}
+                  onClick={handlClik}
+                >
+                  {e.title.ru}
+                </button>
+              ))}
+            </div>
+          )}
+          <TextField
+            className={s.inGrams}
+            type="number"
+            onChange={handelChangeWeight}
+            value={weight}
+            id="standard-basic"
+            label="Grams"
+            variant="standard"
+          />
+          {/* {weight && name && ( */}
+          {isTablet && (
             <Button
               type="submit"
-              className={s.btn + ' ' + s.buttonAdd}
+              className={s.bt + ' ' + s.mybt}
               variant="contained"
               disabled={!weight}
             >
-              Add
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M18.72 12.96H12.96V18.72H11.04V12.96H5.28003V11.04H11.04V5.28003H12.96V11.04H18.72V12.96Z"
+                  fill="white"
+                />
+              </svg>
             </Button>
-          </div>
-        )}
-      </Box>
+          )}
+          {isMobile && (
+            <div className={s.btnContainer + ' ' + s.container}>
+              <Button
+                type="submit"
+                className={s.btn + ' ' + s.buttonAdd}
+                variant="contained"
+                disabled={!weight}
+              >
+                Add
+              </Button>
+            </div>
+          )}
+        </Box>
+      </div>
     </div>
   );
 }
