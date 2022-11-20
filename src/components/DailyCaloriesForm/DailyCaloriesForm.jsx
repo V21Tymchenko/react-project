@@ -60,11 +60,11 @@ const DailyCaloriesForm = ({ handlesetDataToApi, setIsModalOpen }) => {
         className={s.input}
         onChange={handleChange}
         id="standard-basic"
-        label="Desired weight"
+        label="Age"
         variant="standard"
-        name="desiredWeight"
+        name="age"
         type="number"
-        value={values.desiredWeight}
+        value={values.age}
         required
       />
       <TextField
@@ -72,11 +72,23 @@ const DailyCaloriesForm = ({ handlesetDataToApi, setIsModalOpen }) => {
         className={s.input}
         onChange={handleChange}
         id="standard-basic"
-        label="Age"
+        label="Current weight"
         variant="standard"
-        name="age"
+        name="weight"
         type="number"
-        value={values.age}
+        value={values.weight}
+        required
+      />
+      <TextField
+        color="warning"
+        className={s.input}
+        onChange={handleChange}
+        id="standard-basic"
+        label="Desired weight"
+        variant="standard"
+        name="desiredWeight"
+        type="number"
+        value={values.desiredWeight}
         required
       />
 
@@ -155,19 +167,6 @@ const DailyCaloriesForm = ({ handlesetDataToApi, setIsModalOpen }) => {
           />
         </RadioGroup>
       </FormControl>
-
-      <TextField
-        color="warning"
-        className={s.input}
-        onChange={handleChange}
-        id="standard-basic"
-        label="Current weight"
-        variant="standard"
-        name="weight"
-        type="number"
-        value={values.weight}
-        required
-      />
 
       <button className={s.btn} type="submit">
         Start losing weight

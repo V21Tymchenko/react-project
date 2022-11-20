@@ -8,6 +8,7 @@ import { useMediaQuery } from 'react-responsive';
 
 import { BurgerBtn } from 'components/BurgerBtn/BurgerBtn';
 import { Link } from 'react-router-dom';
+import GoBack from 'components/GoBack/GoBack';
 
 const Header = () => {
   const isTablet = useMediaQuery({ query: '(min-width: 768px)' });
@@ -28,8 +29,11 @@ const Header = () => {
           </Link>
         )}
       </header>
-      {isMobile && (
+      {isMobile && token && (
         <div className={s.mobilUser}>
+          <Link className={`${s.goback} ${s.isHidde}`}>
+            <GoBack />
+          </Link>
           <UserInfo />
         </div>
       )}
