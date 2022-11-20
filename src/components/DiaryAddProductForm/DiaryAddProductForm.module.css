@@ -1,37 +1,34 @@
-
 @media screen and (max-width: 767px) {
-.maxBox{
-  width: 100%;
-  height: 100%;
-  background-color: #fff;
-  position: absolute;
-  top: 80px;
-  left: 0;
-  padding-top: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-
-  position: fixed;
+  .maxBox {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 15px 0 20px;
+    position: fixed;
+    z-index: 999;
     /* left: 0;
     right: 0;
     top: 0;
     bottom: 0; */
     /* background: blue; */
-    overflow-y: scroll;
+
     /* margin-bottom: -100px; */
-}
+  }
 }
 
 @media screen and (max-width: 767px) {
-.form{
-  display: flex;
-  flex-direction: column;
-  background-color: #fff;
+  .form {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+  }
 }
-}
-
-
 
 .bt.mybt {
   background-color: #fc842d;
@@ -44,6 +41,7 @@
   margin-left: 60px;
   /* background: #c4c4c4; */
   box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
+  cursor: pointer;
 }
 .bt.mybt:hover {
   background-color: #fff;
@@ -59,6 +57,7 @@
   border: none;
   border-bottom: 1px #e0e0e0 solid;
 }
+
 /* margin-bottom: 60px; */
 .addForm {
   margin-bottom: 60px;
@@ -79,4 +78,47 @@
   border: 1px gray solid;
   border-radius: 4px;
   background-color: azure;
+}
+.btn.buttonAdd {
+  padding: 13px 50px;
+  background-color: #fc842d;
+  color: #ffffff;
+  width: 181px;
+  height: 44px;
+
+  font-family: 'Verdana';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.04em;
+
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.btnContainer.container {
+  width: 100%;
+  margin-top: 60px;
+  text-align: center;
+}
+.exit {
+  position: absolute;
+
+  top: 60px;
+  right: 118px;
+
+  border-radius: 50%;
+  border: 1px solid #00000054;
+  cursor: pointer;
+  vertical-align: middle;
+  display: flex;
+  padding: 4px;
+  background: #ffffff;
+}
+@media screen and (max-width: 767px) {
+  body .maxBox {
+    overflow-y: hidden;
+  }
 }

@@ -5,12 +5,13 @@ import { useSelector } from 'react-redux';
 import { stateAuthToken } from 'redux/auth/auth-selectors';
 import s from './Header.module.css';
 import { useMediaQuery } from 'react-responsive';
+// import PropTypes from 'prop-types';
 
 import { BurgerBtn } from 'components/BurgerBtn/BurgerBtn';
 import { Link } from 'react-router-dom';
 import GoBack from 'components/GoBack/GoBack';
 
-const Header = () => {
+const Header = ({setIsModalOpen}) => {
   const isTablet = useMediaQuery({ query: '(min-width: 768px)' });
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
   const isDesctop = useMediaQuery({ query: '(min-width: 1280px)' });
@@ -41,3 +42,7 @@ const Header = () => {
   );
 };
 export default Header;
+
+// Header.propTypes = {
+//   setIsModalOpen.PropTypes.func,
+// }
