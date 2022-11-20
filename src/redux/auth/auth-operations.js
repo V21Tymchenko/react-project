@@ -68,6 +68,7 @@ export const login = createAsyncThunk(
       //     position: 'top-right',
       //   });
       // }
+      return response;
     } catch (e) {
       toast.error('Something wrong!', {
         position: 'top-right',
