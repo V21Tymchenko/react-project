@@ -17,7 +17,7 @@ const DiaryPage = () => {
   const moreMobile = useMediaQuery({ query: '(min-width: 768px)' });
 
   return (
-    <div>
+    <>
       <Header />
       <Container>
         <div className={s.wrapper}>
@@ -36,7 +36,7 @@ const DiaryPage = () => {
           </div>
         </div>
       </Container>
-    </div>
+    </>
   );
 };
 export default DiaryPage;
