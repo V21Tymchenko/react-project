@@ -13,19 +13,39 @@ import { selectUserId } from 'redux/user/user-selectors';
 
 const CalculatorPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const kcal = useSelector(state => state.user?.userData?.dailyRate);
-  const arrNotAllowedProducts = useSelector(state =>
-    state?.user?.userData?.notAllowedProducts?.slice(0, 5)
-  );
 
   const userid = useSelector(selectUserId);
 
+  // const arrNotAllowedProducts = useSelector(state =>
+  //   state?.user?.userData?.notAllowedProducts?.slice(0, 5)
+  // );
+
   const dispatch = useDispatch();
 
-  const handlesetDataToApiId = data => {
-    dispatch(handlesetDataToApiWithId({ body: data, userid }));
-    setIsModalOpen(true);
-  };
+  async function handlesetDataToApiId(data) {
+    try {
+      await dispatch(handlesetDataToApiWithId({ body: data, userid }));
+
+      setIsModalOpen(true);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const kcal = useSelector(state => state.user?.userData?.dailyRate);
+  const notAllowedProd = useSelector(state =>
+    state?.user?.userData?.notAllowedProducts?.slice(0, 5)
+  );
+
+  // function arrayRandElement(arr) {
+  //   let newRand = [];
+  //   for (let i = 0; i < 5; i += 1) {
+  //     var rand = Math.floor(Math.random() * arr?.length);
+  //     newRand.push(arr[rand]);
+  //   }
+  //   return newRand;
+  // }
+  // const randomNotAllowed = arrayRandElement(notAllowedProd);
 
   return (
     <>
@@ -40,10 +60,10 @@ const CalculatorPage = () => {
               handlesetDataToApi={handlesetDataToApiId}
               setIsModalOpen={setIsModalOpen}
             />
-            {arrNotAllowedProducts && isModalOpen && (
+            {notAllowedProd && isModalOpen && (
               <Modal
                 kcal={kcal}
-                arrNotAllowedProducts={arrNotAllowedProducts}
+                arrNotAllowedProducts={notAllowedProd}
                 setIsModalOpen={setIsModalOpen}
               />
             )}
