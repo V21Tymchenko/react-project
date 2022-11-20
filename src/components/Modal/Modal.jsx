@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 // import { dailyRate, notAllowedProducts } from 'redux/user/user-selectors';
 import s from './Modal.module.css';
 
-const Modal = ({ setIsModalOpen, kcal, arrNotAllowedProducts = null }) => {
+const Modal = ({ setIsModalOpen, kcal, arrNotAllowedProducts }) => {
   const token = useSelector(stateAuthToken);
 
   useEffect(() => {
@@ -36,11 +36,10 @@ const Modal = ({ setIsModalOpen, kcal, arrNotAllowedProducts = null }) => {
 
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
 
-
   return (
     <div onClick={hendleClick} className={s.overlay}>
       <div className={s.modal}>
-      {isMobile && <Header/>}
+        {isMobile && <Header />}
         <button
           onClick={() => {
             setIsModalOpen(false);
@@ -82,7 +81,7 @@ const Modal = ({ setIsModalOpen, kcal, arrNotAllowedProducts = null }) => {
           <p className={s.listModal}>Foods you should not eat</p>
           <ul>
             {arrNotAllowedProducts &&
-              arrNotAllowedProducts.map((item, index) => {
+              arrNotAllowedProducts?.map((item, index) => {
                 return (
                   <li key={item} className={s.itemModal}>
                     {index + 1}. {item}
@@ -119,8 +118,8 @@ const Modal = ({ setIsModalOpen, kcal, arrNotAllowedProducts = null }) => {
 
 export default Modal;
 
-Modal.propTypes ={
+Modal.propTypes = {
   setIsModalOpen: PropTypes.func,
   kcal: PropTypes.number,
   arrNotAllowedProducts: PropTypes.arrayOf(PropTypes.string),
-}
+};

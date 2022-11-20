@@ -15,7 +15,7 @@ import { useMediaQuery } from 'react-responsive';
 import NotFound from 'pages/NotFound/NotFound';
 
 import { lazy } from 'react';
-import { current } from 'redux/auth/user/user-operation';
+import { current } from 'redux/user/user-operation';
 
 const MainPage = lazy(() => import('pages/MainPage'));
 const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));

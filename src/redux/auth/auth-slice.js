@@ -29,8 +29,8 @@ const authSlice = createSlice({
     },
     [login.fulfilled](state, action) {
       state.status = fetchStatus.success;
-      state.token = action.payload.accessToken;
-      state.refreshToken = action.payload.refreshToken;
+      state.token = action.payload?.accessToken;
+      state.refreshToken = action.payload?.refreshToken;
     },
     [login.rejected](state) {
       state.status = fetchStatus.error;
