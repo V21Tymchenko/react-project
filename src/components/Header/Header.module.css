@@ -22,13 +22,17 @@
   background-color: #eff1f3;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
 }
 .wrapper {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+.isHidden {
+  visibility: hidden;
+  pointer-events: none;
 }
 
 @media screen and (min-width: 768px) {
@@ -38,11 +42,15 @@
     margin: 0 auto;
     padding: 20px 32px;
   }
+  .burger {
+    margin-left: 50px;
+  }
 }
 @media screen and (min-width: 1280px) {
   .header {
     border: none;
     position: absolute;
+    z-index: 3;
     top: 0;
     left: 50%;
     transform: translateX(-50%);

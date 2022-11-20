@@ -4,10 +4,7 @@ import { login, logout, register } from './auth-operations';
 
 const initialState = {
   token: null,
-  isLoggedIn: false,
   status: fetchStatus.init,
-  isFetchCurrentUser: false,
-  sid: '',
   refreshToken: '',
 };
 
@@ -20,15 +17,10 @@ const authSlice = createSlice({
     },
     [register.fulfilled](state, action) {
       state.status = fetchStatus.success;
-      state.user = action.payload.user;
       state.token = action.payload.accessToken;
-      state.isLoggedIn = true;
     },
     [register.rejected](state) {
       state.status = fetchStatus.error;
-      state.user.name = '';
-      state.user.email = null;
-      state.isLoggedIn = false;
       state.token = null;
     },
 
@@ -37,18 +29,12 @@ const authSlice = createSlice({
     },
     [login.fulfilled](state, action) {
       state.status = fetchStatus.success;
-      state.token = action.payload.accessToken;
-      state.isLoggedIn = true;
-      state.sid = action.payload.sid;
-      state.refreshToken = action.payload.refreshToken;
+      state.token = action.payload?.accessToken;
+      state.refreshToken = action.payload?.refreshToken;
     },
     [login.rejected](state) {
       state.status = fetchStatus.error;
-      state.user.name = null;
-      state.user.email = null;
-      state.isLoggedIn = false;
       state.token = null;
-      state.sid = '';
       state.refreshToken = '';
     },
 

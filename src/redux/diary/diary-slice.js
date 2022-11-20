@@ -5,7 +5,7 @@ import { dayInfo, eatenProduct, removeProduct } from './diary-operations';
 const initialState = {
   status: null,
   timeDay: null,
-  eatenProducts: null,
+  eatenProducts: [],
   daySummary: null,
   dayInform: null,
 };
@@ -30,9 +30,14 @@ const products = createSlice({
     //   state.status = fetchStatus.error;
     // },
 
+    [eatenProduct.pending](state) {
+      state.status = fetchStatus.loading;
+    },
     [eatenProduct.fulfilled](state, action) {
-      state.eatenProducts = action.payload.day.eatenProducts;
-      state.daySummary = action.payload.daySummary;
+      state.eatenProducts =
+        action.payload.day?.eatenProducts ||
+        action.payload.newDay?.eatenProducts;
+      state.daySummary = action.payload.daySummary || action.payload.newSummary;
       state.products = null;
     },
     [eatenProduct.rejected](state) {
@@ -41,7 +46,7 @@ const products = createSlice({
 
     [dayInfo.fulfilled](state, action) {
       state.dayInform = action.payload.id;
-      state.daySummary = action.payload.daySummary;
+      state.daySummary = action.payload.daySummary || action.payload;
       state.eatenProducts = action.payload.eatenProducts;
     },
 

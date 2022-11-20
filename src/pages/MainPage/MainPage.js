@@ -1,6 +1,7 @@
 import Container from 'components/Container';
 import DailyCaloriesForm from 'components/DailyCaloriesForm/DailyCaloriesForm';
 import Header from 'components/Header';
+import Loader from 'components/Loader';
 import Modal from 'components/Modal';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,38 +10,56 @@ import s from './MainPage.module.css';
 
 const MainPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
 
   // const handleSetStorage = dataFromForm => {
   //   localStorage.setItem('calculateUserInfo', JSON.stringify(dataFromForm));
   // };
 
-  const handlesetDataToApi = data => {
-    dispatch(dailyRateOperation(data));
-  };
-  const kcal = useSelector(state => state.dailyRate.dailyRate);
+  async function handlesetDataToApi(data) {
+    try {
+      setIsLoading(true);
+      await dispatch(dailyRateOperation(data));
+      setIsModalOpen(true);
+    } catch (error) {
+      console.log(error);
+      setIsLoading(false);
+    }
+  }
+
+  const kcal = useSelector(state => state?.dailyRate?.dailyRate);
+
   const arrNotAllowedProducts = useSelector(
     state => state?.dailyRate?.notAllowedProducts
   );
-  const newArrNotAllowedProducts = [...arrNotAllowedProducts].slice(0, 5);
+  const newArrey = [...arrNotAllowedProducts];
+
+  function arrayRandElement(arr) {
+    let newRand = [];
+    for (let i = 0; i < 5; i += 1) {
+      var rand = Math.floor(Math.random() * arr?.length);
+      newRand.push(arr[rand]);
+    }
+    return newRand;
+  }
+  const randomNotAllowed = arrayRandElement(newArrey);
+
   return (
     <>
-      <Header />
+      <Header setIsModalOpen={setIsModalOpen} />
       <Container>
+        {isLoading && <Loader />}
         <main className={s.backGround}>
           <h1 className={s.title}>
             Calculate your daily calorie intake right now
           </h1>
-          <DailyCaloriesForm
-            handlesetDataToApi={handlesetDataToApi}
-            setIsModalOpen={setIsModalOpen}
-            // handleSetStorage={handleSetStorage}
-          />
-          {newArrNotAllowedProducts && isModalOpen && (
+          <DailyCaloriesForm handlesetDataToApi={handlesetDataToApi} />
+          {randomNotAllowed && isModalOpen && (
             <Modal
-              setIsModalOpen={setIsModalOpen}
               kcal={kcal}
-              arrNotAllowedProducts={newArrNotAllowedProducts}
+              arrNotAllowedProducts={randomNotAllowed}
+              setIsModalOpen={setIsModalOpen}
             />
           )}
         </main>

@@ -3,10 +3,11 @@
 } */
 
 @media screen and (min-width: 1280px) {
-.wrapper{
-  display: flex;
-  justify-content: space-between;
-}
+  .wrapper {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+  }
 }
 
 /* .leftSide {
@@ -14,16 +15,16 @@ padding-bottom: 168px;
 } */
 
 @media screen and (min-width: 768px) {
-.leftSide {
-  padding-bottom: 55px;
-}
+  .leftSide {
+    padding-bottom: 55px;
+  }
 }
 
 @media screen and (min-width: 1280px) {
-.leftSide{
-  padding-top: 147px;
-  padding-bottom: 0;
-}
+  .leftSide {
+    padding-top: 147px;
+    padding-bottom: 0;
+  }
 }
 
 .containerSideBar {
@@ -32,22 +33,22 @@ padding-bottom: 168px;
 }
 
 @media screen and (min-width: 768px) {
-.containerSideBar {
-  padding: 80px 80px 80px 32px;
-  background-color: #f0f1f3;
-  background-image: url('../../assets/images/green-tablet-sidebar.png');
-  background-size: 365px;
-  background-position: right -21px bottom;
-  background-repeat: no-repeat;
-}
+  .containerSideBar {
+    padding: 80px 80px 80px 32px;
+    background-color: #f0f1f3;
+    background-image: url('../../assets/images/green-tablet-sidebar.png');
+    background-size: 365px;
+    background-position: right -21px bottom;
+    background-repeat: no-repeat;
+  }
 }
 
 @media screen and (min-width: 1280px) {
-.containerSideBar {
-  padding: 292px 123px 392px 106px;
-  background-color: #f0f1f3;
-  background-image: url('../../assets/images/green-desktop-sidebar.png');
-  background-size: 546px;
-  background-position: right bottom 235px;
-}
+  .containerSideBar {
+    padding: 257px 123px 392px 106px;
+    background-color: #f0f1f3;
+    background-image: url('../../assets/images/green-desktop-sidebar.png');
+    background-size: 517px;
+    background-position: right bottom 118px;
+  }
 }

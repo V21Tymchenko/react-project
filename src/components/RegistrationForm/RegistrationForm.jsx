@@ -82,6 +82,7 @@ export default function RegistrationForm() {
             name="password"
             value={password}
             className={s.label}
+            placeholder="please enter 8 digits"
           />
           <div className={s.buttons}>
             <button type="submit" className={s.button}>
