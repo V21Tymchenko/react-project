@@ -39,12 +39,12 @@
 @media screen and (min-width: 768px) {
   .leftSide {
     padding-top: 100px;
-    padding-bottom: 151px;
+    padding-bottom: 121px;
   }
 }
 @media screen and (max-width: 767px) {
   .leftSide {
-    margin-bottom: 41px;
+    margin-bottom: 117px;
   }
 }
 @media screen and (max-width: 767px) {
