@@ -15,7 +15,6 @@ export default function RegistrationForm() {
   const dispatch = useDispatch();
 
   const notifySuccess = () => toast('Are you registered!');
-  // const notifyRejected = () => toast('Registration failed!');
 
   const inputs = {
     email: setEmail,
