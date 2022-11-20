@@ -13,10 +13,10 @@ import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 import { useMediaQuery } from 'react-responsive';
-import Loader from 'components/Loader';
+// import Loader from 'components/Loader';
 
 export default function DiaryProductItem({ setAddDairyProducts }) {
-  const { eatenProducts, status } = useSelector(state => state.diary);
+  const { eatenProducts } = useSelector(state => state.diary);
 
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
   const dayId = useSelector(state => state.diary.dayInform);
