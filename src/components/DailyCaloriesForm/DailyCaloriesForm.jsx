@@ -185,7 +185,7 @@ const DailyCaloriesForm = ({ handlesetDataToApi }) => {
 };
 export default DailyCaloriesForm;
 
-DailyCaloriesForm.propTypes ={
+DailyCaloriesForm.propTypes = {
   setIsModalOpen: PropTypes.func,
   handlesetDataToApi: PropTypes.func,
-}
+};

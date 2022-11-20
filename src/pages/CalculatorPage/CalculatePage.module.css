@@ -2,11 +2,23 @@
   font-family: 'Arimo';
   font-style: normal;
   font-weight: 700;
-  font-size: 34px;
-  line-height: 41px;
-  width: 540px;
+  font-size: 18px;
+  line-height: 1.4;
+  width: 280px;
   color: #212121;
-  margin-bottom: 68px;
+  margin-bottom: 32px;
+}
+@media screen and (min-width: 768px) {
+  .title {
+    font-family: 'Arimo';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 34px;
+    line-height: 41px;
+    width: 540px;
+    color: #212121;
+    margin-bottom: 68px;
+  }
 }
 @media screen and (min-width: 1280px) {
   .containerFlex {
@@ -15,14 +27,6 @@
     margin-bottom: 111px;
   }
 }
-/* .containerSideBar {
-  padding: 0 123px 260px 106px;
-  background-color: #f0f1f3;
-  background-image: url('../../assets/images/sidebar-desctop.png');
-  background-size: 446px;
-  background-position: right bottom 3px;
-  background-repeat: no-repeat;
-} */
 
 @media screen and (min-width: 1280px) {
   .wrapper {
@@ -41,6 +45,11 @@
 @media screen and (max-width: 767px) {
   .leftSide {
     margin-bottom: 41px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .containerFlex {
+    margin-top: 32px;
   }
 }
 
@@ -69,10 +78,10 @@
 
 @media screen and (min-width: 1280px) {
   .containerSideBar {
-    padding: 292px 123px 392px 106px;
+    padding: 288px 200px 396px 114px;
     background-color: #f0f1f3;
     background-image: url('../../assets/images/green-desktop-sidebar.png');
-    background-size: 446px;
-    background-position: right bottom 196px;
+    background-size: 521px;
+    background-position: right bottom 7px;
   }
 }

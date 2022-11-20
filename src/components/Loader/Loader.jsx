@@ -1,13 +1,13 @@
-import { CircleLoader } from 'react-spinners';
+import { PuffLoader } from 'react-spinners';
 
 function Loader() {
   const loaderCSSOverride = {
-    marginTop: '100px',
+    marginTop: '200px',
     marginLeft: 'auto',
     marginRight: 'auto',
   };
   return (
-    <CircleLoader color={'orange'} size={150} cssOverride={loaderCSSOverride} />
+    <PuffLoader color={'orange'} size={100} cssOverride={loaderCSSOverride} />
   );
 }
 

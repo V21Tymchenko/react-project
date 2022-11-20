@@ -118,7 +118,8 @@
   background: #ffffff;
 }
 @media screen and (max-width: 767px) {
-  body .maxBox {
+  body.maxBox {
     overflow-y: hidden;
+    height: 100%;
   }
 }

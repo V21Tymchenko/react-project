@@ -15,19 +15,30 @@ const RightSideBar = () => {
   // const dailyRate = useSelector(dailyRateSel);
   const percentsOfDailyRate = useSelector(percentsOfDailyRateSel);
 
-  const kcal = useSelector(state => state.user.userData.dailyRate);
+  const kcal = useSelector(state => state.user?.userData?.dailyRate);
 
   // const kcal = useSelector(state => state.dailyRate.dailyRate);
-  // const arrNotAllowedProducts = useSelector(
-  //   state => state?.dailyRate?.notAllowedProducts
-  // );
+  const arrNotAllowedProducts = useSelector(state =>
+    state?.dailyRate?.notAllowedProducts?.slice(0, 5)
+  );
   // const newArrNotAllowedProducts = [...arrNotAllowedProducts].slice(0, 5);
 
-  const notAllowedProd = useSelector(state =>
-    state?.user?.userData?.notAllowedProducts?.slice(0, 5)
-  );
-  // const newNotAllowedProd = [...notAllowedProd].slice(0, 5);
-  // console.log(newNotAllowedProd);
+  // const notAllowedProd = useSelector(
+  //   state => state?.user?.userData?.notAllowedProducts
+  // );
+
+  // const newArrey = [...notAllowedProd];
+
+  // function arrayRandElement(arr) {
+  //   let newRand = [];
+  //   for (let i = 0; i < 5; i += 1) {
+  //     var rand = Math.floor(Math.random() * arr?.length);
+  //     newRand.push(arr[rand]);
+  //   }
+  //   return newRand;
+  // }
+  // const randomNotAllowed = arrayRandElement(newArrey);
+
   return (
     <div className={s.sidebar}>
       <div className={s.data}>
@@ -66,9 +77,9 @@ const RightSideBar = () => {
           })}
         </ul> */}
 
-        {notAllowedProd?.length > 1 ? (
+        {arrNotAllowedProducts?.length > 1 ? (
           <ul>
-            {notAllowedProd?.map(item => {
+            {arrNotAllowedProducts?.map(item => {
               return (
                 <li key={item} className={s.productItem}>
                   {item}
