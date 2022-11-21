@@ -1,4 +1,5 @@
 .header {
+  position: relative;
   border-bottom: 2px solid #e0e0e0;
   margin: 0 auto;
   width: 100%;
@@ -8,6 +9,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.backdrop {
+  position: absolute;
+  z-index: 9;
+  top: 121px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 100%;
+  width: 480px;
 }
 .burger {
   border: none;
@@ -38,12 +48,16 @@
 @media screen and (min-width: 768px) {
   .header {
     max-width: 100%;
-    width: 736px;
+    width: 768px;
     margin: 0 auto;
     padding: 20px 32px;
   }
   .burger {
     margin-left: 50px;
+  }
+  .backdrop {
+    width: 768px;
+    top: 85px;
   }
 }
 @media screen and (min-width: 1280px) {
