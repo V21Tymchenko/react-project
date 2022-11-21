@@ -28,6 +28,7 @@ export default function DiaryDateСalendar() {
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       {/* <Stack spacing={1}> */}
       <DesktopDatePicker
+        inputFormat="MM.DD.YYYY"
         className={s.calendar + ' ' + s.mycalendar}
         value={value}
         minDate={dayjs('2017-01-01')}
@@ -35,7 +36,7 @@ export default function DiaryDateСalendar() {
           setValue(newValue);
         }}
         sx={{
-          width: 840,
+          // width: '30px',
           '& #standard-basic-label': {
             color: grey[500],
             fontFamily: 'Arimo',
@@ -45,7 +46,30 @@ export default function DiaryDateСalendar() {
             color: orange[700],
           },
         }}
-        renderInput={params => <TextField {...params} />}
+        renderInput={params => (
+          <TextField
+            {...params}
+            sx={{
+              border: 'none',
+              width: '300px',
+
+              input: {
+                fontSize: '40px',
+                fontWeight: 600,
+              },
+
+              '> div::before': {
+                display: 'none',
+              },
+
+              '> div::after': {
+                display: 'none',
+              },
+            }}
+            label={null}
+            variant="standard"
+          />
+        )}
       />
       {/* </Stack> */}
     </LocalizationProvider>
