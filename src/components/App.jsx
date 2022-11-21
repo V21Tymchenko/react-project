@@ -16,6 +16,7 @@ import NotFound from 'pages/NotFound/NotFound';
 
 import { lazy } from 'react';
 import { current } from 'redux/user/user-operation';
+import Loader from './Loader';
 
 const MainPage = lazy(() => import('pages/MainPage'));
 const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
@@ -36,7 +37,7 @@ export const App = () => {
   }, [dispatch, token]);
 
   return (
-    <Suspense>
+    <Suspense fallback={<Loader />}>
       <Routes>
         <Route path="/">
           <Route index element={<MainPage />} />
