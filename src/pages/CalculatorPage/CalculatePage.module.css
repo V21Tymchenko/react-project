@@ -24,7 +24,7 @@
   .containerFlex {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 111px;
+    /* margin-bottom: 111px; */
   }
 }
 
@@ -67,6 +67,7 @@
 
 @media screen and (min-width: 1200px) {
   .containerSideBar {
+    min-height: 100vh;
     padding: 40px 20px 84px 20px;
     margin-right: -35px;
     background-color: #f0f1f3;
@@ -95,8 +96,12 @@
     padding: 292px 123px 250px 106px;
     background-color: #f0f1f3;
     background-image: url('../../assets/images/green-desktop-sidebar.png');
-    background-size: 517px;
-
-    background-position: right bottom -16px;
+    background-size: 600px;
+    background-position: right bottom 44px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .containerMain {
+    min-height: 100vh;
   }
 }
