@@ -1,6 +1,6 @@
 import Container from 'components/Container';
 import DailyCaloriesForm from 'components/DailyCaloriesForm/DailyCaloriesForm';
-import Header from 'components/Header';
+// import Header from 'components/Header';
 import Loader from 'components/Loader';
 import Modal from 'components/Modal';
 import { useState } from 'react';
@@ -22,6 +22,7 @@ const MainPage = () => {
       setIsLoading(true);
       await dispatch(dailyRateOperation(data));
       setIsModalOpen(true);
+      setIsLoading(false);
     } catch (error) {
       console.log(error);
       setIsLoading(false);
@@ -46,8 +47,8 @@ const MainPage = () => {
   const randomNotAllowed = arrayRandElement(newArrey);
 
   return (
-    <>
-      <Header setIsModalOpen={setIsModalOpen} />
+    <section className={s.containerMain}>
+      {/* <Header setIsModalOpen={setIsModalOpen} /> */}
       <Container>
         {isLoading && <Loader />}
         <main className={s.backGround}>
@@ -64,7 +65,7 @@ const MainPage = () => {
           )}
         </main>
       </Container>
-    </>
+    </section>
   );
 };
 export default MainPage;

@@ -10,19 +10,25 @@
     justify-content: center;
     align-items: center;
     padding: 0 15px 0 20px;
+    top: 10px;
   }
 }
-
+@media screen and (max-width: 767px) {
+  .flexBox {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    top: 80px;
+    left: 0;
+    position: fixed;
+    z-index: 100;
+  }
+}
 @media screen and (max-width: 767px) {
   .form {
     display: flex;
     flex-direction: column;
     background-color: #fff;
-  }
-}
-@media screen and (max-width: 767px) {
-  .fixesBox body {
-    position: fixed;
   }
 }
 @media screen and (max-width: 767px) {
@@ -38,9 +44,9 @@
 .bt.mybt {
   background-color: #fc842d;
   color: #fff;
-  width: 50px;
+  /* width: 50px;
   height: 50px;
-  border-radius: 50%;
+  border-radius: 50%; */
   font-size: 32px;
   border: none;
   margin-left: 60px;
@@ -83,6 +89,11 @@
   border-radius: 4px;
   background-color: azure;
 }
+@media screen and (max-width: 767px) {
+  .menu {
+    bottom: -74px;
+  }
+}
 .btn.buttonAdd {
   padding: 13px 50px;
   background-color: #fc842d;
@@ -110,16 +121,16 @@
 .exit {
   position: absolute;
 
-  top: 60px;
-  right: 118px;
-
+  position: absolute;
+  top: 15px;
+  right: 55px;
   border-radius: 50%;
-  border: 1px solid #00000054;
   cursor: pointer;
   vertical-align: middle;
   display: flex;
   padding: 4px;
   background: #ffffff;
+  border: none;
 }
 @media screen and (max-width: 767px) {
   body.maxBox {

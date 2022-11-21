@@ -4,7 +4,7 @@ import DiaryAddProductForm from 'components/DiaryAddProductForm/DiaryAddProductF
 import DiaryProductItem from 'components/DiaryProductItem/DiaryProductItem';
 import Container from 'components/Container';
 
-import Header from 'components/Header';
+// import Header from 'components/Header';
 
 import RightSideBar from 'components/RightSideBar/RightSideBar';
 import s from './DiaryPage.module.css';
@@ -17,8 +17,7 @@ const DiaryPage = () => {
   const moreMobile = useMediaQuery({ query: '(min-width: 768px)' });
 
   return (
-    <>
-      <Header />
+    <main>
       <Container>
         <div className={s.wrapper}>
           <div className={s.leftSide}>
@@ -36,7 +35,7 @@ const DiaryPage = () => {
           </div>
         </div>
       </Container>
-    </>
+    </main>
   );
 };
 export default DiaryPage;

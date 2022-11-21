@@ -16,6 +16,8 @@ import NotFound from 'pages/NotFound/NotFound';
 
 import { lazy } from 'react';
 import { current } from 'redux/user/user-operation';
+// import Loader from './Loader';
+import Header from './Header';
 
 const MainPage = lazy(() => import('pages/MainPage'));
 const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
@@ -36,24 +38,27 @@ export const App = () => {
   }, [dispatch, token]);
 
   return (
-    <Suspense>
-      <Routes>
-        <Route path="/">
-          <Route index element={<MainPage />} />
-          <Route path="/" element={<PublicRoute />}>
-            <Route path="/register" element={<RegisterPage />} />
-            <Route path="/login" element={<LoginPage />} />
+    <>
+      <Header />
+      <Suspense>
+        <Routes>
+          <Route path="/">
+            <Route index element={<MainPage />} />
+            <Route path="/" element={<PublicRoute />}>
+              <Route path="/register" element={<RegisterPage />} />
+              <Route path="/login" element={<LoginPage />} />
+            </Route>
+            <Route path="/" element={<PrivateRoute />}>
+              <Route path="/calculator" element={<CalculatorPage />} />
+              <Route path="/diary" element={<DiaryPage />} />
+              {!isDesctop && (
+                <Route path="/mobilnav" element={<MobilNavPage />} />
+              )}
+            </Route>
+            <Route path="*" element={<NotFound />} />
           </Route>
-          <Route path="/" element={<PrivateRoute />}>
-            <Route path="/calculator" element={<CalculatorPage />} />
-            <Route path="/diary" element={<DiaryPage />} />
-            {!isDesctop && (
-              <Route path="/mobilnav" element={<MobilNavPage />} />
-            )}
-          </Route>
-          <Route path="*" element={<NotFound />} />
-        </Route>
-      </Routes>
-    </Suspense>
+        </Routes>
+      </Suspense>
+    </>
   );
 };
