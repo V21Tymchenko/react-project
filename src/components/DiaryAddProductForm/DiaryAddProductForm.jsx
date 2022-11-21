@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import debounce from 'lodash/debounce';
-
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -10,9 +9,9 @@ import { eatenProduct } from 'redux/diary/diary-operations';
 import { useMemo } from 'react';
 import axios from 'axios';
 import { useMediaQuery } from 'react-responsive';
-// import { grey, orange } from '@mui/material/colors';
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import PropTypes from 'prop-types';
+import { grey, orange } from '@mui/material/colors';
 
 export default function DiaryAddProductForm({ setAddDairyProducts }) {
   const [name, setName] = useState('');
@@ -28,7 +27,7 @@ export default function DiaryAddProductForm({ setAddDairyProducts }) {
   const isTablet = useMediaQuery({ query: '(min-width: 768px)' });
 
   const [products, setProducts] = useState([]);
-  const notifySuccess = message => toast.error(message);
+  // const notifySuccess = message => toast.error(message);
   const fetchProducts = useMemo(
     () =>
       debounce(search => {
@@ -37,7 +36,7 @@ export default function DiaryAddProductForm({ setAddDairyProducts }) {
           .get(`https://slimmom-backend.goit.global/product?search=${search}`)
           .then(({ data }) => setProducts(data))
           .catch(err => {
-            notifySuccess(err.response.data.message);
+            toast.error(err.response.data.message);
           })
           .finally(() => {});
       }, 300),
@@ -73,6 +72,18 @@ export default function DiaryAddProductForm({ setAddDairyProducts }) {
 
   return (
     <div className={s.maxBox}>
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
       {isMobile && (
         <button className={s.exit} onClick={() => setAddDairyProducts(false)}>
           <svg
@@ -83,8 +94,8 @@ export default function DiaryAddProductForm({ setAddDairyProducts }) {
             xmlns="http://www.w3.org/2000/svg"
           >
             <g clipPath="url(#clip0_6_1348)">
-              <path d="M6 6L18 18" stroke="#212121" stroke-width="2" />
-              <path d="M6 18L18 6" stroke="#212121" stroke-width="2" />
+              <path d="M6 6L18 18" stroke="#212121" strokeWidth="2" />
+              <path d="M6 18L18 6" stroke="#212121" strokeWidth="2" />
             </g>
             <defs>
               <clipPath id="clip0_6_1348">
@@ -99,12 +110,22 @@ export default function DiaryAddProductForm({ setAddDairyProducts }) {
         className={s.form}
         component="form"
         sx={{
-          '& > :not(style)': { m: 1, width: '240px' },
+          '& > :not(style)': { m: 1, marginLeft: 0 },
+          '& #standard-basic-label': {
+            color: grey[500],
+            fontFamily: 'Arimo',
+            fontWeight: 700,
+          },
+          '& #standard-basic-label.Mui-focused': {
+            color: orange[700],
+          },
         }}
         noValidate
         autoComplete="off"
       >
         <TextField
+          color="warning"
+          sx={{ width: '240px' }}
           className={s.inName}
           type="text"
           value={name}
@@ -131,6 +152,8 @@ export default function DiaryAddProductForm({ setAddDairyProducts }) {
           </div>
         )}
         <TextField
+          color="warning"
+          sx={{ width: '106px', ml: '48px', mr: '10px' }}
           className={s.inGrams}
           type="number"
           onChange={handelChangeWeight}
@@ -139,13 +162,13 @@ export default function DiaryAddProductForm({ setAddDairyProducts }) {
           label="Grams"
           variant="standard"
         />
-        {/* {weight && name && ( */}
         {isTablet && (
           <Button
+            sx={{ width: '50px', height: '50px', borderRadius: ' 50%' }}
             type="submit"
             className={s.bt + ' ' + s.mybt}
             variant="contained"
-            disabled={!weight}
+            disabled={!weight || !name}
           >
             <svg
               width="24"
