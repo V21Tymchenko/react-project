@@ -11,7 +11,7 @@ import { BurgerBtn } from 'components/BurgerBtn/BurgerBtn';
 import { Link } from 'react-router-dom';
 import GoBack from 'components/GoBack/GoBack';
 
-const Header = ({setIsModalOpen}) => {
+const Header = ({ setIsModalOpen }) => {
   const isTablet = useMediaQuery({ query: '(min-width: 768px)' });
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
   const isDesctop = useMediaQuery({ query: '(min-width: 1280px)' });
@@ -44,5 +44,5 @@ const Header = ({setIsModalOpen}) => {
 export default Header;
 
 // Header.propTypes = {
-//   setIsModalOpen.PropTypes.func,
-// }
+//   setIsModalOpen: PropTypes.func,
+// };

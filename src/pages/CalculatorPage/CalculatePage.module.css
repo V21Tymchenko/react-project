@@ -42,6 +42,11 @@
     padding-bottom: 121px;
   }
 }
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .leftSide {
+    padding-left: 32px;
+  }
+}
 @media screen and (max-width: 767px) {
   .leftSide {
     margin-bottom: 117px;
@@ -78,10 +83,11 @@
 
 @media screen and (min-width: 1280px) {
   .containerSideBar {
-    padding: 288px 200px 396px 114px;
+    padding: 292px 123px 250px 106px;
     background-color: #f0f1f3;
     background-image: url('../../assets/images/green-desktop-sidebar.png');
-    background-size: 521px;
-    background-position: right bottom 7px;
+    background-size: 517px;
+
+    background-position: right bottom -16px;
   }
 }

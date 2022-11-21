@@ -12,6 +12,7 @@ import axios from 'axios';
 import { useMediaQuery } from 'react-responsive';
 import { grey, orange } from '@mui/material/colors';
 import { toast, ToastContainer } from 'react-toastify';
+import PropTypes from 'prop-types';
 
 export default function DiaryAddProductForm({ setAddDairyProducts }) {
   const [name, setName] = useState('');
@@ -71,50 +72,51 @@ export default function DiaryAddProductForm({ setAddDairyProducts }) {
   // });
 
   return (
-    <div className={s.maxBox}>
-      <ToastContainer
-        position="top-right"
-        autoClose={1000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
-      {isMobile && (
-        <button className={s.exit} onClick={() => setAddDairyProducts(false)}>
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <g clipPath="url(#clip0_6_1348)">
-              <path d="M6 6L18 18" stroke="#212121" strokeWidth="2" />
-              <path d="M6 18L18 6" stroke="#212121" strokeWidth="2" />
-            </g>
-            <defs>
-              <clipPath id="clip0_6_1348">
-                <rect width="24" height="24" fill="white" />
-              </clipPath>
-            </defs>
-          </svg>
-        </button>
-      )}
-      <Box
-        onSubmit={handelSubmit}
-        className={s.form}
-        component="form"
-        sx={{
-          '& > :not(style)': { m: 1, width: '240px' },
-        }}
-        noValidate
-        autoComplete="off"
-      >
+    <div className={s.fixesBox}>
+      <div className={s.maxBox}>
+        <ToastContainer
+          position="top-right"
+          autoClose={1000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
+        {isMobile && (
+          <button className={s.exit} onClick={() => setAddDairyProducts(false)}>
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g clipPath="url(#clip0_6_1348)">
+                <path d="M6 6L18 18" stroke="#212121" strokeWidth="2" />
+                <path d="M6 18L18 6" stroke="#212121" strokeWidth="2" />
+              </g>
+              <defs>
+                <clipPath id="clip0_6_1348">
+                  <rect width="24" height="24" fill="white" />
+                </clipPath>
+              </defs>
+            </svg>
+          </button>
+        )}
+        <Box
+          onSubmit={handelSubmit}
+          className={s.form}
+          component="form"
+          sx={{
+            '& > :not(style)': { m: 1, width: '240px' },
+          }}
+          noValidate
+          autoComplete="off"
+        />
         <TextField
           className={s.inName + '' + s.input + '' + s.in}
           type="text"
@@ -176,7 +178,6 @@ export default function DiaryAddProductForm({ setAddDairyProducts }) {
             },
           }}
         />
-        {/* {weight && name && ( */}
         {isTablet && (
           <Button
             type="submit"
@@ -191,26 +192,23 @@ export default function DiaryAddProductForm({ setAddDairyProducts }) {
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <path
-                d="M18.72 12.96H12.96V18.72H11.04V12.96H5.28003V11.04H11.04V5.28003H12.96V11.04H18.72V12.96Z"
-                fill="white"
-              />
+              <g clipPath="url(#clip0_6_1348)">
+                <path d="M6 6L18 18" stroke="#212121" strokeWidth="2" />
+                <path d="M6 18L18 6" stroke="#212121" strokeWidth="2" />
+              </g>
+              <defs>
+                <clipPath id="clip0_6_1348">
+                  <rect width="24" height="24" fill="white" />
+                </clipPath>
+              </defs>
             </svg>
           </Button>
         )}
-        {isMobile && (
-          <div className={s.btnContainer + ' ' + s.container}>
-            <Button
-              type="submit"
-              className={s.btn + ' ' + s.buttonAdd}
-              variant="contained"
-              disabled={!weight}
-            >
-              Add
-            </Button>
-          </div>
-        )}
-      </Box>
+      </div>
     </div>
   );
 }
+
+DiaryAddProductForm.propTypes = {
+  setAddDairyProducts: PropTypes.func,
+};
