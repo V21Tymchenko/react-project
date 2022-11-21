@@ -9,15 +9,17 @@ import Container from 'components/Container';
 import RightSideBar from 'components/RightSideBar/RightSideBar';
 import s from './DiaryPage.module.css';
 import { useMediaQuery } from 'react-responsive';
+// import { useLocation } from 'react-router-dom';
 
 const DiaryPage = () => {
   const [addDairyProducts, setAddDairyProducts] = useState(false);
+  // const location = useLocation();
 
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
   const moreMobile = useMediaQuery({ query: '(min-width: 768px)' });
 
   return (
-    <main className={s.desplay}>
+    <main className={s.main}>
       <Container>
         <div className={s.wrapper}>
           <div className={s.leftSide}>

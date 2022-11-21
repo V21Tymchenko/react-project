@@ -9,7 +9,10 @@ import { eatenProduct } from 'redux/diary/diary-operations';
 import { useMemo } from 'react';
 import axios from 'axios';
 import { useMediaQuery } from 'react-responsive';
-// import { toast, ToastContainer } from 'react-toastify';
+
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import PropTypes from 'prop-types';
 // import { grey, orange } from '@mui/material/colors';
 
@@ -35,9 +38,10 @@ export default function DiaryAddProductForm({ setAddDairyProducts }) {
         axios
           .get(`https://slimmom-backend.goit.global/product?search=${search}`)
           .then(({ data }) => setProducts(data))
-          // .catch(err => {
-          //   toast.error(err.response.data.message);
-          // })
+          .catch(err => {
+            console.log('err :', err);
+            toast.error(err.response.data.message);
+          })
           .finally(() => {});
       }, 300),
     []
@@ -66,6 +70,12 @@ export default function DiaryAddProductForm({ setAddDairyProducts }) {
     setWeight('');
   };
 
+  const checkDisabled = () => {
+    if (!weight || !name) {
+      return false;
+    }
+    return true;
+  };
   // const isTabletAndDesktop = useMediaQuery({
   //   query: '(min-width: 768px)',
   // });
@@ -99,12 +109,22 @@ export default function DiaryAddProductForm({ setAddDairyProducts }) {
           className={s.form}
           component="form"
           sx={{
-            '& > :not(style)': { m: 1, width: '240px' },
+            '& > :not(style)': { m: 1, marginLeft: 0 },
+            '& #standard-basic-label': {
+              color: grey[500],
+              fontFamily: 'Arimo',
+              fontWeight: 700,
+            },
+            '& #standard-basic-label.Mui-focused': {
+              color: orange[700],
+            },
           }}
           noValidate
           autoComplete="off"
         >
           <TextField
+            color="warning"
+            sx={{ width: '240px' }}
             className={s.inName}
             type="text"
             value={name}
@@ -131,21 +151,33 @@ export default function DiaryAddProductForm({ setAddDairyProducts }) {
             </div>
           )}
           <TextField
-            className={s.inGrams}
+            color="warning"
+            className={s.inGrams + '' + s.myInGrams}
+            sx={{
+              width: '106px',
+              mr: '10px',
+              input: {
+                '&::placeholder': {
+                  color: 'red',
+                  textAlign: 'center',
+                },
+              },
+            }}
             type="number"
             onChange={handelChangeWeight}
             value={weight}
             id="standard-basic"
             label="Grams"
+            name="grams"
             variant="standard"
           />
           {/* {weight && name && ( */}
           {isTablet && (
-            <Button
+            <button
               type="submit"
-              className={s.bt + ' ' + s.mybt}
+              disabled={!weight || !name}
+              className={checkDisabled() ? s.bt : s.disBt}
               variant="contained"
-              disabled={!weight}
             >
               <svg
                 width="24"
@@ -159,21 +191,27 @@ export default function DiaryAddProductForm({ setAddDairyProducts }) {
                   fill="white"
                 />
               </svg>
-            </Button>
+            </button>
           )}
           {isMobile && (
             <div className={s.btnContainer + ' ' + s.container}>
               <Button
                 type="submit"
+                sx={{
+                  width: '50px',
+                  height: '50px',
+                  borderRadius: ' 50%',
+                }}
                 className={s.btn + ' ' + s.buttonAdd}
                 variant="contained"
-                disabled={!weight}
+                disabled={!weight || !name}
               >
                 Add
               </Button>
             </div>
           )}
         </Box>
+        <ToastContainer position="top-right" autoClose={2000} />
       </div>
     </div>
   );

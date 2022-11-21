@@ -27,14 +27,14 @@
 .btnCloseModal {
   display: block;
     position: absolute;
-    right: 11px;
-    top: 95px;
+    right: 13px;
+    top: 20px;
     border: 0;
     background-color: #ffffff;
 }
 
 .containerTitleModal {
-  width: 350px;
+  width: 320px;
 }
 
 .titleModal {
@@ -44,7 +44,7 @@
   font-size: 18px;
   line-height: 1.44;
   color: #212121;
-  padding: 40px 37px;
+  padding: 70px 37px 40px;
 }
 
 .textKcalModal {
@@ -125,6 +125,11 @@
     height: 573px;
     padding: 64px 92px 81px;
 }
+
+.containerTitleModal {
+  width: 350px;
+}
+
 .titleModal {
   text-align: center;
   padding: 0;
