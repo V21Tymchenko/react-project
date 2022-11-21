@@ -204,6 +204,18 @@ export default function DiaryAddProductForm({ setAddDairyProducts }) {
             </svg>
           </Button>
         )}
+        {isMobile && (
+          <div className={s.btnContainer + ' ' + s.container}>
+            <Button
+              type="submit"
+              className={s.btn + ' ' + s.buttonAdd}
+              variant="contained"
+              disabled={!weight}
+            >
+              Add
+            </Button>
+          </div>
+        )}
       </div>
     </div>
   );
