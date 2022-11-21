@@ -9,9 +9,9 @@ import { eatenProduct } from 'redux/diary/diary-operations';
 import { useMemo } from 'react';
 import axios from 'axios';
 import { useMediaQuery } from 'react-responsive';
-import { toast, ToastContainer } from 'react-toastify';
+// import { toast, ToastContainer } from 'react-toastify';
 import PropTypes from 'prop-types';
-import { grey, orange } from '@mui/material/colors';
+// import { grey, orange } from '@mui/material/colors';
 
 export default function DiaryAddProductForm({ setAddDairyProducts }) {
   const [name, setName] = useState('');
@@ -35,9 +35,9 @@ export default function DiaryAddProductForm({ setAddDairyProducts }) {
         axios
           .get(`https://slimmom-backend.goit.global/product?search=${search}`)
           .then(({ data }) => setProducts(data))
-          .catch(err => {
-            toast.error(err.response.data.message);
-          })
+          // .catch(err => {
+          //   toast.error(err.response.data.message);
+          // })
           .finally(() => {});
       }, 300),
     []

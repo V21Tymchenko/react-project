@@ -40,7 +40,7 @@ export default function RegistrationForm() {
         notifySuccess();
       })
       .catch(error => console.error(error));
-    setEmail('');
+    // setEmail('');
     // setPassword('');
     // setUserName('');
   };
