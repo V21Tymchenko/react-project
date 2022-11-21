@@ -19,7 +19,7 @@ const RightSideBar = () => {
 
   // const kcal = useSelector(state => state.dailyRate.dailyRate);
   const arrNotAllowedProducts = useSelector(state =>
-    state?.dailyRate?.notAllowedProducts?.slice(0, 5)
+    state?.user?.userData?.notAllowedProducts?.slice(0, 5)
   );
   // const newArrNotAllowedProducts = [...arrNotAllowedProducts].slice(0, 5);
 

@@ -13,6 +13,7 @@ import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 import { useMediaQuery } from 'react-responsive';
+import PropTypes from 'prop-types';
 // import Loader from 'components/Loader';
 
 export default function DiaryProductItem({ setAddDairyProducts }) {
@@ -130,3 +131,7 @@ export default function DiaryProductItem({ setAddDairyProducts }) {
     </TableContainer>
   );
 }
+
+DiaryProductItem.propTypes = {
+  setAddDairyProducts: PropTypes.func,
+};

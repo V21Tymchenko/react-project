@@ -12,6 +12,7 @@ import axios from 'axios';
 import { useMediaQuery } from 'react-responsive';
 import { grey, orange } from '@mui/material/colors';
 import { toast, ToastContainer } from 'react-toastify';
+import PropTypes from 'prop-types';
 
 export default function DiaryAddProductForm({ setAddDairyProducts }) {
   const [name, setName] = useState('');
@@ -203,86 +204,11 @@ export default function DiaryAddProductForm({ setAddDairyProducts }) {
             </svg>
           </Button>
         )}
-        <Box
-          onSubmit={handelSubmit}
-          className={s.form}
-          component="form"
-          sx={{
-            '& > :not(style)': { m: 1, width: '240px' },
-          }}
-          noValidate
-          autoComplete="off"
-        >
-          <TextField
-            className={s.inName}
-            type="text"
-            value={name}
-            name="name"
-            onChange={handelChangeName}
-            id="standard-basic"
-            label="Enter product name"
-            variant="standard"
-          />
-          {products && name && isOpen && (
-            <div className={s.menu}>
-              {products.map(e => (
-                <button
-                  type="button"
-                  name={e.title.ru}
-                  key={e._id}
-                  id={e._id}
-                  onClick={handlClik}
-                >
-                  {e.title.ru}
-                </button>
-              ))}
-            </div>
-          )}
-          <TextField
-            className={s.inGrams}
-            type="number"
-            onChange={handelChangeWeight}
-            value={weight}
-            id="standard-basic"
-            label="Grams"
-            variant="standard"
-          />
-          {/* 
-          {isTablet && (
-            <Button
-              type="submit"
-              className={s.bt + ' ' + s.mybt}
-              variant="contained"
-              disabled={!weight}
-            >
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M18.72 12.96H12.96V18.72H11.04V12.96H5.28003V11.04H11.04V5.28003H12.96V11.04H18.72V12.96Z"
-                  fill="white"
-                />
-              </svg>
-            </Button>
-          )} */}
-          {isMobile && (
-            <div className={s.btnContainer + ' ' + s.container}>
-              <Button
-                type="submit"
-                className={s.btn + ' ' + s.buttonAdd}
-                variant="contained"
-                disabled={!weight}
-              >
-                Add
-              </Button>
-            </div>
-          )}
-        </Box>
       </div>
     </div>
   );
 }
+
+DiaryAddProductForm.propTypes = {
+  setAddDairyProducts: PropTypes.func,
+};

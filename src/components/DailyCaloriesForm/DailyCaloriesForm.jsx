@@ -12,7 +12,6 @@ import { grey, orange } from '@mui/material/colors';
 import PropTypes from 'prop-types';
 
 const DailyCaloriesForm = ({ handlesetDataToApi }) => {
-  // const [isLoading, setIsLoading] = useState(false);
   const [values, setValues] = useState({
     weight: '',
     height: '',
@@ -265,6 +264,6 @@ const DailyCaloriesForm = ({ handlesetDataToApi }) => {
 export default DailyCaloriesForm;
 
 DailyCaloriesForm.propTypes = {
-  setIsModalOpen: PropTypes.func,
+  // setIsModalOpen: PropTypes.func,
   handlesetDataToApi: PropTypes.func,
 };
