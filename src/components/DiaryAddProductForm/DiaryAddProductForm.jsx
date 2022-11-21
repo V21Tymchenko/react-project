@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import debounce from 'lodash/debounce';
-
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -10,9 +9,9 @@ import { eatenProduct } from 'redux/diary/diary-operations';
 import { useMemo } from 'react';
 import axios from 'axios';
 import { useMediaQuery } from 'react-responsive';
-// import { grey, orange } from '@mui/material/colors';
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import PropTypes from 'prop-types';
+import { grey, orange } from '@mui/material/colors';
 
 export default function DiaryAddProductForm({ setAddDairyProducts }) {
   const [name, setName] = useState('');
@@ -28,7 +27,7 @@ export default function DiaryAddProductForm({ setAddDairyProducts }) {
   const isTablet = useMediaQuery({ query: '(min-width: 768px)' });
 
   const [products, setProducts] = useState([]);
-  const notifySuccess = message => toast.error(message);
+  // const notifySuccess = message => toast.error(message);
   const fetchProducts = useMemo(
     () =>
       debounce(search => {
@@ -37,7 +36,7 @@ export default function DiaryAddProductForm({ setAddDairyProducts }) {
           .get(`https://slimmom-backend.goit.global/product?search=${search}`)
           .then(({ data }) => setProducts(data))
           .catch(err => {
-            notifySuccess(err.response.data.message);
+            toast.error(err.response.data.message);
           })
           .finally(() => {});
       }, 300),

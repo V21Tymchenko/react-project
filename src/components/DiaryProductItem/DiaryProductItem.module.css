@@ -1,6 +1,6 @@
-/* .tabl.mytabl {
-
-} */
+.tabl.mytabl {
+  margin-top: 60px;
+}
 
 @media screen and (min-width: 768px) {
   .tabl.mytabl {
@@ -37,16 +37,15 @@
   display: inline-block;
 }
 
+.item {
+  font-family: 'Verdana';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.04em;
 
-.item{
-font-family: 'Verdana';
-font-style: normal;
-font-weight: 400;
-font-size: 14px;
-line-height: 17px;
-letter-spacing: 0.04em;
-
-color: #212121;
+  color: #212121;
 }
 
 .add {
@@ -68,4 +67,3 @@ color: #212121;
   transition: all 250ms linear;
   transform: scale(1, 1);
 }
-
