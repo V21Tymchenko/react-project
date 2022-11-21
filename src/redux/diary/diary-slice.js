@@ -3,7 +3,7 @@ import { fetchStatus } from './fetchStatus';
 import { dayInfo, eatenProduct, removeProduct } from './diary-operations';
 
 const initialState = {
-  status: null,
+  status: '',
   timeDay: null,
   eatenProducts: [],
   daySummary: null,
@@ -39,12 +39,17 @@ const products = createSlice({
         action.payload.newDay?.eatenProducts;
       state.daySummary = action.payload.daySummary || action.payload.newSummary;
       state.products = null;
+      state.dayInform = action.payload.newDay?.id || action.payload.day?.id;
     },
     [eatenProduct.rejected](state) {
       state.status = fetchStatus.error;
     },
 
+    [dayInfo.pending](state) {
+      state.status = fetchStatus.loading;
+    },
     [dayInfo.fulfilled](state, action) {
+      state.status = fetchStatus.success;
       state.dayInform = action.payload.id;
       state.daySummary = action.payload.daySummary || action.payload;
       state.eatenProducts = action.payload.eatenProducts;

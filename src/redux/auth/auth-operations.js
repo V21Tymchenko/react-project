@@ -27,7 +27,7 @@ export const register = createAsyncThunk(
       const response = await registerNewUser(data);
       return response;
     } catch (e) {
-      toast.error('Something wrong!', {
+      toast.error(e.response.data.message, {
         position: 'top-right',
       });
       return thunkAPI.rejectWithValue(e.message);

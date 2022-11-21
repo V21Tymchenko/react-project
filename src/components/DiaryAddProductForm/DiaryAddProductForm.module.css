@@ -10,15 +10,6 @@
     justify-content: center;
     align-items: center;
     padding: 0 15px 0 20px;
-    position: fixed;
-    z-index: 999;
-    /* left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0; */
-    /* background: blue; */
-
-    /* margin-bottom: -100px; */
   }
 }
 
@@ -29,7 +20,21 @@
     background-color: #fff;
   }
 }
-
+@media screen and (max-width: 767px) {
+  .fixesBox body {
+    position: fixed;
+  }
+}
+@media screen and (max-width: 767px) {
+  .fixesBox {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 2;
+  }
+}
 .bt.mybt {
   background-color: #fc842d;
   color: #fff;
@@ -39,7 +44,6 @@
   font-size: 32px;
   border: none;
   margin-left: 60px;
-  /* background: #c4c4c4; */
   box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
   cursor: pointer;
 }
@@ -51,7 +55,7 @@
   /* background-color: #fff; */
   fill: #fc842d;
 }
-.inGrams {
+.inGrams.myInGrams {
   width: 107px;
   margin-left: 48px;
   border: none;
@@ -62,8 +66,8 @@
 .addForm {
   margin-bottom: 60px;
 }
-.inName {
-  width: 240px;
+.inName.input#in {
+  width: 40px;
   border: none;
   border-bottom: 1px #e0e0e0 solid;
 }
@@ -122,4 +126,15 @@
     overflow-y: hidden;
     height: 100%;
   }
+}
+.buttonProducts {
+  background: #ffffff;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border: 0.5px solid black;
+  transition: all 300ms linear;
+}
+.buttonProducts:hover,
+.buttonProducts:focus {
+  background: #f0f1f3;
 }
