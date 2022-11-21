@@ -39,7 +39,7 @@ const products = createSlice({
         action.payload.newDay?.eatenProducts;
       state.daySummary = action.payload.daySummary || action.payload.newSummary;
       state.products = null;
-      state.dayInform = action.payload.newDay.id;
+      state.dayInform = action.payload.newDay?.id || action.payload.day?.id;
     },
     [eatenProduct.rejected](state) {
       state.status = fetchStatus.error;

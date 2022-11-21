@@ -10,8 +10,8 @@ import { eatenProduct } from 'redux/diary/diary-operations';
 import { useMemo } from 'react';
 import axios from 'axios';
 import { useMediaQuery } from 'react-responsive';
-import { grey, orange } from '@mui/material/colors';
-import { toast, ToastContainer } from 'react-toastify';
+// import { grey, orange } from '@mui/material/colors';
+import { toast } from 'react-toastify';
 import PropTypes from 'prop-types';
 
 export default function DiaryAddProductForm({ setAddDairyProducts }) {
@@ -72,53 +72,40 @@ export default function DiaryAddProductForm({ setAddDairyProducts }) {
   // });
 
   return (
-    <div className={s.fixesBox}>
-      <div className={s.maxBox}>
-        <ToastContainer
-          position="top-right"
-          autoClose={1000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="light"
-        />
-        {isMobile && (
-          <button className={s.exit} onClick={() => setAddDairyProducts(false)}>
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <g clipPath="url(#clip0_6_1348)">
-                <path d="M6 6L18 18" stroke="#212121" strokeWidth="2" />
-                <path d="M6 18L18 6" stroke="#212121" strokeWidth="2" />
-              </g>
-              <defs>
-                <clipPath id="clip0_6_1348">
-                  <rect width="24" height="24" fill="white" />
-                </clipPath>
-              </defs>
-            </svg>
-          </button>
-        )}
-        <Box
-          onSubmit={handelSubmit}
-          className={s.form}
-          component="form"
-          sx={{
-            '& > :not(style)': { m: 1, width: '240px' },
-          }}
-          noValidate
-          autoComplete="off"
-        />
+    <div className={s.maxBox}>
+      {isMobile && (
+        <button className={s.exit} onClick={() => setAddDairyProducts(false)}>
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g clipPath="url(#clip0_6_1348)">
+              <path d="M6 6L18 18" stroke="#212121" stroke-width="2" />
+              <path d="M6 18L18 6" stroke="#212121" stroke-width="2" />
+            </g>
+            <defs>
+              <clipPath id="clip0_6_1348">
+                <rect width="24" height="24" fill="white" />
+              </clipPath>
+            </defs>
+          </svg>
+        </button>
+      )}
+      <Box
+        onSubmit={handelSubmit}
+        className={s.form}
+        component="form"
+        sx={{
+          '& > :not(style)': { m: 1, width: '240px' },
+        }}
+        noValidate
+        autoComplete="off"
+      >
         <TextField
-          className={s.inName + '' + s.input + '' + s.in}
+          className={s.inName}
           type="text"
           value={name}
           name="name"
@@ -126,22 +113,12 @@ export default function DiaryAddProductForm({ setAddDairyProducts }) {
           id="standard-basic"
           label="Enter product name"
           variant="standard"
-          color="warning"
-          sx={{
-            '& #standard-basic-label': {
-              color: grey[500],
-              fontFamily: 'Arimo',
-              fontWeight: 700,
-            },
-            '& #standard-basic-label.Mui-focused': {
-              color: orange[700],
-            },
-          }}
         />
         {products && name && isOpen && (
           <div className={s.menu}>
             {products.map(e => (
               <button
+                className={s.buttonProducts}
                 type="button"
                 name={e.title.ru}
                 key={e._id}
@@ -154,36 +131,21 @@ export default function DiaryAddProductForm({ setAddDairyProducts }) {
           </div>
         )}
         <TextField
-          className={s.inGrams + '' + s.myInGrams}
+          className={s.inGrams}
           type="number"
           onChange={handelChangeWeight}
           value={weight}
           id="standard-basic"
           label="Grams"
           variant="standard"
-          color="warning"
-          width="800"
-          sx={{
-            '& #standard-basic.MuiInputBase-input MuiInput-input css-1x51dt5-MuiInputBase-input-MuiInput-input':
-              {
-                width: 7,
-              },
-            '& #standard-basic-label': {
-              color: grey[500],
-              fontFamily: 'Arimo',
-              fontWeight: 700,
-            },
-            '& #standard-basic-label.Mui-focused': {
-              color: orange[700],
-            },
-          }}
         />
+        {/* {weight && name && ( */}
         {isTablet && (
           <Button
             type="submit"
             className={s.bt + ' ' + s.mybt}
             variant="contained"
-            disabled={!weight || !name}
+            disabled={!weight}
           >
             <svg
               width="24"
@@ -192,15 +154,10 @@ export default function DiaryAddProductForm({ setAddDairyProducts }) {
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <g clipPath="url(#clip0_6_1348)">
-                <path d="M6 6L18 18" stroke="#212121" strokeWidth="2" />
-                <path d="M6 18L18 6" stroke="#212121" strokeWidth="2" />
-              </g>
-              <defs>
-                <clipPath id="clip0_6_1348">
-                  <rect width="24" height="24" fill="white" />
-                </clipPath>
-              </defs>
+              <path
+                d="M18.72 12.96H12.96V18.72H11.04V12.96H5.28003V11.04H11.04V5.28003H12.96V11.04H18.72V12.96Z"
+                fill="white"
+              />
             </svg>
           </Button>
         )}
@@ -216,7 +173,7 @@ export default function DiaryAddProductForm({ setAddDairyProducts }) {
             </Button>
           </div>
         )}
-      </div>
+      </Box>
     </div>
   );
 }
