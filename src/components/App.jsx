@@ -51,9 +51,6 @@ export const App = () => {
             <Route path="/" element={<PrivateRoute />}>
               <Route path="/calculator" element={<CalculatorPage />} />
               <Route path="/diary" element={<DiaryPage />} />
-              {!isDesctop && (
-                <Route path="/mobilnav" element={<MobilNavPage />} />
-              )}
             </Route>
             <Route path="*" element={<NotFound />} />
           </Route>
