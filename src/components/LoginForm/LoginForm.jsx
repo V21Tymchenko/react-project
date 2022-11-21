@@ -68,10 +68,10 @@ const LoginForm = () => {
             <NavLink className={s.link} to="/register">
               Register
             </NavLink>
-            <ToastContainer autoClose={2000} />
           </div>
         </form>
       </div>
+      <ToastContainer autoClose={2000} />
     </section>
   );
 };
