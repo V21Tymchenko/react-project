@@ -1,5 +1,5 @@
 import Container from 'components/Container';
-import Header from 'components/Header';
+// import Header from 'components/Header';
 import Modal from 'components/Modal';
 import RightSideBar from 'components/RightSideBar';
 import { useState } from 'react';
@@ -15,10 +15,6 @@ const CalculatorPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const userid = useSelector(selectUserId);
-
-  // const arrNotAllowedProducts = useSelector(state =>
-  //   state?.user?.userData?.notAllowedProducts?.slice(0, 5)
-  // );
 
   const dispatch = useDispatch();
 
@@ -37,20 +33,9 @@ const CalculatorPage = () => {
     state?.user?.userData?.notAllowedProducts?.slice(0, 5)
   );
 
-  // function arrayRandElement(arr) {
-  //   let newRand = [];
-  //   for (let i = 0; i < 5; i += 1) {
-  //     var rand = Math.floor(Math.random() * arr?.length);
-  //     newRand.push(arr[rand]);
-  //   }
-  //   return newRand;
-  // }
-  // const randomNotAllowed = arrayRandElement(notAllowedProd);
-
   return (
-    <>
-      <Header />
-      <Container>
+    <Container>
+      <main className={s.containerMain}>
         <div className={s.containerFlex}>
           <div className={s.leftSide}>
             <h1 className={s.title}>
@@ -72,8 +57,8 @@ const CalculatorPage = () => {
             <RightSideBar />
           </div>
         </div>
-      </Container>
-    </>
+      </main>
+    </Container>
   );
 };
 export default CalculatorPage;
