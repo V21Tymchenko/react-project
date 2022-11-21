@@ -41,8 +41,8 @@ export default function RegistrationForm() {
       })
       .catch(error => console.error(error));
     setEmail('');
-    setPassword('');
-    setUserName('');
+    // setPassword('');
+    // setUserName('');
   };
 
   return (

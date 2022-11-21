@@ -10,10 +10,6 @@
   }
 }
 
-/* .leftSide {
-padding-bottom: 168px;
-} */
-
 @media screen and (min-width: 768px) {
   .leftSide {
     padding-bottom: 55px;
@@ -29,6 +25,7 @@ padding-bottom: 168px;
 
 .containerSideBar {
   padding: 40px 20px 84px 20px;
+  margin-right: -35px;
   background-color: #f0f1f3;
 }
 
@@ -45,10 +42,10 @@ padding-bottom: 168px;
 
 @media screen and (min-width: 1280px) {
   .containerSideBar {
-    padding: 257px 123px 392px 106px;
+    padding: 292px 123px 250px 106px;
     background-color: #f0f1f3;
     background-image: url('../../assets/images/green-desktop-sidebar.png');
     background-size: 517px;
-    background-position: right bottom 118px;
+    background-position: right bottom -16px;
   }
 }

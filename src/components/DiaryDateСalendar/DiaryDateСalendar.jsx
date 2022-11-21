@@ -10,6 +10,7 @@ import { timeSet } from 'redux/diary/diary-slice';
 import { dayInfo } from 'redux/diary/diary-operations';
 import s from 'components/DiaryDateСalendar/DiaryDateСalendar.module.css';
 import { stateAuthToken } from 'redux/auth/auth-selectors';
+import { grey, orange } from '@mui/material/colors';
 
 export default function DiaryDateСalendar() {
   const [value, setValue] = React.useState(dayjs(new Date()));
@@ -27,13 +28,48 @@ export default function DiaryDateСalendar() {
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       {/* <Stack spacing={1}> */}
       <DesktopDatePicker
+        inputFormat="MM.DD.YYYY"
         className={s.calendar + ' ' + s.mycalendar}
         value={value}
         minDate={dayjs('2017-01-01')}
         onChange={newValue => {
           setValue(newValue);
         }}
-        renderInput={params => <TextField {...params} />}
+        sx={{
+          // width: '30px',
+          '& #standard-basic-label': {
+            color: grey[500],
+            fontFamily: 'Arimo',
+            fontWeight: 700,
+          },
+          '& #standard-basic-label.Mui-focused': {
+            color: orange[700],
+          },
+        }}
+        renderInput={params => (
+          <TextField
+            {...params}
+            sx={{
+              border: 'none',
+              width: '300px',
+
+              input: {
+                fontSize: '40px',
+                fontWeight: 600,
+              },
+
+              '> div::before': {
+                display: 'none',
+              },
+
+              '> div::after': {
+                display: 'none',
+              },
+            }}
+            label={null}
+            variant="standard"
+          />
+        )}
       />
       {/* </Stack> */}
     </LocalizationProvider>

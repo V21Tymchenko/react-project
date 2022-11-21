@@ -10,6 +10,9 @@ import { eatenProduct } from 'redux/diary/diary-operations';
 import { useMemo } from 'react';
 import axios from 'axios';
 import { useMediaQuery } from 'react-responsive';
+// import { grey, orange } from '@mui/material/colors';
+import { toast } from 'react-toastify';
+import PropTypes from 'prop-types';
 
 export default function DiaryAddProductForm({ setAddDairyProducts }) {
   const [name, setName] = useState('');
@@ -25,7 +28,7 @@ export default function DiaryAddProductForm({ setAddDairyProducts }) {
   const isTablet = useMediaQuery({ query: '(min-width: 768px)' });
 
   const [products, setProducts] = useState([]);
-
+  const notifySuccess = message => toast.error(message);
   const fetchProducts = useMemo(
     () =>
       debounce(search => {
@@ -34,7 +37,7 @@ export default function DiaryAddProductForm({ setAddDairyProducts }) {
           .get(`https://slimmom-backend.goit.global/product?search=${search}`)
           .then(({ data }) => setProducts(data))
           .catch(err => {
-            console.log(err);
+            notifySuccess(err.response.data.message);
           })
           .finally(() => {});
       }, 300),
@@ -115,6 +118,7 @@ export default function DiaryAddProductForm({ setAddDairyProducts }) {
           <div className={s.menu}>
             {products.map(e => (
               <button
+                className={s.buttonProducts}
                 type="button"
                 name={e.title.ru}
                 key={e._id}
@@ -173,3 +177,7 @@ export default function DiaryAddProductForm({ setAddDairyProducts }) {
     </div>
   );
 }
+
+DiaryAddProductForm.propTypes = {
+  setAddDairyProducts: PropTypes.func,
+};
