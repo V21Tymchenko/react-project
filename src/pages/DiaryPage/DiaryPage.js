@@ -19,7 +19,7 @@ const DiaryPage = () => {
   const moreMobile = useMediaQuery({ query: '(min-width: 768px)' });
 
   return (
-    <main>
+    <main className={s.main}>
       <Container>
         <div className={s.wrapper}>
           <div className={s.leftSide}>

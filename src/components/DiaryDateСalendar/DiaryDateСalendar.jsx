@@ -52,7 +52,6 @@ export default function DiaryDateСalendar() {
             sx={{
               div: {
                 border: 'none',
-                width: '770px',
               },
 
               input: {

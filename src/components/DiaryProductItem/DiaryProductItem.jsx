@@ -20,6 +20,7 @@ export default function DiaryProductItem({ setAddDairyProducts }) {
   const { eatenProducts } = useSelector(state => state.diary);
 
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
+
   const dayId = useSelector(state => state.diary.dayInform);
   const dispatch = useDispatch();
   // useEffect(() => {}, [eatenProducts]);
@@ -33,7 +34,13 @@ export default function DiaryProductItem({ setAddDairyProducts }) {
       <Table sx={{ maxWidth: 623 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell sx={{ fontFamily: 'Arimo', fontWeight: 700 }}>
+            <TableCell
+              sx={{
+                fontFamily: 'Arimo',
+                fontWeight: 700,
+                padding: '4px',
+              }}
+            >
               Products
             </TableCell>
             <TableCell
@@ -41,6 +48,7 @@ export default function DiaryProductItem({ setAddDairyProducts }) {
               sx={{
                 fontFamily: 'Arimo',
                 fontWeight: 700,
+                padding: '2px',
               }}
             >
               Gramm
@@ -50,6 +58,7 @@ export default function DiaryProductItem({ setAddDairyProducts }) {
               sx={{
                 fontFamily: 'Arimo',
                 fontWeight: 700,
+                padding: '2px',
               }}
             >
               Calories
@@ -67,25 +76,37 @@ export default function DiaryProductItem({ setAddDairyProducts }) {
                 fontWeight: 700,
               }}
             >
-              <TableCell className={s.item} component="th" scope="row">
+              <TableCell
+                className={s.item}
+                component="th"
+                scope="row"
+                sx={{ padding: '4px' }}
+              >
                 {row.title}
               </TableCell>
 
-              <TableCell className={s.item} align="right">
+              <TableCell
+                className={s.item}
+                align="right"
+                sx={{ padding: '2px' }}
+              >
                 {row.weight} <span>g</span>
               </TableCell>
 
-              <TableCell className={s.item} align="right">
+              <TableCell
+                className={s.item}
+                align="right"
+                sx={{ padding: '2px' }}
+              >
                 {Math.round(row.kcal)} <span>kcal</span>
               </TableCell>
 
-              <TableCell align="right">
+              <TableCell align="right" sx={{ padding: 0 }}>
                 {
                   <IconButton
                     type="button"
                     onClick={() => handlClick(row.id)}
                     aria-label="delete"
-                    // color="primary"
                   >
                     <DeleteIcon />
                   </IconButton>
