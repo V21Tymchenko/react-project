@@ -33,12 +33,7 @@ export default function DiaryProductItem({ setAddDairyProducts }) {
       <Table sx={{ maxWidth: 623 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell
-              sx={{
-                fontFamily: 'Arimo',
-                fontWeight: 700,
-              }}
-            >
+            <TableCell sx={{ fontFamily: 'Arimo', fontWeight: 700 }}>
               Products
             </TableCell>
             <TableCell
