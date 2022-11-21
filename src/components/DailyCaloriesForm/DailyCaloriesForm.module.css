@@ -5,6 +5,11 @@
 
   gap: 30px;
 }
+@media screen and (max-width: 767px) {
+  .form {
+    padding-left: 20px;
+  }
+}
 .input {
   width: 240px;
 }

@@ -22,6 +22,7 @@ const MainPage = () => {
       setIsLoading(true);
       await dispatch(dailyRateOperation(data));
       setIsModalOpen(true);
+      setIsLoading(false);
     } catch (error) {
       console.log(error);
       setIsLoading(false);
@@ -46,7 +47,7 @@ const MainPage = () => {
   const randomNotAllowed = arrayRandElement(newArrey);
 
   return (
-    <>
+    <div>
       <Header setIsModalOpen={setIsModalOpen} />
       <Container>
         {isLoading && <Loader />}
@@ -64,7 +65,7 @@ const MainPage = () => {
           )}
         </main>
       </Container>
-    </>
+    </div>
   );
 };
 export default MainPage;

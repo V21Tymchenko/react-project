@@ -25,7 +25,12 @@
 }
 
 .btnCloseModal {
-  display: none;
+  display: block;
+    position: absolute;
+    right: 11px;
+    top: 95px;
+    border: 0;
+    background-color: #ffffff;
 }
 
 .containerTitleModal {
@@ -106,12 +111,8 @@
 @media screen and (min-width: 768px){
 
   .btnCloseModal {
-    display: block;
-    position: absolute;
     right: 20px;
     top: 20px;
-    border: 0;
-    background-color: #ffffff;
   }
   
   .btnCloseModal:hover,
