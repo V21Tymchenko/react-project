@@ -65,12 +65,20 @@
   }
 }
 
-.containerSideBar {
-  padding: 40px 20px 84px 20px;
-  margin-right: -35px;
-  background-color: #f0f1f3;
+@media screen and (min-width: 1200px) {
+  .containerSideBar {
+    padding: 40px 20px 84px 20px;
+    margin-right: -35px;
+    background-color: #f0f1f3;
+  }
 }
+@media screen and (min-width: 320px) and (max-width: 1279px) {
+  .containerSideBar {
+    padding: 40px 20px 84px 20px;
 
+    background-color: #f0f1f3;
+  }
+}
 @media screen and (min-width: 768px) {
   .containerSideBar {
     padding: 80px 80px 80px 32px;
