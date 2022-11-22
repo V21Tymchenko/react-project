@@ -39,7 +39,6 @@ export default function DiaryAddProductForm({ setAddDairyProducts }) {
           .get(`https://slimmom-backend.goit.global/product?search=${search}`)
           .then(({ data }) => setProducts(data))
           .catch(err => {
-            console.log('err :', err);
             toast.error(err.response.data.message);
           })
           .finally(() => {});

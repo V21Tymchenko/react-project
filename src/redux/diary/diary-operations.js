@@ -28,7 +28,6 @@ export async function postDayInfo(body) {
 }
 
 async function remove(body) {
-  console.log('operation data2  :', body);
   const { data } = await axios.delete(
     'https://slimmom-backend.goit.global/day',
     { data: body }
