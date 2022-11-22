@@ -1,5 +1,3 @@
-// import Loader from 'components/Loader';
-// import React, { Suspense } from 'react';
 import Loader from 'components/Loader';
 import { Suspense } from 'react';
 import { useSelector } from 'react-redux';

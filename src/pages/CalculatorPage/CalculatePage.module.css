@@ -97,7 +97,7 @@
     background-color: #f0f1f3;
     background-image: url('../../assets/images/green-desktop-sidebar.png');
     background-size: 600px;
-    background-position: right bottom 44px;
+    background-position: right bottom -71px;
   }
 }
 @media screen and (min-width: 1280px) {

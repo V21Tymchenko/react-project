@@ -31,6 +31,7 @@ export default function DiaryDateСalendar() {
         className={s.calendar + ' ' + s.mycalendar}
         value={value}
         minDate={dayjs('2017-01-01')}
+        maxDate={dayjs(new Date())}
         onChange={newValue => {
           setValue(newValue);
         }}

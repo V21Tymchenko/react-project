@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import debounce from 'lodash/debounce';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
@@ -9,8 +9,10 @@ import { eatenProduct } from 'redux/diary/diary-operations';
 import { useMemo } from 'react';
 import axios from 'axios';
 import { useMediaQuery } from 'react-responsive';
+
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
 import PropTypes from 'prop-types';
 import { grey, orange } from '@mui/material/colors';
 
@@ -35,13 +37,25 @@ export default function DiaryAddProductForm({ setAddDairyProducts }) {
           .get(`https://slimmom-backend.goit.global/product?search=${search}`)
           .then(({ data }) => setProducts(data))
           .catch(err => {
-            console.log('err :', err);
             toast.error(err.response.data.message);
           })
           .finally(() => {});
       }, 300),
     []
   );
+
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  });
+
+  const handleKeyDown = e => {
+    if (e.code === 'Escape') {
+      setIsOpen(false);
+    }
+  };
 
   const handelChangeName = e => {
     setName(e.target.value);
@@ -86,8 +100,8 @@ export default function DiaryAddProductForm({ setAddDairyProducts }) {
               xmlns="http://www.w3.org/2000/svg"
             >
               <g clipPath="url(#clip0_6_1348)">
-                <path d="M6 6L18 18" stroke="#212121" stroke-width="2" />
-                <path d="M6 18L18 6" stroke="#212121" stroke-width="2" />
+                <path d="M6 6L18 18" stroke="#212121" strokeWidth="2" />
+                <path d="M6 18L18 6" stroke="#212121" strokeWidth="2" />
               </g>
               <defs>
                 <clipPath id="clip0_6_1348">
@@ -107,6 +121,7 @@ export default function DiaryAddProductForm({ setAddDairyProducts }) {
               color: grey[500],
               fontFamily: 'Arimo',
               fontWeight: 700,
+              position: 'relative',
             },
             '& #standard-basic-label.Mui-focused': {
               color: orange[700],
@@ -164,7 +179,6 @@ export default function DiaryAddProductForm({ setAddDairyProducts }) {
             name="grams"
             variant="standard"
           />
-          {/* {weight && name && ( */}
           {isTablet && (
             <button
               type="submit"

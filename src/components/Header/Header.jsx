@@ -19,7 +19,7 @@ const Header = ({ setIsModalOpen }) => {
   const token = useSelector(stateAuthToken);
   const location = useLocation();
 
-  console.log('location', location.state?.from);
+
 
   const handleMenuTogle = () => setIsMobilMenu(prev => !prev);
 

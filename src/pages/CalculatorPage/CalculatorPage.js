@@ -10,7 +10,7 @@ import DailyCaloriesForm from 'components/DailyCaloriesForm/DailyCaloriesForm';
 
 import { handlesetDataToApiWithId } from 'redux/user/user-operation';
 import { selectUserId } from 'redux/user/user-selectors';
-import { useLocation } from 'react-router-dom';
+// import { useLocation } from 'react-router-dom';
 
 const CalculatorPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -18,7 +18,7 @@ const CalculatorPage = () => {
   const userid = useSelector(selectUserId);
 
   const dispatch = useDispatch();
-  const location = useLocation();
+  // const location = useLocation();
 
   async function handlesetDataToApiId(data) {
     try {

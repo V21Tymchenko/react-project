@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { toast } from 'react-toastify';
 import { token } from 'redux/auth/auth-operations';
 
 const { createAsyncThunk } = require('@reduxjs/toolkit');
@@ -27,7 +28,6 @@ export async function postDayInfo(body) {
 }
 
 async function remove(body) {
-  console.log('operation data2  :', body);
   const { data } = await axios.delete(
     'https://slimmom-backend.goit.global/day',
     { data: body }
@@ -55,6 +55,9 @@ export const eatenProduct = createAsyncThunk(
       const response = await postDay(data);
       return response;
     } catch (e) {
+      toast.error(e.response.data.message, {
+        position: 'top-right',
+      });
       return thunkAPI.rejectWithValue(e.message);
     }
   }
