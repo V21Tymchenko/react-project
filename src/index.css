@@ -10,6 +10,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-family: 'Arimo', sans-serif;
   font-family: 'Raleway', sans-serif;
+  position: relative;
+  /* overflow: hidden; */
 }
 
 code {
@@ -57,4 +59,24 @@ a {
 }
 .active {
   color: #212121;
+}
+
+/* Libraries */
+
+.MuiFormControl-root.MuiTextField-root.DiaryAddProductForm_inName__-tf4I.css-9nhbtl-MuiFormControl-root-MuiTextField-root {
+  margin-right: 48px;
+}
+
+/* .MuiFormLabel-root.MuiInputLabel-root.MuiInputLabel-formControl.MuiInputLabel-animated.MuiInputLabel-shrink.MuiInputLabel-standard.MuiFormLabel-colorWarning.MuiFormLabel-filled.MuiInputLabel-root.MuiInputLabel-formControl.MuiInputLabel-animated.MuiInputLabel-shrink.MuiInputLabel-standard.css-1r74e2h-MuiFormLabel-root-MuiInputLabel-root.MuiFormLabel-filled {
+  left: 50px;
+ 
+} */
+.muiformlabel-root.muiinputlabel-root.muiinputlabel-formcontrol.muiinputlabel-animated.muiinputlabel-shrink.muiinputlabel-standard.muiformlabel-colorwarning.muiinputlabel-root.muiinputlabel-formcontrol.muiinputlabel-animated.muiinputlabel-shrink.muiinputlabel-standard.css-1r74e2h-muiformlabel-root-muiinputlabel-root[name='grams'] {
+  /* left: 170px; */
+}
+[name='grams'] {
+  left: 170px;
+}
+.MuiFormLabel-root.MuiInputLabel-root.MuiInputLabel-formControl.MuiInputLabel-animated.MuiInputLabel-standard.MuiFormLabel-colorWarning.MuiInputLabel-root.MuiInputLabel-formControl.MuiInputLabel-animated.MuiInputLabel-standard.css-18nu0jg-MuiFormLabel-root-MuiInputLabel-root[label='Grams']::placeholder {
+  left: 50px;
 }

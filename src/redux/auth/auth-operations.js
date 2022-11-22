@@ -1,7 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { omit } from 'lodash';
-import { handlesetDataToApiWithId } from 'redux/user/user-operation';
+import { toast } from 'react-toastify';
+import { handlesetDataToApiWithId } from '../user/user-operation';
 
 export const token = {
   set(token) {
@@ -26,6 +27,9 @@ export const register = createAsyncThunk(
       const response = await registerNewUser(data);
       return response;
     } catch (e) {
+      toast.error(e.response.data.message, {
+        position: 'top-right',
+      });
       return thunkAPI.rejectWithValue(e.message);
     }
   }
@@ -50,6 +54,7 @@ export const login = createAsyncThunk(
         userData.height &&
         userData.age &&
         userData.bloodType;
+
       if (!response.dailyRate && isUserDataFilled) {
         dispatch(
           handlesetDataToApiWithId({
@@ -58,9 +63,17 @@ export const login = createAsyncThunk(
           })
         );
       }
-
+      // if (response.status === 409) {
+      //   toast.error('You are already registered', {
+      //     position: 'top-right',
+      //   });
+      // }
       return response;
     } catch (e) {
+      toast.error('Something wrong!', {
+        position: 'top-right',
+      });
+
       return rejectWithValue(e.message);
     }
   }

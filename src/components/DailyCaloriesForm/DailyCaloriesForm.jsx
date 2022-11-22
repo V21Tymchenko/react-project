@@ -8,9 +8,10 @@ import {
 } from '@mui/material';
 import { useState } from 'react';
 import s from './DailyCaloriesForm.module.css';
-import { orange } from '@mui/material/colors';
+import { grey, orange } from '@mui/material/colors';
+import PropTypes from 'prop-types';
 
-const DailyCaloriesForm = ({ handlesetDataToApi, setIsModalOpen }) => {
+const DailyCaloriesForm = ({ handlesetDataToApi }) => {
   const [values, setValues] = useState({
     weight: '',
     height: '',
@@ -21,15 +22,21 @@ const DailyCaloriesForm = ({ handlesetDataToApi, setIsModalOpen }) => {
 
   const handleChange = event => {
     const { name, value } = event.target;
-    setValues(prev => ({ ...prev, [name]: Number(value) }));
+    setValues(prev => ({ ...prev, [name]: value }));
   };
 
-  const formSubmit = evt => {
+  async function formSubmit(evt) {
     evt.preventDefault();
-    handlesetDataToApi(values);
+    const userData = {
+      weight: Number(values.weight),
+      height: Number(values.height),
+      age: Number(values.age),
+      desiredWeight: Number(values.desiredWeight),
+      bloodType: Number(values.bloodType),
+    };
+    await handlesetDataToApi(userData);
     resetForm();
-    setIsModalOpen(true);
-  };
+  }
 
   const resetForm = () => {
     setValues({
@@ -54,18 +61,17 @@ const DailyCaloriesForm = ({ handlesetDataToApi, setIsModalOpen }) => {
         type="number"
         value={values.height}
         required
-      />
-      <TextField
-        color="warning"
-        className={s.input}
-        onChange={handleChange}
-        id="standard-basic"
-        label="Desired weight"
-        variant="standard"
-        name="desiredWeight"
-        type="number"
-        value={values.desiredWeight}
-        required
+        sx={{
+          width: 240,
+          '& #standard-basic-label': {
+            color: grey[500],
+            fontFamily: 'Arimo',
+            fontWeight: 700,
+          },
+          '& #standard-basic-label.Mui-focused': {
+            color: orange[700],
+          },
+        }}
       />
       <TextField
         color="warning"
@@ -78,16 +84,77 @@ const DailyCaloriesForm = ({ handlesetDataToApi, setIsModalOpen }) => {
         type="number"
         value={values.age}
         required
+        sx={{
+          width: 240,
+          '& #standard-basic-label': {
+            color: grey[500],
+            fontFamily: 'Arimo',
+            fontWeight: 700,
+          },
+          '& #standard-basic-label.Mui-focused': {
+            color: orange[700],
+          },
+        }}
+      />
+      <TextField
+        color="warning"
+        className={s.input}
+        onChange={handleChange}
+        id="standard-basic"
+        label="Current weight"
+        variant="standard"
+        name="weight"
+        type="number"
+        value={values.weight}
+        required
+        sx={{
+          width: 240,
+          '& #standard-basic-label': {
+            color: grey[500],
+            fontFamily: 'Arimo',
+            fontWeight: 700,
+          },
+          '& #standard-basic-label.Mui-focused': {
+            color: orange[700],
+          },
+        }}
+      />
+      <TextField
+        color="warning"
+        className={s.input}
+        onChange={handleChange}
+        id="standard-basic"
+        label="Desired weight"
+        variant="standard"
+        name="desiredWeight"
+        type="number"
+        value={values.desiredWeight}
+        required
+        sx={{
+          width: 240,
+          '& #standard-basic-label': {
+            color: grey[500],
+            fontFamily: 'Arimo',
+            fontWeight: 700,
+          },
+          '& #standard-basic-label.Mui-focused': {
+            color: orange[700],
+          },
+        }}
       />
 
       <FormControl required>
         <FormLabel
           sx={{
+            width: 240,
+            color: grey[500],
+            fontFamily: 'Arimo',
+            fontWeight: 700,
+
             '&.Mui-focused': {
               color: orange[700],
             },
           }}
-          id="demo-radio-buttons-group-label"
         >
           Blood type
         </FormLabel>
@@ -103,9 +170,17 @@ const DailyCaloriesForm = ({ handlesetDataToApi, setIsModalOpen }) => {
         >
           <FormControlLabel
             value="1"
+            sx={{
+              '& .MuiTypography-root': {
+                color: grey[500],
+                fontFamily: 'Arimo',
+                fontWeight: 700,
+              },
+            }}
             control={
               <Radio
                 sx={{
+                  color: grey[300],
                   '&.Mui-checked': {
                     color: orange[700],
                   },
@@ -116,9 +191,17 @@ const DailyCaloriesForm = ({ handlesetDataToApi, setIsModalOpen }) => {
           />
           <FormControlLabel
             value="2"
+            sx={{
+              '& .MuiTypography-root': {
+                color: grey[500],
+                fontFamily: 'Arimo',
+                fontWeight: 700,
+              },
+            }}
             control={
               <Radio
                 sx={{
+                  color: grey[300],
                   '&.Mui-checked': {
                     color: orange[700],
                   },
@@ -129,9 +212,17 @@ const DailyCaloriesForm = ({ handlesetDataToApi, setIsModalOpen }) => {
           />
           <FormControlLabel
             value="3"
+            sx={{
+              '& .MuiTypography-root': {
+                color: grey[500],
+                fontFamily: 'Arimo',
+                fontWeight: 700,
+              },
+            }}
             control={
               <Radio
                 sx={{
+                  color: grey[300],
                   '&.Mui-checked': {
                     color: orange[700],
                   },
@@ -142,9 +233,17 @@ const DailyCaloriesForm = ({ handlesetDataToApi, setIsModalOpen }) => {
           />
           <FormControlLabel
             value="4"
+            sx={{
+              '& .MuiTypography-root': {
+                color: grey[500],
+                fontFamily: 'Arimo',
+                fontWeight: 700,
+              },
+            }}
             control={
               <Radio
                 sx={{
+                  color: grey[300],
                   '&.Mui-checked': {
                     color: orange[700],
                   },
@@ -156,19 +255,6 @@ const DailyCaloriesForm = ({ handlesetDataToApi, setIsModalOpen }) => {
         </RadioGroup>
       </FormControl>
 
-      <TextField
-        color="warning"
-        className={s.input}
-        onChange={handleChange}
-        id="standard-basic"
-        label="Current weight"
-        variant="standard"
-        name="weight"
-        type="number"
-        value={values.weight}
-        required
-      />
-
       <button className={s.btn} type="submit">
         Start losing weight
       </button>
@@ -176,3 +262,7 @@ const DailyCaloriesForm = ({ handlesetDataToApi, setIsModalOpen }) => {
   );
 };
 export default DailyCaloriesForm;
+
+DailyCaloriesForm.propTypes = {
+  handlesetDataToApi: PropTypes.func,
+};

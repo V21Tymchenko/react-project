@@ -5,8 +5,7 @@
   margin: 0 auto;
   padding-top: 50px;
   gap: 30px;
-  max-width: 480px;
-  min-height: 500px;
+  height: 100%;
   background-color: #264061;
 }
 .mobLink {
@@ -22,4 +21,9 @@
 .mobLink:hover,
 .mobLink:focus {
   color: #fff;
+}
+@media screen and (min-width: 768px) {
+  .mobilNav {
+    max-width: 768px;
+  }
 }
