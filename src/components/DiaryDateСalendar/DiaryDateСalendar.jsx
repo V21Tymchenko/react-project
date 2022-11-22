@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import dayjs from 'dayjs';
 import TextField from '@mui/material/TextField';
-// import Stack from '@mui/material/Stack';
+
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
@@ -26,7 +26,6 @@ export default function DiaryDateСalendar() {
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
-      {/* <Stack spacing={1}> */}
       <DesktopDatePicker
         inputFormat="DD.MM.YYYY"
         className={s.calendar + ' ' + s.mycalendar}
@@ -36,7 +35,6 @@ export default function DiaryDateСalendar() {
           setValue(newValue);
         }}
         sx={{
-          // width: '30px',
           '& #standard-basic-label': {
             color: grey[500],
             fontFamily: 'Arimo',
@@ -73,7 +71,6 @@ export default function DiaryDateСalendar() {
           />
         )}
       />
-      {/* </Stack> */}
     </LocalizationProvider>
   );
 }

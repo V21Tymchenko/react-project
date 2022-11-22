@@ -12,7 +12,7 @@ import { useMediaQuery } from 'react-responsive';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PropTypes from 'prop-types';
-// import { grey, orange } from '@mui/material/colors';
+import { grey, orange } from '@mui/material/colors';
 
 export default function DiaryAddProductForm({ setAddDairyProducts }) {
   const [name, setName] = useState('');
@@ -22,13 +22,11 @@ export default function DiaryAddProductForm({ setAddDairyProducts }) {
   const { timeDay } = useSelector(state => state.diary);
   const dispatch = useDispatch();
 
-  // const day = useSelector(state => state.diary.timeDay);
-
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
   const isTablet = useMediaQuery({ query: '(min-width: 768px)' });
 
   const [products, setProducts] = useState([]);
-  // const notifySuccess = message => toast.error(message);
+
   const fetchProducts = useMemo(
     () =>
       debounce(search => {
@@ -63,7 +61,7 @@ export default function DiaryAddProductForm({ setAddDairyProducts }) {
     e.preventDefault();
     const data = { date: timeDay, productId, weight };
     dispatch(eatenProduct(data));
-    // dispatch(dayInfo({ date: day }));
+
     setName('');
     setWeight('');
   };
@@ -74,9 +72,6 @@ export default function DiaryAddProductForm({ setAddDairyProducts }) {
     }
     return true;
   };
-  // const isTabletAndDesktop = useMediaQuery({
-  //   query: '(min-width: 768px)',
-  // });
 
   return (
     <div className={s.flexBox}>
@@ -190,25 +185,6 @@ export default function DiaryAddProductForm({ setAddDairyProducts }) {
                 />
               </svg>
             </button>
-            // <Button
-            // type="submit"
-            // className={s.bt + ' ' + s.mybt}
-            // variant="contained"
-            // disabled={!weight || !name}
-            // >
-            // <svg
-            //   width="24"
-            //   height="24"
-            //   viewBox="0 0 24 24"
-            //   fill="none"
-            //   xmlns="http://www.w3.org/2000/svg"
-            // >
-            //   <path
-            //     d="M18.72 12.96H12.96V18.72H11.04V12.96H5.28003V11.04H11.04V5.28003H12.96V11.04H18.72V12.96Z"
-            //     fill="white"
-            //   />
-            // </svg>
-            // </Button>
           )}
           {isMobile && (
             <div className={s.btnContainer + ' ' + s.container}>
