@@ -1,21 +1,17 @@
 import Container from 'components/Container';
-// import Header from 'components/Header';
-import Loader from 'components/Loader';
+import Header from 'components/Header';
 import LoginForm from 'components/LoginForm';
-import React, { Suspense } from 'react';
+import React from 'react';
 import { Outlet } from 'react-router-dom';
-import s from './Login.module.css';
 
-const LoginPage = () => {
+export default function LoginPage() {
   return (
-    <main className={s.mainContainer}>
+    <>
+      <Header />
       <Container>
         <LoginForm />
       </Container>
-      <Suspense fallback={<Loader />}>
-        <Outlet />
-      </Suspense>
-    </main>
+      <Outlet />
+    </>
   );
-};
-export default LoginPage;
+}

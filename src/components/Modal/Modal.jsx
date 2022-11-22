@@ -1,15 +1,23 @@
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-// import { useMediaQuery } from 'react-responsive';
 import { NavLink } from 'react-router-dom';
 import { stateAuthToken } from 'redux/auth/auth-selectors';
-import PropTypes from 'prop-types';
 // import { stateAuthToken } from 'redux/auth/auth-selectors';
 // import { dailyRate, notAllowedProducts } from 'redux/user/user-selectors';
 import s from './Modal.module.css';
 
-const Modal = ({ setIsModalOpen, kcal, arrNotAllowedProducts }) => {
+const Modal = ({ setIsModalOpen, kcal, arrNotAllowedProducts = null }) => {
+  // const kcal = useSelector(state => state?.user?.userData?.dailyRate);
+  // const arrNotAllowedProducts = useSelector(
+  //   state => state?.user?.userData?.notAllowedProducts
+  // );
+
   const token = useSelector(stateAuthToken);
+  // const dailyKcal = useSelector(state => state?.dailyRate?.dailyRate);
+
+  // const newArrNotAllowedProducts = useSelector(
+  //   state => state?.dailyRate?.notAllowedProducts
+  // );
 
   useEffect(() => {
     add();
@@ -33,12 +41,9 @@ const Modal = ({ setIsModalOpen, kcal, arrNotAllowedProducts }) => {
     }
   };
 
-  // const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
-
   return (
     <div onClick={hendleClick} className={s.overlay}>
       <div className={s.modal}>
-        {/* {isMobile && <Header />} */}
         <button
           onClick={() => {
             setIsModalOpen(false);
@@ -68,6 +73,7 @@ const Modal = ({ setIsModalOpen, kcal, arrNotAllowedProducts }) => {
         </button>
         <div className={s.containerTitleModal}>
           <h2 className={s.titleModal}>
+            {' '}
             Your recommended daily calorie intake is
           </h2>
         </div>
@@ -80,7 +86,7 @@ const Modal = ({ setIsModalOpen, kcal, arrNotAllowedProducts }) => {
           <p className={s.listModal}>Foods you should not eat</p>
           <ul>
             {arrNotAllowedProducts &&
-              arrNotAllowedProducts?.map((item, index) => {
+              arrNotAllowedProducts.map((item, index) => {
                 return (
                   <li key={item} className={s.itemModal}>
                     {index + 1}. {item}
@@ -116,9 +122,3 @@ const Modal = ({ setIsModalOpen, kcal, arrNotAllowedProducts }) => {
 };
 
 export default Modal;
-
-Modal.propTypes = {
-  setIsModalOpen: PropTypes.func,
-  kcal: PropTypes.number,
-  arrNotAllowedProducts: PropTypes.arrayOf(PropTypes.string),
-};

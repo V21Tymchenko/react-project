@@ -2,7 +2,6 @@
   padding-top: 120px;
   padding-bottom: 111px;
   margin-right: 0;
-  min-height: 100vh;
 }
 
 @media screen and (min-width: 768px) {
@@ -28,7 +27,7 @@
     margin-right: -35px;
     background-size: 746px, 286px, 498px, 602px;
     background-position: top right 195px, right 36px bottom, top right,
-      bottom right;
+      top 34px right;
     background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
   }
 }
@@ -110,13 +109,6 @@
   display: inline-block;
 }
 
-.button:hover,
-.button:focus {
-  background-color: #fff;
-  color: #fc842d;
-  border: 2px solid #fc842d;
-}
-
 .link {
   padding: 11px 65px;
   color: #fc842d;
@@ -134,10 +126,4 @@
 
   text-decoration: none;
   display: inline-block;
-}
-
-.link:hover,
-.link:focus {
-  color: #fff;
-  background-color: #fc842d;
 }

@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import 'react-toastify/dist/ReactToastify.css';
 import { login } from 'redux/auth/auth-operations';
 import s from './LoginForm.module.css';
 
@@ -69,10 +68,10 @@ const LoginForm = () => {
             <NavLink className={s.link} to="/register">
               Register
             </NavLink>
+            <ToastContainer autoClose={2000} />
           </div>
         </form>
       </div>
-      <ToastContainer autoClose={2000} />
     </section>
   );
 };

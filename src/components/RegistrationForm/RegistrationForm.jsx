@@ -15,6 +15,7 @@ export default function RegistrationForm() {
   const dispatch = useDispatch();
 
   const notifySuccess = () => toast('Are you registered!');
+  // const notifyRejected = () => toast('Registration failed!');
 
   const inputs = {
     email: setEmail,
@@ -40,6 +41,9 @@ export default function RegistrationForm() {
         notifySuccess();
       })
       .catch(error => console.error(error));
+    setEmail('');
+    setPassword('');
+    setUserName('');
   };
 
   return (
@@ -79,19 +83,18 @@ export default function RegistrationForm() {
             name="password"
             value={password}
             className={s.label}
-            placeholder="enter min 8 digits"
           />
           <div className={s.buttons}>
             <button type="submit" className={s.button}>
               Register
             </button>
+            <ToastContainer autoClose={2000} />
             <NavLink className={s.link} to="/login">
               Login
             </NavLink>
           </div>
         </form>
       </div>
-      <ToastContainer autoClose={2000} />
     </section>
   );
 }

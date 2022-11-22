@@ -1,25 +1,17 @@
-import { Link, useLocation } from 'react-router-dom';
+import Header from 'components/Header';
+import { Link } from 'react-router-dom';
 import s from './MobilNavPage.module.css';
 
-const MobilNavPage = ({ handleMenuClose }) => {
-  const location = useLocation();
+const MobilNavPage = () => {
   return (
     <>
+      <Header />
+
       <nav className={s.mobilNav}>
-        <Link
-          state={{ from: location }}
-          className={s.mobLink}
-          to="/diary"
-          onClick={handleMenuClose}
-        >
+        <Link className={s.mobLink} to="/diary">
           Diary
         </Link>
-        <Link
-          state={{ from: location }}
-          className={s.mobLink}
-          to="/calculator"
-          onClick={handleMenuClose}
-        >
+        <Link className={s.mobLink} to="/calculator">
           Calculator
         </Link>
       </nav>

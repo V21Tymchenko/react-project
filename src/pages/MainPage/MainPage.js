@@ -1,7 +1,6 @@
 import Container from 'components/Container';
 import DailyCaloriesForm from 'components/DailyCaloriesForm/DailyCaloriesForm';
-// import Header from 'components/Header';
-import Loader from 'components/Loader';
+import Header from 'components/Header';
 import Modal from 'components/Modal';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -10,62 +9,43 @@ import s from './MainPage.module.css';
 
 const MainPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
 
   // const handleSetStorage = dataFromForm => {
   //   localStorage.setItem('calculateUserInfo', JSON.stringify(dataFromForm));
   // };
 
-  async function handlesetDataToApi(data) {
-    try {
-      setIsLoading(true);
-      await dispatch(dailyRateOperation(data));
-      setIsModalOpen(true);
-      setIsLoading(false);
-    } catch (error) {
-      console.log(error);
-      setIsLoading(false);
-    }
-  }
-
-  const kcal = useSelector(state => state?.dailyRate?.dailyRate);
-
+  const handlesetDataToApi = data => {
+    dispatch(dailyRateOperation(data));
+  };
+  const kcal = useSelector(state => state.dailyRate.dailyRate);
   const arrNotAllowedProducts = useSelector(
     state => state?.dailyRate?.notAllowedProducts
   );
-  const newArrey = [...arrNotAllowedProducts];
-
-  function arrayRandElement(arr) {
-    let newRand = [];
-    for (let i = 0; i < 5; i += 1) {
-      var rand = Math.floor(Math.random() * arr?.length);
-      newRand.push(arr[rand]);
-    }
-    return newRand;
-  }
-  const randomNotAllowed = arrayRandElement(newArrey);
-
+  const newArrNotAllowedProducts = [...arrNotAllowedProducts].slice(0, 5);
   return (
-    <section className={s.containerMain}>
-      {/* <Header setIsModalOpen={setIsModalOpen} /> */}
+    <>
+      <Header />
       <Container>
-        {isLoading && <Loader />}
         <main className={s.backGround}>
           <h1 className={s.title}>
             Calculate your daily calorie intake right now
           </h1>
-          <DailyCaloriesForm handlesetDataToApi={handlesetDataToApi} />
-          {randomNotAllowed && isModalOpen && (
+          <DailyCaloriesForm
+            handlesetDataToApi={handlesetDataToApi}
+            setIsModalOpen={setIsModalOpen}
+            // handleSetStorage={handleSetStorage}
+          />
+          {newArrNotAllowedProducts && isModalOpen && (
             <Modal
-              kcal={kcal}
-              arrNotAllowedProducts={randomNotAllowed}
               setIsModalOpen={setIsModalOpen}
+              kcal={kcal}
+              arrNotAllowedProducts={newArrNotAllowedProducts}
             />
           )}
         </main>
       </Container>
-    </section>
+    </>
   );
 };
 export default MainPage;

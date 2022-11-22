@@ -1,43 +1,30 @@
-import React, { useState } from 'react';
+import React from 'react';
 import DiaryDateСalendar from 'components/DiaryDateСalendar';
-import DiaryAddProductForm from 'components/DiaryAddProductForm/DiaryAddProductForm';
-import DiaryProductItem from 'components/DiaryProductItem/DiaryProductItem';
+import DiaryAddProductForm from 'components/DiaryAddProductForm';
+import DiaryProductItem from 'components/DiaryProductItem';
 import Container from 'components/Container';
 
-// import Header from 'components/Header';
+import Header from 'components/Header';
 
 import RightSideBar from 'components/RightSideBar/RightSideBar';
 import s from './DiaryPage.module.css';
-import { useMediaQuery } from 'react-responsive';
-// import { useLocation } from 'react-router-dom';
 
-const DiaryPage = () => {
-  const [addDairyProducts, setAddDairyProducts] = useState(false);
-  // const location = useLocation();
-
-  const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
-  const moreMobile = useMediaQuery({ query: '(min-width: 768px)' });
-
+export default function DiaryPage() {
   return (
-    <main className={s.main}>
+    <div>
+      <Header />
       <Container>
         <div className={s.wrapper}>
           <div className={s.leftSide}>
             <DiaryDateСalendar />
-            {addDairyProducts && isMobile && (
-              <DiaryAddProductForm setAddDairyProducts={setAddDairyProducts} />
-            )}
-            {moreMobile && (
-              <DiaryAddProductForm setAddDairyProducts={setAddDairyProducts} />
-            )}
-            <DiaryProductItem setAddDairyProducts={setAddDairyProducts} />
+            <DiaryAddProductForm />
+            <DiaryProductItem />
           </div>
           <div className={s.containerSideBar}>
             <RightSideBar />
           </div>
         </div>
       </Container>
-    </main>
+    </div>
   );
-};
-export default DiaryPage;
+}
