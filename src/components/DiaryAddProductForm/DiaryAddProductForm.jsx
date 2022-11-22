@@ -24,13 +24,11 @@ export default function DiaryAddProductForm({ setAddDairyProducts }) {
   const { timeDay } = useSelector(state => state.diary);
   const dispatch = useDispatch();
 
-  // const day = useSelector(state => state.diary.timeDay);
-
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
   const isTablet = useMediaQuery({ query: '(min-width: 768px)' });
 
   const [products, setProducts] = useState([]);
-  // const notifySuccess = message => toast.error(message);
+
   const fetchProducts = useMemo(
     () =>
       debounce(search => {
@@ -77,7 +75,7 @@ export default function DiaryAddProductForm({ setAddDairyProducts }) {
     e.preventDefault();
     const data = { date: timeDay, productId, weight };
     dispatch(eatenProduct(data));
-    // dispatch(dayInfo({ date: day }));
+
     setName('');
     setWeight('');
   };
@@ -88,9 +86,6 @@ export default function DiaryAddProductForm({ setAddDairyProducts }) {
     }
     return true;
   };
-  // const isTabletAndDesktop = useMediaQuery({
-  //   query: '(min-width: 768px)',
-  // });
 
   return (
     <div className={s.flexBox}>

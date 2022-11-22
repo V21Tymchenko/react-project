@@ -14,7 +14,6 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 import { useMediaQuery } from 'react-responsive';
 import PropTypes from 'prop-types';
-// import Loader from 'components/Loader';
 
 export default function DiaryProductItem({ setAddDairyProducts }) {
   const { eatenProducts } = useSelector(state => state.diary);
@@ -23,7 +22,6 @@ export default function DiaryProductItem({ setAddDairyProducts }) {
 
   const dayId = useSelector(state => state.diary.dayInform);
   const dispatch = useDispatch();
-  // useEffect(() => {}, [eatenProducts]);
 
   const handlClick = eatenProductId => {
     dispatch(removeProduct({ dayId, eatenProductId }));
