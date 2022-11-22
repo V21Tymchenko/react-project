@@ -63,7 +63,7 @@
   color: #9b9faa;
 }
 .productItem:not(:last-child)::after {
-  content: ',';
+  content: ', ';
 }
 @media screen and (min-width: 767px) and (max-width: 1279px) {
   .notRecomendet {
