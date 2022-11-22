@@ -85,6 +85,11 @@
 
   color: #9b9faa;
 }
+@media screen and (min-width: 767px) {
+  .label {
+    width: 283px !important;
+  }
+}
 
 .buttons {
   display: flex;

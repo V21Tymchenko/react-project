@@ -11,25 +11,25 @@ import { stateAuthToken } from 'redux/auth/auth-selectors';
 import PublicRoute from './PublicRoute/PublicRoute';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 
-import { useMediaQuery } from 'react-responsive';
+// import { useMediaQuery } from 'react-responsive';
 import NotFound from 'pages/NotFound/NotFound';
 
 import { lazy } from 'react';
 import { current } from 'redux/user/user-operation';
+import Header from './Header/Header';
 // import Loader from './Loader';
-import Header from './Header';
 
 const MainPage = lazy(() => import('pages/MainPage'));
 const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage'));
 const CalculatorPage = lazy(() => import('pages/CalculatorPage'));
 const DiaryPage = lazy(() => import('pages/DiaryPage'));
-const MobilNavPage = lazy(() => import('pages/MobilNavPage/MobilNavPage'));
+// const MobilNavPage = lazy(() => import('pages/MobilNavPage/MobilNavPage'));
 
 export const App = () => {
   const dispatch = useDispatch();
   const token = useSelector(stateAuthToken);
-  const isDesctop = useMediaQuery({ query: '(min-width: 1280px)' });
+  // const isDesctop = useMediaQuery({ query: '(min-width: 1280px)' });
 
   useEffect(() => {
     if (token) {
