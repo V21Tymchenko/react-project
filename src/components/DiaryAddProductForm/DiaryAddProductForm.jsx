@@ -88,10 +88,6 @@ export default function DiaryAddProductForm({ setAddDairyProducts }) {
     }
     return true;
   };
-  // const isTabletAndDesktop = useMediaQuery({
-  //   query: '(min-width: 768px)',
-  // });
-
   return (
     <div className={s.flexBox}>
       <div className={s.maxBox}>

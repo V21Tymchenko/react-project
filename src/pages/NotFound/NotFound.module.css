@@ -5,7 +5,8 @@
   align-items: center;
   background-image: url('../../assets/images/green-home.png');
   background-size: 666px;
-  background-position: top left;
+  background-position: top left 56px;
+  height: 100vh;
 }
 .sorry {
   width: 500px;
@@ -15,4 +16,9 @@
   font-size: 30px;
   line-height: 36px;
   color: #c9a814;
+  padding-top: 200px;
+}
+.img {
+  padding-top: 300px;
+  margin-right: 196px;
 }

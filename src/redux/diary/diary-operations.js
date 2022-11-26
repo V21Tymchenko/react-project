@@ -4,12 +4,6 @@ import { token } from 'redux/auth/auth-operations';
 
 const { createAsyncThunk } = require('@reduxjs/toolkit');
 
-// export async function search(product) {
-//   const { data } = await axios.get(
-//     `https://slimmom-backend.goit.global/product?search=${product}`
-//   );
-//   return data;
-// }
 
 export async function postDay(body) {
   const { data } = await axios.post(
@@ -35,17 +29,6 @@ async function remove(body) {
   return data;
 }
 
-// export const searcheProducts = createAsyncThunk(
-//   'search/product',
-//   async (data, thunkAPI) => {
-//     try {
-//       const response = await search(data);
-//       return response;
-//     } catch (e) {
-//       return thunkAPI.rejectWithValue(e.message);
-//     }
-//   }
-// );
 
 export const eatenProduct = createAsyncThunk(
   'search/day',
@@ -66,7 +49,6 @@ export const eatenProduct = createAsyncThunk(
 export const dayInfo = createAsyncThunk(
   'search/dayInfo',
   async (data, thunkAPI) => {
-    // const state = thunkAPI.getState();
     const state = thunkAPI.getState();
     const persistToken = state.auth.token;
     token.set(persistToken);

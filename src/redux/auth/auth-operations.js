@@ -63,11 +63,6 @@ export const login = createAsyncThunk(
           })
         );
       }
-      // if (response.status === 409) {
-      //   toast.error('You are already registered', {
-      //     position: 'top-right',
-      //   });
-      // }
       return response;
     } catch (e) {
       toast.error('Something wrong!', {

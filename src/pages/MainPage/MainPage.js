@@ -1,6 +1,5 @@
 import Container from 'components/Container';
 import DailyCaloriesForm from 'components/DailyCaloriesForm/DailyCaloriesForm';
-// import Header from 'components/Header';
 import Loader from 'components/Loader';
 import Modal from 'components/Modal';
 import { useState } from 'react';
@@ -12,10 +11,6 @@ const MainPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
-
-  // const handleSetStorage = dataFromForm => {
-  //   localStorage.setItem('calculateUserInfo', JSON.stringify(dataFromForm));
-  // };
 
   async function handlesetDataToApi(data) {
     try {
@@ -48,7 +43,6 @@ const MainPage = () => {
 
   return (
     <section className={s.containerMain}>
-      {/* <Header setIsModalOpen={setIsModalOpen} /> */}
       <Container>
         {isLoading && <Loader />}
         <main className={s.backGround}>
