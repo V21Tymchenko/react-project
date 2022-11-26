@@ -9,17 +9,7 @@ const userSlice = createSlice({
   name: 'user',
   initialState,
   extraReducers: {
-    // [handlesetDataToApiWithId.pending]: state => {
-    //   state.status = fetchStatus.loading;
-    // },
-    // [handlesetDataToApiWithId.fulfilled]: state => {
-    //   state.status = fetchStatus.success;
-    //   state.userData = state.payload.DailyRate;
-    // },
-    // [handlesetDataToApiWithId.rejected]: (state, action) => {
-    //   state.status = fetchStatus.error;
-    //   state.error = action.payload;
-    // },
+  
 
     [handlesetDataToApiWithId.pending]: (state, { meta }) => {
       state.status = fetchStatus.loading;

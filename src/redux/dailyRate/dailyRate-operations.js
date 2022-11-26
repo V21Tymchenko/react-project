@@ -16,6 +16,8 @@ export const dailyRateOperation = createAsyncThunk(
     try {
       const { data } = await axios.post('/daily-rate', credentials);
       return data;
-    } catch (err) {}
+    } catch (err) {
+      console.log(err);
+    }
   }
 );

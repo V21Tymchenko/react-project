@@ -19,17 +19,6 @@ const products = createSlice({
     },
   },
   extraReducers: {
-    // [searcheProducts.pending](state) {
-    //   state.status = fetchStatus.loading;
-    // },
-    // [searcheProducts.fulfilled](state, action) {
-    //   // state.status = fetchStatus.loading;
-    //   state.products = action.payload;
-    // },
-    // [searcheProducts.rejected](state) {
-    //   state.status = fetchStatus.error;
-    // },
-
     [eatenProduct.pending](state) {
       state.status = fetchStatus.loading;
     },

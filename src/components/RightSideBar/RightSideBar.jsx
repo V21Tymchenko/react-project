@@ -1,6 +1,5 @@
 import { useSelector } from 'react-redux';
 import {
-  // dailyRateSel,
   dateSel,
   kcalConsumedSel,
   percentsOfDailyRateSel,
@@ -17,11 +16,9 @@ const RightSideBar = () => {
 
   const kcal = useSelector(state => state.user?.userData?.dailyRate);
 
-
   const arrNotAllowedProducts = useSelector(state =>
     state?.user?.userData?.notAllowedProducts?.slice(0, 5)
   );
-
 
   return (
     <div className={s.sidebar}>
@@ -50,7 +47,6 @@ const RightSideBar = () => {
       </div>
       <div className={s.notRecomendet}>
         <h2 className={s.titleBar}>Food not recommended</h2>
-     
 
         {arrNotAllowedProducts?.length > 1 ? (
           <ul>

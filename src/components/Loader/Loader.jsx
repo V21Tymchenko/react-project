@@ -2,7 +2,7 @@ import { PuffLoader } from 'react-spinners';
 
 function Loader() {
   const loaderCSSOverride = {
-    marginTop: '200px',
+    marginTop: '350px',
     position: 'absolute',
     top: '50%',
     left: '50%',

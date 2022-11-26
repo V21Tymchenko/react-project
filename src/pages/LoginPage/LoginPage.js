@@ -1,5 +1,4 @@
 import Container from 'components/Container';
-// import Header from 'components/Header';
 import Loader from 'components/Loader';
 import LoginForm from 'components/LoginForm';
 import React, { Suspense } from 'react';

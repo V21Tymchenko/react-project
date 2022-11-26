@@ -5,6 +5,7 @@
   font-size: 18px;
   line-height: 26px;
   color: #212121;
+  margin-bottom: 32px;
 }
 .backGround {
   padding-top: 32px;
@@ -29,6 +30,7 @@
     font-size: 34px;
     line-height: 41px;
     width: 540px;
+    margin-bottom: 68px;
   }
 }
 @media screen and (min-width: 1280px) {
@@ -51,10 +53,3 @@
     min-height: 100vh;
   }
 }
-/* min-height: 100vh;
-padding-top: 306px;
-padding-bottom: 190px;
-margin-right: -35px;
-background-size: 746px, 286px, 498px, 602px;
-background-position: top right 195px, right 36px bottom, top right, bottom right;
-background-repeat: no-repeat, no-repeat, no-repeat, no-repeat; */
