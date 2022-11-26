@@ -22,8 +22,7 @@ export default function DiaryProductItem({ setAddDairyProducts }) {
 
   const dayId = useSelector(state => state.diary.dayInform);
   const dispatch = useDispatch();
- 
-
+  
   const handlClick = eatenProductId => {
     dispatch(removeProduct({ dayId, eatenProductId }));
   };

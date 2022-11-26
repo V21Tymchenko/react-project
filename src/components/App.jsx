@@ -7,6 +7,7 @@ import PrivateRoute from './PrivateRoute/PrivateRoute';
 import NotFound from 'pages/NotFound/NotFound';
 import { lazy } from 'react';
 import { current } from 'redux/user/user-operation';
+
 import Header from './Header/Header';
 
 const MainPage = lazy(() => import('pages/MainPage'));
